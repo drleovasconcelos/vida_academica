@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petshop Melhor Amigo - Contato</title>
+    <link rel="stylesheet" href="styles-contato.css">
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index-principal.html">Início</a></li>
+                <li><a href="index-produtos.html">Produtos</a></li>
+                <li><a href="index-galeria.html">Galeria</a></li>
+                <li><a href="index-contato.html">Contato</a></li>
+            </ul>
+        </nav>
+        <h1>Entre em Contato com o Petshop Melhor Amigo</h1>
+    </header>
+
+    <div class="container">
+        <section class="contact-form">
+            <h2>Formulário de Contato</h2>
+            <form action="processar-contato.php" method="post">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Telefone:</label>
+                <input type="tel" id="phone" name="phone">
+
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <label for="newsletter">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    Desejo receber atualizações e promoções por e-mail.
+                </label>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <section class="additional-info">
+            <h2>Informações de Contato</h2>
+            <p><strong>Endereço:</strong> Rua dos Animais Felizes, 123, Centro, Cidade, Estado</p>
+            <p><strong>Telefone:</strong> (99) 9999-9999</p>
+            <p><strong>E-mail:</strong> contato@petshopmelhoramigo.com.br</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Todos os direitos reservados - 2024® Petshop Melhor Amigo</p>
+    </footer>
+</body>
+</html>

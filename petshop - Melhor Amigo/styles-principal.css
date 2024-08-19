@@ -1,0 +1,261 @@
+body {
+    font-family: Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+header {
+    background-color: #22882b; /* Cor de fundo do cabeçalho */
+    color: #fff; /* Cor do texto dentro do cabeçalho */
+    text-align: center; /* Centraliza o conteúdo do cabeçalho */
+    padding: 40px 0; /* Espaçamento interno do cabeçalho */
+    margin-top: 30px;
+}
+header img {
+    max-width: 100%; /* Garante que a largura da imagem não ultrapasse a largura do header */
+    max-height: 100%; /* Define a altura máxima da imagem como 100px */
+    display: block; /* Garante que a imagem se comporte como um bloco, respeitando margens e paddings */
+    margin: 0 auto; /* Centraliza horizontalmente a imagem dentro do header */
+}
+
+header h1 {
+    font-size: 50px; /* Tamanho da fonte do título */
+    margin: 30px; /* Remove margens padrão */
+    /* text-transform: uppercase; Transforma o texto em maiúsculas */
+}
+
+header p {
+    font-size: 35px; /* Tamanho da fonte do título */
+    margin: 0; /* Remove margens padrão */
+    /* text-transform: uppercase; Transforma o texto em maiúsculas */
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    font-size: 30px;
+}
+.discount-banner {
+    background-color: #ffcc00; /* cor de fundo para destacar o banner */
+    color: #333; /* cor do texto */
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.discount-banner h2 {
+    margin: 0;
+    font-size: 2em;
+}
+.discount-banner p {
+    margin: 10px 0 0 0;
+    font-size: 1.2em;
+}
+.discount-banner a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #333; /* cor de fundo do botão */
+    color: #fff; /* cor do texto do botão */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+.discount-banner a:hover {
+    background-color: #555; /* cor do botão ao passar o mouse */
+}
+.banner {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.banner h1 {
+    font-size: 2.5em;
+}
+.banner p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+.cta-button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.cta-button:hover {
+    background-color: #45a049;
+}
+.services {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.service {
+    flex: 1;
+    margin: 0 10px; /* Margem de 10px horizontalmente entre cada serviço */
+    perspective: 1000px; /* Define a perspectiva para o efeito de 3D */
+    transition: transform 0.5s; /* Transição para o efeito de rotação */
+    font-size: 25px;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Altura do cartão */
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    margin: 0 20px;
+}
+
+.card:hover {
+    transform: rotateY(180deg); /* Rotação do cartão ao passar o mouse */
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.front {
+    background-color: #f1f1f1; /* Cor de fundo da frente do cartão */
+    transform: rotateY(0deg); /* Define a posição inicial da frente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.back {
+    background-color: #4CAF50; /* Cor de fundo do verso do cartão */
+    color: white; /* Cor do texto no verso */
+    transform: rotateY(180deg); /* Define a posição inicial do verso */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.button1 {
+    outline: none;
+    border: none;
+    height: 50px;
+    width: 230px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 25px;
+    margin: 5% 43%;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: .5s;    
+}
+
+.button1:hover {
+    opacity: 0.6;
+}
+
+.navbar {
+    text-align: right;
+    margin-bottom: 10px;
+    height: 60px;
+    background-color: #060e01; /* Cor de fundo da navegação */
+    position: fixed; /* Fixa a navegação no topo */
+    width: 100%; /* Ocupa toda a largura da tela */
+    top: 0; /* Encosta no topo da página */
+    z-index: 1000; /* Define uma camada acima dos outros elementos */
+    padding-top: 20px; /* Espaço de 20px para baixo a partir do topo */
+    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+    
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 5px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+
+/* Estilização do footer */
+footer {
+    clear: both; /* Limpa floats */
+    text-align: center;
+    background-color: #8a8484; /* Cor de fundo do footer */
+    padding: 10px 15px; /* Espaçamento interno do footer */
+    color: #af2424; /* Cor do texto */
+    font-size: 16px; /* Tamanho da fonte */
+    margin-top: 60px;
+}
+
+/* Estilização dos parágrafos dentro do footer */
+footer p {
+    margin: 10px; /* Remove margens padrão dos parágrafos */
+    color: rgb(0, 0, 0); /* Cor do texto dos parágrafos */
+    padding: 10px; /* Espaçamento interno dos parágrafos */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+/* Efeito de hover nos parágrafos */
+footer p:hover {
+    background-color: #535151; /* Cor de fundo ao passar o mouse */
+    cursor: pointer; /* Altera o cursor ao passar o mouse */
+}
+
+.redes-sociais a {
+    display: inline-block;
+    margin: 5 0; /* Espaçamento entre os ícones */
+}
+
+.redes-sociais img {
+    margin: 10px;
+    width: 40px; /* Largura dos ícones */
+    height: 40px; /* Altura dos ícones */
+    transition: transform 0.3s ease; /* Transição suave ao passar o mouse */
+}
+
+.redes-sociais img:hover {
+    transform: scale(1.1); /* Efeito de escala ao passar o mouse */
+}
+

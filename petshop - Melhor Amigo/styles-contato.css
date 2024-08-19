@@ -1,0 +1,213 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+.navbar {
+    text-align: right;
+    margin-bottom: 10px;
+    height: 60px;
+    background-color: #060e01; /* Cor de fundo da navegação */
+    position: fixed; /* Fixa a navegação no topo */
+    width: 100%; /* Ocupa toda a largura da tela */
+    top: 0; /* Encosta no topo da página */
+    z-index: 1000; /* Define uma camada acima dos outros elementos */
+    padding-top: 20px; /* Espaço de 20px para baixo a partir do topo */
+    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 5px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+header {
+    background-color: #22882b; /* Cor de fundo do cabeçalho */
+    color: #fff; /* Cor do texto dentro do cabeçalho */
+    text-align: center; /* Centraliza o conteúdo do cabeçalho */
+    padding: 40px 0; /* Espaçamento interno do cabeçalho */
+    margin-top: 30px;
+}
+
+header h1 {
+    font-size: 50px; /* Tamanho da fonte do título */
+    margin: 30px; /* Remove margens padrão */
+    /* text-transform: uppercase; Transforma o texto em maiúsculas */
+    text-align: center;
+}
+
+header p {
+    font-size: 35px; /* Tamanho da fonte do título */
+    margin: 0; /* Remove margens padrão */
+    /* text-transform: uppercase; Transforma o texto em maiúsculas */
+}
+
+.contact-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.form-group input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Estilização geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container centralizado */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Formulário de contato */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Campos do formulário */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+/* Botão de envio */
+button {
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Botão hover */
+button:hover {
+    background-color: #218838;
+}
+
+/* Estilização das informações de contato adicionais */
+.contact-info {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+}
+
+.contact-info p {
+    margin: 10px 0;
+}
+
+/* Checkbox da newsletter */
+.newsletter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.newsletter input {
+    margin: 0;
+}
+
+/* Link para produtos */
+.button-produtos {
+    display: block;
+    width: fit-content;
+    margin: 30px auto;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button-produtos:hover {
+    background-color: #0056b3;
+}
+
+
+
