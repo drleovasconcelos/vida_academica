@@ -1,0 +1,29 @@
+
+aula 1 - conhecendo javascritp
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script - Aula 01</title>
+</head>
+<body>
+    <h1>Como o java script pode ser utilizado?</h1>
+    <img src="pic_bulboff.gif"> <br>
+    <button onclick="ligar()">Ligar</button>
+    <button onclick="desligar()">Desligar</button>
+
+    <script>
+        const img = document.querySelector('img')
+
+        function ligar() {
+            img.src = "pic_bulbon.gif"
+        }
+
+        function desligar() {
+            img.src = "pic_bulboff.gif"
+        }
+
+    </script>
+</body>
+</html>
