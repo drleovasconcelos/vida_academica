@@ -32,4 +32,9 @@ button{
     border-radius: 8px;
 }
 
+img { 
+    max-height: 80%;
+    max-width: 80%;
+}
+
 
