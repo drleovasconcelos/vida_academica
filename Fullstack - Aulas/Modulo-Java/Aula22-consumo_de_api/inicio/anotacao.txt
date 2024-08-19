@@ -1,0 +1,3 @@
+https://jsonplaceholder.typicode.com/ - site para testa api - site com dados fictícios 
+
+https://microsoftedge.microsoft.com/addons/detail/json-viewer/ohoadoaepamcdaoedfioogomapmjlanc - extensão para melhorar a visualização das informações 
