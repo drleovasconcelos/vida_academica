@@ -97,6 +97,5 @@ function limparCampos() {
 }
 
 
-
 bookForm.addEventListener('submit', addBook)
 displayBooks()

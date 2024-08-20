@@ -1,0 +1,298 @@
+     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+
+
+
+
+3
+
+imagens do projeto dos dados
+
+https://raw.githubusercontent.com/kcarww/js-projects/main/dice/dice1.png
+https://raw.githubusercontent.com/kcarww/js-projects/main/dice/dice2.png
+https://raw.githubusercontent.com/kcarww/js-projects/main/dice/dice3.png
+https://raw.githubusercontent.com/kcarww/js-projects/main/dice/dice4.png
+https://raw.githubusercontent.com/kcarww/js-projects/main/dice/dice5.png
+https://raw.githubusercontent.com/kcarww/js-projects/main/dice/dice6.png
+
+-------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Olá!</h1>
+      <div class="dice">
+        <p>Player 1</p>
+        <img />
+      </div>
+
+      <div class="dice">
+        <p>Player 1</p>
+        <img />
+      </div>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
+
+
+------------------------------------------------------
+
+body {
+  background: linear-gradient(to right, #5c33f6, #a239ea, #ff94cc, #f0d9e7);
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  margin: 20px;
+  font-size: 7rem;
+  color: #fff;
+  font-family: Lucida Sans;
+}
+
+.dice {
+  display: inline-block;
+  margin: 50px;
+}
+
+p {
+  font-weight: bolder;
+  font-family: Verdana;
+  font-size: 2rem;
+  margin: 100px;
+  margin-top: 5px;
+  color: #0f044c;
+}
+
+img {
+  width: 300px;
+}
+---------------------------------------------------------------------
+
+let primeiroNumero = Math.floor(Math.random() * 6) + 1
+let segundoNumero = Math.floor(Math.random() * 6) + 1
+
+const imgPlayer1 = document.querySelector("#player1")
+const imgPlayer2 = document.querySelector("#player2")
+
+const img1 = `dice${primeiroNumero}.png`
+const img2 = `dice${segundoNumero}.png`
+
+imgPlayer1.src = img1
+imgPlayer2.setAttribute("src", img2)
+
+const h1 = document.querySelector("h1")
+if (primeiroNumero > segundoNumero) {
+  h1.innerText = "Player 1 venceu! 🏆"
+} 
+else if (primeiroNumero === segundoNumero) {
+  h1.innerText = "Empatou!"
+} 
+else {
+  h1.innerText = "Player 2 venceu! 🏆"
+}
+
+-----------------------------------------------------------------------------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoLIST</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1><span class="titulo">Todo</span>List</h1>
+
+    <div class="input-div">
+        <input type="text" 
+        class="input" placeholder="Adicionar Tarefa">
+        <button class="add">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        
+    </div>
+    
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+---------------------------------------------------------
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body {
+    height: 100%;
+    background-color: rgb(10, 16, 37);
+}
+
+h1 {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 50;
+    text-align: center;
+    margin: 1rem 0 3rem;
+    font-family: Tahoma;
+}
+.titulo {
+    color: rgb(204, 7, 0);
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input {
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    height: 50px;
+    border-radius: 25px;
+    width: 350px;
+    margin: 0.25rem;
+    transition: .5s;
+    font-size: 1.15rem;
+}
+.add {
+    outline: none;
+    border: none;
+    height: 50px;
+    border-radius: 25px;
+    width: 50px;
+    background-color: lime;
+    color: #fff;
+    cursor: pointer;
+    transition: .5s;
+    margin: 0.25rem;
+}
+
+.add:hover {
+    opacity: 0.6;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.item {
+    padding: 0.5rem;
+    border-bottom: 4px solid #fff;
+    margin-bottom: 1.5rem;
+}
+
+.item-input {
+    background: none;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    width: 245px;
+}
+
+.edit {
+    background: none;
+    outline: none;
+    border: none;
+    color: lime;
+    font-size: 1.4rem;
+    font-family: Tahoma;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.remove {
+    background: none;
+    outline: none;
+    border: none;
+    color: rgb(208, 228, 33);
+    font-size: 1.4rem;
+    font-family: Tahoma;
+    cursor: pointer;
+}
+
+-------------------------------------------------------------------------
+
+const input = document.querySelector('.input')
+const container = document.querySelector('.container')
+const addButton = document.querySelector('.add')
+
+
+function addTarefa() {
+    const itemBox = document.createElement('div')
+    itemBox.classList.add('item')
+
+    const inputTask = document.createElement('input')
+    inputTask.type = 'text'
+    inputTask.disabled = true
+    inputTask.value = input.value
+    inputTask.classList.add('item-input')
+
+    const editBtn = document.createElement('button')
+    editBtn.classList.add('edit')
+    editBtn.innerText = 'EDITAR'
+    editBtn.addEventListener('click', () => editTarefa(inputTask, input.value))
+
+
+    const removeBtn = document.createElement('button')
+    removeBtn.classList.add('remove')
+    removeBtn.innerText = 'REMOVER'
+    removeBtn.addEventListener('click', () => removeTarefa(itemBox, input.value))
+
+    container.append(itemBox)
+    itemBox.append(inputTask)
+    itemBox.append(editBtn)
+    itemBox.append(removeBtn)
+
+    input.value = ''
+    input.focus()
+}
+
+function editTarefa(input, tarefa) {
+    input.disabled = !input.disabled
+
+    // if (!input.disabled) {
+    //     input.value =
+    // }
+}
+
+function removeTarefa(itemBox, tarefa) {
+    container.removeChild(itemBox)
+}
+
+
+addButton.addEventListener('click', addTarefa)
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        addTarefa()
+    }
+})

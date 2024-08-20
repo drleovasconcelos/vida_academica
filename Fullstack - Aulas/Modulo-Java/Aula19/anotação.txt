@@ -1,0 +1,401 @@
+https://www.invertexto.com/209aula19
+
+https://drive.google.com/file/d/1Mf3h-6pH4r4KIIbb1EjE-siNUJtuU9Ku/view?pli=1
+
+------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoLIST</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1><span class="titulo">Todo</span>List</h1>
+
+    <div class="input-div">
+        <input type="text" 
+        class="input" placeholder="Adicionar Tarefa">
+        <button class="add">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        
+    </div>
+    
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+---------------------------------------------------------
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body {
+    height: 100%;
+    background-color: rgb(10, 16, 37);
+}
+
+h1 {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 50;
+    text-align: center;
+    margin: 1rem 0 3rem;
+    font-family: Tahoma;
+}
+.titulo {
+    color: rgb(204, 7, 0);
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input {
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    height: 50px;
+    border-radius: 25px;
+    width: 350px;
+    margin: 0.25rem;
+    transition: .5s;
+    font-size: 1.15rem;
+}
+.add {
+    outline: none;
+    border: none;
+    height: 50px;
+    border-radius: 25px;
+    width: 50px;
+    background-color: lime;
+    color: #fff;
+    cursor: pointer;
+    transition: .5s;
+    margin: 0.25rem;
+}
+
+.add:hover {
+    opacity: 0.6;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.item {
+    padding: 0.5rem;
+    border-bottom: 4px solid #fff;
+    margin-bottom: 1.5rem;
+}
+
+.item-input {
+    background: none;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    width: 245px;
+}
+
+.edit {
+    background: none;
+    outline: none;
+    border: none;
+    color: lime;
+    font-size: 1.4rem;
+    font-family: Tahoma;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.remove {
+    background: none;
+    outline: none;
+    border: none;
+    color: rgb(208, 228, 33);
+    font-size: 1.4rem;
+    font-family: Tahoma;
+    cursor: pointer;
+}
+
+-------------------------------------------------------------------------
+
+const todos = JSON.parse(localStorage.getItem('todos')) || []
+
+const input = document.querySelector('.input')
+const container = document.querySelector('.container')
+const addButton = document.querySelector('.add')
+
+
+function salvarTarefas() {
+    localStorage.setItem('todos', JSON.stringify(todos))
+}
+
+function addTarefa(nome) {
+    const itemBox = document.createElement('div')
+    itemBox.classList.add('item')
+
+    const inputTask = document.createElement('input')
+    inputTask.type = 'text'
+    inputTask.disabled = true
+    inputTask.value = nome
+    inputTask.classList.add('item-input')
+
+    const editBtn = document.createElement('button')
+    editBtn.classList.add('edit')
+    editBtn.innerText = 'EDITAR'
+    editBtn.addEventListener('click', () => editTarefa(inputTask, nome))
+
+
+    const removeBtn = document.createElement('button')
+    removeBtn.classList.add('remove')
+    removeBtn.innerText = 'REMOVER'
+    removeBtn.addEventListener('click', () => removeTarefa(itemBox, nome))
+
+    container.append(itemBox)
+    itemBox.append(inputTask)
+    itemBox.append(editBtn)
+    itemBox.append(removeBtn)
+
+    todos.push(nome)
+    
+
+    input.value = ''
+    input.focus()
+}
+
+function editTarefa(input, tarefa) {
+    input.disabled = !input.disabled
+
+    if (!input.disabled) {
+        const index = todos.indexOf(tarefa)
+        todos[index] = input.value
+        salvarTarefas()
+    }
+}
+
+function removeTarefa(itemBox, tarefa) {
+    container.removeChild(itemBox)
+    const index = todos.indexOf(tarefa)
+    todos.splice(index, 1)
+    salvarTarefas()
+   
+}
+
+
+addButton.addEventListener('click', () => {
+    addTarefa(input.value)
+    salvarTarefas()
+})
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        addTarefa(input.value)
+        salvarTarefas()
+    }
+})
+
+
+todos.forEach(task => {
+    addTarefa(task)
+});
+
+-------------------------------------------------------------------------------
+email: projetosfortal@infinityschool.com.br
+assunto: turma 209 moscow
+corpo: 
+seu nome
+javascript aula 10
+projeto todolist
+link do repositório 
+
+
+
+------------------------------------------------------
+
+const produtos = ['mouse', 'teclado', 'monitor']
+
+
+produtos.forEach(elemento => {
+    console.log(elemento)
+})
+
+for (const elemento of produtos) {
+    console.log(elemento)
+}
+-------------------------------------------------------
+
+const lados = [10, 5, 7, 5.7, 8, 9]
+
+const areas = lados.map(lado => {
+    return lado ** 2
+})
+console.log(areas)
+
+// const areas = []
+// for (const l of lados) {
+//     const a = l ** 2
+//     areas.push(a)
+// }
+
+// console.log(areas)
+
+--------------------------------------------------------
+
+const alturas = ['1,8', '1,99', '1,56', '1,80', '1,74']
+
+const alturasNumber = alturas.map((height) => {
+    return Number(height.replace(',', '.'))
+})
+
+console.log(alturasNumber)
+
+-------------------------------------------------------------------------
+const usernames = ['Franklin', 'JoNas', 'carlos', 'MAriaNa',
+    'MARcos', 'LuanNa']
+
+const usernamesUpper = usernames.map((user) => {
+    return user.toUpperCase()
+})
+
+console.log(usernamesUpper)
+------------------------------------------------------------------------------------
+
+1. Considere a seguinte lista com gastos em dolar = [100, 50, 45, 75, 60, 150, 250], crie uma nova lista com gastos em reais considere a cotação 5.66
+
+const dolar = [100, 50, 45, 75, 60, 150, 250]
+const real = dolar.map(d => {
+    return (d * 5.66).toFixed(2)
+})
+
+console.log(real)
+------------------------------------------------------------------
+2. Considere a seguinte lista de distancias percorridas = [35, 60, 80, 55, 90, 60, 10], crie uma lista nova com os consumos considerando que o veiculo faz 12km/l
+
+const distancias = [35, 60, 80, 55, 90, 60, 10]
+
+const consumo = distancias.map(d => {
+    return d / 12
+})
+
+console.log(consumo)
+------------------------------------------------------------------------
+
+const dolar = [100, 50, 45, 75, 60, 150, 250]
+
+const gastosAcima100 = []
+
+for (const gasto of dolar) {
+    if (gasto >= 100) {
+        gastosAcima100.push(gasto)
+    }
+}
+
+console.log(gastosAcima100)
+
+
+-------------------------------------------------------------
+
+const dolar = [100, 50, 45, 75, 60, 150, 250]
+
+const gastosAcima100 = dolar.filter(gasto => {
+    return gasto >= 100
+})
+
+console.log(gastosAcima100)
+
+-------------------------------------------------------------------
+const pedidos = [
+    {total: 100, formaPagamento: 'PIX'}, 
+    {total: 100, formaPagamento: 'CREDITO'}, 
+    {total: 100, formaPagamento: 'PIX'}, 
+    {total: 100, formaPagamento: 'PIX'}, 
+    {total: 100, formaPagamento: 'DEBITO'}, 
+    {total: 100, formaPagamento: 'PIX'}, 
+]
+
+const ordersPix = pedidos.filter(order => {
+    return order.formaPagamento === 'PIX'
+})
+
+console.log(ordersPix)
+
+----------------------------------------------------------
+1. considere a seguinte lista de numeros = [1,2,3,4,5,6,7,8,9,10] Use a função filter para criar uma lista apenas com os números pares
+
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+const pares = numeros.filter(num => {
+    return num % 2 == 0
+})
+
+console.log(pares)
+----------------------------------------------------
+2. Considere a seguinte lista de velocidades = [55, 60, 70, 45, 35, 45, 55, 64, 46] capturadas por um radar. Utilize a função filter para criar uma lista apenas com velocidades acima do limite (50km)
+
+const velocidades = [55, 60, 70, 45, 35, 45, 55, 64, 46]
+
+const acima = velocidades.filter(vel => {
+    return vel > 50
+})
+
+console.log(acima)
+------------------------------------------------
+3. Considere a seguinte lista de nomes = ['joao', 'mariana', 'josue', 'matheus', 'emanuel', 'leandro', 'luciana'], utilize a função filter para criar uma nova lista com nomes que tenham pelo menos 6 letras
+
+const nomes = ['joao', 'mariana', 'josue', 'matheus', 'emanuel', 'leandro', 'luciana']
+
+const nomesComSeisLetras = nomes.filter(nome => {
+    return nome.length >= 6
+})
+
+console.log(nomesComSeisLetras)
+--------------------------------------------------
+4. Utilize a mesma lista para filter apenas os nomes que começam com a letra 'j'
+
+const nomes = ['joao', 'mariana', 'josue', 'matheus', 'emanuel', 'leandro', 'luciana']
+
+const nomesComJ = nomes.filter(nome => {
+    return nome[0].toLocaleLowerCase() === 'j'
+})
+
+console.log(nomesComJ)
+
+----------------------------------------------------------------
+
+const dolar = [100, 50, 45, 75, 60, 150, 250]
+
+let total = 0
+for (const valor of dolar) {
+    total += valor
+}
+
+console.log(total)
+
+--------------------------------------------------
+
+const dolar = [100, 50, 45, 75, 60, 150, 250]
+
+let total = dolar.reduce((acumulador, valor) => {
+    return acumulador + valor
+})
+
+console.log(total)
