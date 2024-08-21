@@ -1,0 +1,220 @@
+chttps://drive.google.com/file/d/1nJrH1r5osvQAr8NmSDbFIm7Xggi1Pmrd/view
+
+
+// lista que vai conter todos os pedidos armazenados
+const pedidos = []
+
+function gerarPedidos(total, metodoPagamento, status) {
+    const order = [total, metodoPagamento, status]
+    pedidos.push(order)
+    alert('Pedido registrado com sucesso!')
+}
+
+function aprovarPedido(index) {
+    pedidos[index][2] = 'APROVADO'
+    alert('Pedido aprovado com sucesso!')
+}
+
+function exibirTotalFaturado() {
+    let totalFaturado = 0
+    // order = [total, metodoPagamento, status]
+    for (const order of pedidos) {
+        // order[2] contém o status do pedido
+        if (order[2] === 'APROVADO') {
+            // order[0] contém o total do pedido  
+            totalFaturado += order[0]
+        }
+    }
+    alert(`Total faturado = R$${totalFaturado}`)
+}
+
+function menu() {
+    while(true) {
+        const opcao = prompt(`Bem vindo. \n
+        1 - Gerar pedido \n
+        2 - Aprovar pedido \n
+        3 - Exibir total faturado \n
+        4 - Quantidade de pedidos aprovados \n
+        5 - Quantidade de pedidos por meio de pagamento \n
+        0 - Sair`)
+
+        if (opcao === '1') {
+            const total = Number(prompt('Informe o total do pedido: '))
+            const metodoPagamento = prompt('Informe o método de pagamento: ')
+            const status = prompt('Informe o status do pagamento: ')
+            gerarPedidos(total, metodoPagamento, status)
+        }
+
+        else if (opcao === '2') {
+            const index = Number(prompt('Digite o index do pedido: '))
+            aprovarPedido(index)
+        }
+        else {
+            break
+        }
+    }
+}
+
+menu()
+
+
+-----------------------------------------------------------------
+
+function somarDoisNumeros(num1, num2) {
+    const result = num1 + num2
+    // vai devolver o valor me result a quem chamar a função
+    return result
+    // return 10
+    // return true
+    // return 'Olá'
+    // return num1 + num2 
+}
+
+
+const resultado = somarDoisNumeros(10, 10)
+alert(`Resultado = ${resultado}`)
+
+// const nome = prompt('Digite o seu nome: ')
+
+---------------------------------------------------------------------
+1. Crie uma função que recebe três notas por parametro e retorna a média
+
+function calcularMedia(nota1, nota2, nota3) {
+    const media = (nota1 + nota2 + nota3) / 3
+    return media
+}
+
+const media = calcularMedia(10, 7, 8)
+alert(media)
+-------------------------------------------------------------------------
+2. Crie uma função que recebe peso e altura por parametro e retorna o imc
+imc = peso / altura ** 2
+
+function calcularImc(peso, altura) {
+    const imc = peso / altura ** 2
+    return imc
+}
+
+const imc = calcularImc(82, 1.81)
+alert(imc)
+----------------------------------------------------------------
+3. Crie uma função que recebe base e altura por parametro e retorna a area do triangulo
+area = base * altura / 2
+
+function areaTriangulo(base, altura) {
+    const area = base * altura / 2
+    return area
+}
+
+const area = areaTriangulo(10, 5)
+alert(area)
+-----------------------------------------------------------------
+4. Crie uma função que recebe um número e retorna 'par' se o número for par ou 'ímpar' se o número for ímpar
+
+function verificarNumero(num) {
+    if (num % 2 === 0) {
+        return 'par'
+    }
+    else {
+        return 'impar'
+    }
+}
+
+const result = verificarNumero(10)
+alert(result)
+
+---------------------------------------------------------
+
+// function somar(valor1, valor2) {
+
+// }
+
+
+const somar = (valor1, valor2) => {
+    alert(valor1 + valor2)
+}
+
+somar(10, 10)
+
+
+--------------------------------------------------------------
+
+
+
+// setTimeOut
+
+setTimeout(() => {
+    console.log('Infinity school')
+}, 5000)
+
+// Só em casos que a função só tem uma linha
+// Essa função tem retorno
+setTimeout(() => console.log('Olá, Infinity'), 5000)
+
+setTimeout(function () {
+    console.log('Javascript')
+}, 5000)
+-------------------------------------------------------------
+
+1. Crie uma arrow function que recebe um número por parametro e informa se ele é positivo ou negativo
+
+const verificarNum = (num) => {
+    if (num > 0) {
+        alert('positivo')
+    }
+    else {
+        alert('negativo')
+    }
+}
+
+verificarNum(10)
+------------------------------------------------------------------
+2. Crie uma arrow function que imprime 'Infinity School' 
+
+const imprimir = () => alert('infinity school')
+
+imprimir()
+--------------------------------------------------------
+3. Crie uma arrow function que recebe o raio de um circulo e retorna sua área
+area = pi * raio ** 2
+
+const calcularArea = (raio) => 3.14 * raio ** 2
+
+const area = calcularArea(10)
+alert(area)
+--------------------------------------------------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 07</title>
+</head>
+<body>
+    <label>Peso: </label>
+    <input type="text" id="peso"> <br>
+    
+    <label>Altura: </label>
+    <input type="text" id="altura"> <br>
+
+    <button onclick="calcularImc()">Calcular</button>
+    <h1 id="resultado"></h1>
+    <script>
+        // ARVORE DOM (DOCUMENT OBJECT MODEL)
+        function calcularImc() {
+            const peso = document.getElementById('peso')
+            const altura = document.getElementById('altura')
+            const h1 = document.getElementById('resultado')
+            const imc = Number(peso.value) / Number(altura.value) ** 2 
+            h1.innerText = `Resultado = ${imc.toFixed(2)}`   
+        }
+    </script>
+</body>
+</html>
+
+-------------------------------------------------------------------
+
+1. Crie um conversor de real para dolar. Considere o dolar R$ 5.56
