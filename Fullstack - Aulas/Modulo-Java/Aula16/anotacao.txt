@@ -1,0 +1,318 @@
+        https://drive.google.com/file/d/1ang6hr8QKJeNuN5EUMaqiui8qnMBLpEs/view
+
+----------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .box {
+            height: 100px;
+            width: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem vindo</h1>
+    <div id="content"></div>
+    <footer class="footer">Todos os direitos reservados</footer>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+--------------------------------
+
+
+const h1 = document.getElementsByTagName('h1')
+console.log(h1)
+
+
+// Pegando elemento pelo nome da class
+const footer = document.getElementsByClassName('footer')
+console.log(footer)
+footer[0].innerText = 'Infinity School'
+
+
+
+const box = document.getElementsByClassName('box')
+
+for (const div of box) {
+    const r = Math.floor(Math.random() * 256)
+    const g = Math.floor(Math.random() * 256)
+    const b = Math.floor(Math.random() * 256)
+
+    div.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+}
+
+
+const content = document.getElementById('content')
+console.log(content)
+
+
+----------------------------------------------------------------------------------------
+
+// Pegando elementos com querySelector
+const h1 = document.querySelector('h1')
+console.log(h1)
+
+const box = document.querySelector('.box')
+console.log(box)
+
+const content = document.querySelector('#content')
+console.log(content)
+
+const boxes = document.querySelectorAll('.box')
+console.log(boxes)
+
+---------------------------------------------------------------------------------------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" id="resultado" readonly>
+        <br>
+        <button id="limpar">C</button>
+        <button class="operador" id="dividir">/</button>
+
+        <br>
+        <button id="sete">7</button>
+        <button id="oito">8</button>
+        <button id="nove">9</button>
+        <button class="operador" id="multiplicar">x</button>
+
+        <br>
+        <button id="quatro">4</button>
+        <button id="cinco">5</button>
+        <button id="seis">6</button>
+        <button class="operador" id="subtrair">-</button>]
+
+
+        <br>
+        <button id="um">1</button>
+        <button id="dois">2</button>
+        <button id="tres">3</button>
+        <button class="operador" id="somar">+</button>
+
+
+        <br>
+        <button id="zero">0</button>
+        <button id="decimal">.</button>
+        <button id="iguan">=</button>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+---------------------------------------------
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.calculadora {
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #eee;
+    padding-top: 50px;
+}
+
+#resultado {
+    width: 80%;
+    height: 50px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    padding-right: 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+
+.calculadora button {
+    width: 20%;
+    height: 50px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 2px solid #000;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: .4s;
+}
+
+.calculadora button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.calculadora .operador {
+    background-color: crimson;
+    color: #fff;
+}
+
+#igual {
+    width: 40%;
+}
+
+#limpar {
+    width: 60%;
+}
+
+-----------------------------------
+
+const buttons = document.querySelectorAll('button')
+const display = document.querySelector('#resultado')
+
+
+for (const btn of buttons) {
+    
+        btn.addEventListener('click', () => {
+            if (btn.innerText !== '=' && btn.innerText !== 'C') {
+            display.value += btn.innerText
+            }
+            else if (btn.innerText === 'C') {
+                display.value = ''
+            }
+            else {
+                display.value = eval(display.value)
+            }
+        })
+} 
+
+---------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+
+    <h1>Adicionar produtos</h1>
+    <label>Produto: </label>
+    <input type="text" id="produto">
+    <button id="btn">Adicionar produto</button>
+
+    <h2>Seu carrinho</h2>
+    <ul id="lista"></ul>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+--------------------------------------------------------
+
+const input = document.querySelector('#produto')
+const btn = document.querySelector('#btn')
+const lista = document.querySelector('#lista')
+
+function addProduct() {
+    const li = document.createElement('li')
+    li.innerText = input.value
+    lista.append(li)
+}
+
+btn.addEventListener('click', addProduct)
+
+---------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+
+    <style>
+        .item {
+            background-color: navy;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Adicionar produtos</h1>
+    <label>Produto: </label>
+    <input type="text" id="produto">
+    <button id="btn">Adicionar produto</button>
+
+    <h2>Seu carrinho</h2>
+    <ul id="lista"></ul>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+-------------------------------------------
+
+const input = document.querySelector('#produto')
+const btn = document.querySelector('#btn')
+const lista = document.querySelector('#lista')
+
+function addProduct() {
+    const li = document.createElement('li')
+    li.innerText = input.value
+    li.setAttribute('class', 'item')
+    lista.append(li)
+}
+
+btn.addEventListener('click', addProduct)
+
+---------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+            </ul>
+        </nav>
+        <button id="toggle">
+            dark/light mode
+        </button>
+    </header>
+    <main>
+        <h1>Bem vindo a home</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam iste repellat quam explicabo maiores fugiat excepturi quibusdam, ab provident tempore voluptas fuga, maxime sint illum accusantium laborum recusandae sit nam.</p>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+----------------------------------------------------
