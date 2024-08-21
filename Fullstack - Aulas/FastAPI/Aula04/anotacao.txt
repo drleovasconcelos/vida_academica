@@ -33,7 +33,7 @@ from sqlalchemy import Column, String, Integer, Float, Boolean
 engine = db.create_engine('mysql+pymysql://root:@localhost:3306/escola')
 
 #  cria uma classe
-Base = declarative_base()
+Base = declarative_base()    -->> classe criada para base das tabelas
 class Aluno(Base):
     # criar o nome da tabela
     __tablename__ = 'aluno'
