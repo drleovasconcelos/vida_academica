@@ -1,0 +1,140 @@
+https://www.invertexto.com/fastapiaula05
+
+Primeiros passos: 
+para corrigir erro de ativação - windons - PowerShell - e insere o código abaixo
+Instale o PowerShell mais recente para obter novos recursos e aprimoramentos! https://aka.ms/PSWindows
+
+PS C:\Windows\system32> Set-ExecutionPolicy Unrestricted
+
+*Criar e ativar o ambiente virtual
+python -m venv venv
+venv\Scripts\activate
+
+*Instalar algumas funções
+pip install fastapi uvicorn sqlalchemy mysql asyncmy
+
+*Criar as requisições
+pip freeze > requirements.txt
+
+*Criar as pastas
+core - todo mundo pode usar
+schemas - api
+models - sqlalquemy
+api
+
+1ª pasta CORE
+primeiro criamos as configurações para o banco de dados -->>
+devemos conectar o banco de dados - primeira pasta deve ser core/confis -->>
+criamos o basemodel da tabela --->>
+criamos a conexão automatica -->>
+depois database.python -->>
+em deps ficaram todas as dependencias -->> 
+
+2º passo - models
+model terá o modelo do banco de dados
+
+3º passo - schemas
+modelo da api (ele pega da api, cria um model e envia para o banco de dados)
+
+4º passo - criamos create_tables para criar a tabela no banco de dados
+para executar
+python create_tables.py
+
+
+professor
+------- configs.py
+
+from pydantic_settings import BaseSettings
+from sqlalchemy.ext.declarative import declarative_base
+from typing import Type
+
+class Settings(BaseSettings):
+    API_V1_STR: str = '/api/v1'
+    DB_URL: str = 'mysql+asyncmy://root:@localhost:3306/escola'
+    DBBaseModel: Type = declarative_base()
+
+    class config:
+        case_sensitive = True
+
+settings = Settings()
+
+-------------------------------------database.py
+
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.ext.asyncio import AsyncEngine
+from sqlalchemy.ext.asyncio import AsyncSession
+from core.configs import settings
+
+engine: AsyncEngine = create_async_engine(settings.DB_URL)
+
+Session: AsyncSession = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    expire_on_commit=False,
+    bind=engine,
+    class_=AsyncSession
+)
+
+--------------------------------------deps.py
+
+from typing import Generator
+from sqlalchemy.ext.asyncio import AsyncSession
+from core.database import Session
+
+async def getSession():
+    session: AsyncSession = Session()
+    try:
+        yield session
+    finally:
+        session.close()
+
+----------------------------------- aluno_model.py
+
+from core.configs import settings
+from sqlalchemy import Column, Integer, String, Float, Boolean
+
+class Aluno(settings.DBBaseModel):
+    __tablename__ = 'alunos'
+    matricula = Column(Integer, primary_key=True, autoincrement=True)
+    nome = Column(String(150))
+    idade = Column(Integer, nullable=False)
+    curso = Column(String(150))
+    nota = Column(Float)
+    aprovado = Column(Boolean, default=False)
+    
+----------------- __all_models.py
+from models.aluno_model import Aluno
+
+
+--------------------- aluno_schema.py
+
+from typing import Optional
+from pydantic import BaseModel as SCBaseModel
+
+class AlunoSchema(SCBaseModel):
+    matricula: Optional[int] = None
+    nome: str
+    idade: int
+    curso: str
+    nota: float
+    aprovado: Optional[bool] = False
+
+~---------------- create_tables.py
+
+from core.configs import settings
+from core.database import engine
+
+async def createTables() -> None:
+    import models.__all_models
+    print('Criando tabelas...')
+    async with engine.begin() as conn:
+        await conn.run_sync(settings.DBBaseModel.metadata.drop_all)
+        await conn.run_sync(settings.DBBaseModel.metadata.create_all)
+    print('Tabelas criadas com sucesso...')
+
+if __name__ == '__main__':
+    import asyncio
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(createTables())
+

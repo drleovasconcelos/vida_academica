@@ -80,7 +80,7 @@ if __name__ == '__main__':
                  reload=True, port=8000)
 
 -------------------------------------------------------------------------
-from pydantic import BaseModel, field_validator, validator
+from pydantic import BaseModel, field_validator, validator --->> usado para fazer tipagens
 from typing import Optional
 
 class Aluno(BaseModel):
