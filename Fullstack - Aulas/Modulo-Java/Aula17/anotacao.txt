@@ -1,0 +1,385 @@
+Aula 17
+
+https://drive.google.com/file/d/15BNyKCRAAkUCimncN17SJncXvf0Woi9O/view
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM - Revisão</title>
+    <style>
+      .container {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <label> Aluno: </label>
+    <input type="text" id="aluno" /> <br />
+
+    <label> Curso: </label>
+    <input type="text" id="curso" /> <br />
+
+    <button id="btn" onclick="cadastrar()">Cadastrar</button>
+    <hr />
+
+    <div class="alunos"></div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
+
+
+------------------------------------------------------------------------------
+
+const nome = document.querySelector("#aluno")
+const curso = document.querySelector("#curso")
+const alunos = document.querySelector(".alunos")
+
+function cadastrar() {
+  const div = document.createElement("div")
+  const h3 = document.createElement("h3")
+  const p = document.createElement("p")
+
+  h3.innerText = nome.value
+  p.innerText = curso.value
+
+  div.append(h3)
+  div.append(p)
+  div.classList.add("container")
+
+  alunos.append(div)
+}
+
+
+------------------------------------------------------------------------------
+
+const btn = document.querySelector("#btn")
+
+btn.addEventListener("click", () => alert("Você clicou no botão"))
+
+------------------------------------------------------------------
+
+const buttons = document.querySelectorAll(".btn")
+
+for (const btn of buttons) {
+  btn.addEventListener("click", () => alert("Você clicou no btn"))
+}
+
+
+-----------------------------------------------------
+
+const input = document.querySelector("#input")
+
+input.addEventListener("input", () => console.log("Texto alterado"))
+--------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+      }
+
+      .black {
+        background-color: #000;
+      }
+
+      .green {
+        background-color: darkolivegreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
+
+--------------------------------------------------------
+
+const div = document.querySelector("div")
+
+div.addEventListener("mouseover", () => {
+  div.classList.add("black")
+  div.classList.remove("green")
+})
+
+div.addEventListener("mouseout", () => {
+  div.classList.add("green")
+  div.classList.remove("black")
+})
+
+
+------------------------------------------------------
+
+const body = document.body
+
+body.addEventListener("keydown", (e) => {
+  if (e.key === "a") {
+    alert("Você clicou na tecla a")
+  }
+})
+-----------------------------------------------------------------------------
+
+
+const h1 = document.querySelector("h1")
+
+h1.style.color = "green"
+h1.style.backgroundColor = "black"
+
+
+-----------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quer namorar comigo?</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="content">
+      <h2>Aceita namorar comigo?</h2>
+      <div style="margin: auto; width: 170px">
+        <button
+          style="position: fixed; display: block"
+          class="btn"
+          id="btn-yes"
+        >
+          SIM
+        </button>
+
+        <button class="btn" id="btn-no">NÃO</button>
+      </div>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
+
+-------------------------------------------------------
+
+#content {
+  background: #ff7a7a;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  text-align: center;
+  font-family: sans-serif;
+}
+.btn {
+  background: black;
+  color: #fff;
+  border: none;
+  width: 80px;
+  border-radius: 5px;
+}
+#btn-no {
+  position: absolute;
+}
+------------------------------------------------------
+
+
+const btnSim = document.querySelector("#btn-yes")
+const btnNo = document.querySelector("#btn-no")
+
+btnSim.addEventListener("click", () => {
+  alert("Oba! Estamos namorando! :)")
+
+  window.location = "https://www.youtube.com/watch?v=izGwDsrQ1eQ"
+})
+
+function gerarPosicao(min, max) {
+  const position = Math.random() * (max - min) + min + "%"
+  return position
+}
+
+function mudarPosicao(btn) {
+  btn.style.left = gerarPosicao(10, 90)
+  btn.style.bottom = gerarPosicao(10, 90)
+}
+
+btnNo.addEventListener("click", () => mudarPosicao(btnNo))
+btnNo.addEventListener("mouseover", () => mudarPosicao(btnNo))          
+
+
+aula 18
+
+
+------------------------------------------------------forEach
+
+const produtos = ['mouse', 'teclado', 'monitor']
+
+
+produtos.forEach(elemento => {
+    console.log(elemento)
+})
+
+for (const elemento of produtos) {
+    console.log(elemento)
+}
+------------------------------------------------------- map (aplicado a uma lista)
+
+const lados = [10, 5, 7, 5.7, 8, 9]
+
+// map informa que cada elemento recebe o nome lado
+const areas = lados.map(lado => {
+    return lado ** 2
+})
+console.log(areas)
+
+// const areas = []
+// for (const l of lados) {
+//     const a = l ** 2
+//     areas.push(a)
+// }
+
+// console.log(areas)
+
+-------- virgulas por pontos
+
+const altura = ['1,8', '1,99']
+
+const alturasNumber = altura.map((heigth) => {
+    return Number(heigth.replace(',', '.'))
+})
+console.log(alturasNumber)
+
+------------------------------letra maiuscula
+const usernames = ['LeoNardo', 'FerNando']
+
+const userNamesUpper = usernames.map((user) => {
+    return user.toUpperCase()
+})
+console.log(userNamesUpper)
+--------------------------------------exercícios
+1. Considere a seguinte lista com gastos em dolar = [100, 50, 45, 75, 60, 150, 250], crie uma nova lista com gastos em reais considere a cotação 5.66
+
+dolar = [100, 50, 45, 75, 60, 150, 250]
+
+const real = dolar.map((money) => {
+    return (money*5.66).toFixed(2)
+})
+console.log(real)
+
+
+2. Considere a seguinte lista de distancias percorridas = [35, 60, 80, 55, 90, 60, 10], crie uma lista nova com os consumos considerando que o veiculo faz 12km/l
+
+distanciasPercorridas = [35, 60, 80, 55, 90, 60, 10]
+
+const consumo = distanciasPercorridas.map((distancia) => {
+    return distancia*12
+})
+console.log(consumo)
+
+-------------------------------- filter (filtra de acordo com a necessidade)
+const dolar = [100, 50, 45, 75, 60, 150, 250]
+
+const gastosAcima100 = []
+
+for (const gasto of dolar) {
+    if (gasto >= 100) {
+        gastosAcima100.push(gasto)
+    }
+}
+
+console.log(gastosAcima100)
+
+ou
+
+const dolar = [100, 50, 45, 75, 60, 150, 250]
+
+const gastosAcima100 = dolar.filter(gasto => {
+    return gasto >= 100
+})
+
+console.log(gastosAcima100)
+
+------------------------------------ exemplo
+const pedidos = [
+    {total: 100, formaPagamento: 'PIX'}, 
+    {total: 100, formaPagamento: 'CREDITO'}, 
+    {total: 100, formaPagamento: 'PIX'}, 
+    {total: 100, formaPagamento: 'PIX'}, 
+    {total: 100, formaPagamento: 'DEBITO'}, 
+    {total: 100, formaPagamento: 'PIX'}, 
+]
+
+const ordersPix = pedidos.filter(order => {
+    return order.formaPagamento === 'PIX'
+})
+
+-----------------------Exercícios
+1. considere a seguinte lista de numeros = [1,2,3,4,5,6,7,8,9,10] Use a função filter para criar uma lista apenas com os números pares
+
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+const pares = numeros.filter(num => {
+    return num % 2 == 0
+})
+
+console.log(pares)
+----------------------------------------------------
+2. Considere a seguinte lista de velocidades = [55, 60, 70, 45, 35, 45, 55, 64, 46] capturadas por um radar. Utilize a função filter para criar uma lista apenas com velocidades acima do limite (50km)
+
+const velocidades = [55, 60, 70, 45, 35, 45, 55, 64, 46]
+
+const acima = velocidades.filter(vel => {
+    return vel > 50
+})
+
+console.log(acima)
+------------------------------------------------
+3. Considere a seguinte lista de nomes = ['joao', 'mariana', 'josue', 'matheus', 'emanuel', 'leandro', 'luciana'], utilize a função filter para criar uma nova lista com nomes que tenham pelo menos 6 letras
+
+const nomes = ['joao', 'mariana', 'josue', 'matheus', 'emanuel', 'leandro', 'luciana']
+
+const nomesComSeisLetras = nomes.filter(nome => {
+    return nome.length >= 6
+})
+
+console.log(nomesComSeisLetras)
+--------------------------------------------------
+4. Utilize a mesma lista para filter apenas os nomes que começam com a letra 'j'
+
+const nomes = ['joao', 'mariana', 'josue', 'matheus', 'emanuel', 'leandro', 'luciana']
+
+const nomesComJ = nomes.filter(nome => {
+    return nome[0].toLocaleLowerCase() === 'j'
+})
+
+console.log(nomesComJ)
+
+
+-----------------------------reduce (opera os valores como a soma)
+const dolar = [100, 50, 45, 75, 60, 150, 250]
+
+let total = 0
+for (const valor of dolar) {
+    total += valor
+}
+
+console.log(total)
+
+ou
+
+const dolar = [100, 50, 45, 75, 60, 150, 250]
+
+let total = dolar.reduce((acumulador, valor) => {
+    return acumulador + valor
+})
+
+console.log(total)
