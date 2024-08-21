@@ -1,0 +1,153 @@
+
+AULA 03 ****************************************** https://www.invertexto.com/fastapiaula03
+https://www.canva.com/design/DAGMc6Yu-XY/1u82V2CHi72_f5DtaD1Fkg/edit?utm_content=DAGMc6Yu-XY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+
+https://http.cat/
+------------------------------------
+
+from fastapi import FastAPI
+import uvicorn
+from models import Aluno
+from fastapi import HTTPException, status
+
+app = FastAPI()
+
+db = [
+    Aluno(matricula=1, nome='Jonas', idade=20, curso='Python', nota=9),
+    Aluno(matricula=2, nome='Luana', idade=18, curso='Javascript', nota=8.5)
+]
+
+matriculaAtual = 2
+
+
+@app.get("/")
+async def teste():
+    return {"Ok": "Bem vindo!"}
+
+
+@app.get("/alunos")
+async def getAlunos():
+    return db
+
+@app.get("/alunos/{matricula}")
+async def getAlunoByMatricula(matricula: int):
+    for aluno in db:
+        if aluno.matricula == matricula:
+            return aluno
+    return {"404": "Aluno não encontrado"}
+
+
+@app.post("/alunos", status_code=status.HTTP_201_CREATED)
+async def addAluno(aluno: Aluno):
+    global matriculaAtual
+    # aluno.matricula = db[-1].matricula + 1
+    for a in db:
+        if a.matricula == matriculaAtual:
+            raise HTTPException(
+                status.HTTP_409_CONFLICT, detail="Matricula já existe"
+            )
+    
+    matriculaAtual += 1
+    aluno.matricula = matriculaAtual
+    db.append(aluno)
+    return aluno
+
+@app.put("/alunos/{matricula}", status_code=status.HTTP_202_ACCEPTED)
+async def editAluno(matricula: int, aluno: Aluno):
+    for a in db:
+        if a.matricula == matricula:
+            a.nome = aluno.nome
+            a.idade = aluno.idade
+            a.curso = aluno.curso
+            a.nota = aluno.nota
+            return a
+    return {"404": "aluno não encontrado"}
+
+@app.delete("/alunos/{matricula}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete(matricula: int):
+    for aluno in db:
+        if aluno.matricula == matricula:
+            db.remove(aluno)
+            return {"ok": "deleted"}
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                        detail="Aluno não encontrado")
+    
+
+
+if __name__ == '__main__':
+    uvicorn.run("main:app", host="0.0.0.0",
+                 reload=True, port=8000)
+
+-------------------------------------------------------------------------
+from pydantic import BaseModel, field_validator, validator
+from typing import Optional
+
+class Aluno(BaseModel):
+    matricula: Optional[int] = None
+    nome: str
+    idade: int
+    curso: str
+    nota: float
+
+    @field_validator('idade')
+    def validateIdade(cls, value):
+        if not isinstance(value, int):
+            raise ValueError('A idade deve ser um inteiro')
+        
+        if value < 0:
+            raise ValueError('A idade não pode ser negativa')
+        
+        return value
+------------------------------------------------------------------------
+
+
+# @name teste_get
+GET http://localhost:8000/
+
+
+### 
+
+
+# @name get_alunos
+GET http://localhost:8000/alunos
+
+
+### 
+
+# @name get_alunos_by_matricula
+GET http://localhost:8000/alunos/2
+
+
+### 
+
+# @name post_alunos
+POST http://localhost:8000/alunos
+Content-Type: application/json
+
+{
+    "nome": "Fernanda",
+    "idade": 22,
+    "curso": "Python",
+    "nota": 9.5
+}
+
+
+### 
+
+# @name put_alunos
+PUT http://localhost:8000/alunos/1
+Content-Type: application/json
+
+{
+    "nome": "Luana",
+    "idade": 19,
+    "curso": "Python",
+    "nota": 9.5
+}
+
+
+### 
+
+# @name delete_alunos
+DELETE http://localhost:8000/alunos/1

@@ -1,0 +1,133 @@
+
+--------------------------------------------------------SQL Alquimy (framework) - converter informações do python e bd 
+https://www.invertexto.com/fastapiaula04
+
+
+bd
+
+SELECT * FROM escola.aluno; (para ver todos os alunos)
+
+
+instalar o ambiente virtual e o banco de dados
+python -m venv venv
+venv\Scripts\activate
+pip install sqlalchemy
+pip install pymysql
+
+abre o xampp - start em mysql
+
+
+----- models.py--------
+
+import sqlalchemy as db
+import pymysql
+
+#imports necessário para criar uma classe base para criar a tabela 
+from sqlalchemy.orm import declarative_base, sessionmaker
+
+# importar tipos e colunas e outras coisas de acordo com o que for usando do db
+from sqlalchemy import Column, String, Integer, Float, Boolean
+
+# primeiro passo: conectar ao BD usando o comando engine (criar conexão)
+# drive//usuário:senha(mas não tem)@localhost:porta/bancodedados
+engine = db.create_engine('mysql+pymysql://root:@localhost:3306/escola')
+
+#  cria uma classe
+Base = declarative_base()
+class Aluno(Base):
+    # criar o nome da tabela
+    __tablename__ = 'aluno'
+    # criando as colunas da tabela ---> nullable = not null (precisa ser falso para dizer que não pode ser nulo)
+    matricula = Column(Integer, primary_key=True, autoincrement=True)
+    nome = Column(String(150),nullable=False)
+    idade = Column(Integer,nullable=False)
+    curso = Column(String(100), nullable=False)
+    nota = Column(Float, nullable=False)
+
+# comando serve para conectar ao banco de dados as informações geradas acima. 
+# Base.metadata.create_all(engine)
+
+# conectar ao bando de dados semprecisar ficar rodando (conexão automática)
+Session = sessionmaker(bind=engine)
+session = Session()
+
+aluno1 = Aluno(nome='Jonas', idade=18, curso='Python', nota=9.8)
+session.add(aluno1)
+session.commit()
+
+----meu codigo de hj ------
+
+import sqlalchemy as db
+import pymysql
+
+
+# extensões pylint autopep
+
+#imports necessário para criar uma classe base para criar a tabela 
+from sqlalchemy.orm import declarative_base, sessionmaker
+
+# importar tipos e colunas e outras coisas de acordo com o que for usando do db
+from sqlalchemy import Column, String, Integer, Float, Boolean
+
+# primeiro passo: conectar ao BD usando o comando engine (criar conexão)
+# drive//usuário:senha(mas não tem)@localhost:porta/bancodedados
+engine = db.create_engine('mysql+pymysql://root:@localhost:3306/escola')
+
+#  cria uma classe
+Base = declarative_base()
+class Aluno(Base):
+    # criar o nome da tabela
+    __tablename__ = 'aluno'
+    # criando as colunas da tabela ---> nullable = not null (precisa ser falso para dizer que não pode ser nulo)
+    matricula = Column(Integer, primary_key=True, autoincrement=True)
+    nome = Column(String(150),nullable=False)
+    idade = Column(Integer,nullable=False)
+    curso = Column(String(100), nullable=False)
+    nota = Column(Float, nullable=False)
+    
+    def __repr__(self):
+        return f"({self.matricula}, {self.nome}, {self.idade}, {self.curso}, {self.nota})"
+
+# comando serve para conectar ao banco de dados as informações geradas acima (só usa uma vez). 
+# Base.metadata.create_all(engine)
+
+# conectar ao bando de dados semprecisar ficar rodando (conexão automática)
+Session = sessionmaker(bind=engine)
+session = Session()
+
+def cadastrarAluno(nome: str, idade: int, curso: str, nota: float):
+    aluno = Aluno(nome=nome, idade=idade, curso=curso, nota=nota)
+    session.add(aluno)
+    session.commit()
+    print('Aluno Matriculado com Sucesso!')
+
+def buscarTodos():
+    aluno = session.query(Aluno).all()
+    # # SELECT * FROM aluno;
+    # print(aluno) ----: no for o segundo aluno é o nome da tabela
+    for aluno in aluno:
+        print(aluno)
+
+def editar(matricula: int, nome: str, idade: int, curso: str, nota: float):
+    # para buscar 1 aluno específico e alterar os dados do aluno 
+    aluno = session.query(Aluno).filter(Aluno.matricula == matricula).first()
+    if aluno:
+        aluno.nome=nome
+        aluno.idade=idade
+        aluno.curso=curso
+        aluno.nota=nota
+    # aluno.nome = 'Jonas Lopes'
+    # para salvar e aparecer no banco de dados
+        session.commit()
+
+def deletar(matricula: int):
+    aluno = session.query(Aluno).filter(Aluno.matricula == matricula).first()
+    if aluno:
+        session.delete(aluno)
+        session.commit()
+    
+nome = input('Digite o nome: ')
+idade = input('Digite a idade: ')
+curso = input('Digite o curso: ')
+nota= input('Digite a nota: ')
+cadastrarAluno(nome, idade, curso, nota)

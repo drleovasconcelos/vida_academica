@@ -1,0 +1,147 @@
+python -m venv venv
+venv\Scripts\Activate
+pip install fastapi uvicorn
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+uvicorn main:app --reload
+
+----------------------------------------------------------------------------
+
+
+#               0       1           2
+produtos = ['Mouse', 'Teclado', 'Monitor']
+precos = [10.99, 1.55, 7.89]
+
+# Como adicionar um item em uma lista?
+produtos.append('Mousepad')
+print(produtos)
+
+# Como adicionar em qualquer posição?
+produtos.insert(1, 'Cadeira gamer')
+print(produtos)
+
+# Como acessar e alterar um item da lista?
+print(produtos[3])
+produtos[3] = 'Monitor 244hz'
+print(produtos[3])
+
+# Como remover um item?
+produtos.pop(3)
+print(produtos)
+
+produtos.remove('Mouse')
+print(produtos)
+
+# Obter o tamanho da lista?
+print(len(produtos))
+
+# Obter a soma de todos os valores da lista?
+print(sum(precos))
+
+# Obter o maior valor da lista?
+print(max(precos))
+
+# Obter o menor valor da lista?
+print(min(precos))
+
+# Como obter o index de um item?
+print(produtos.index('Teclado'))
+
+---------------------------------------------------------------------------------------------
+1. Considere a seguinte lista de alturas de jogadores da NBA = [1.99, 2.01, 1.89, 1.65, 2.25, 2.02, 1.85, 1.99, 2.00, 2.05]
+a) Qual a maior altura?
+b) Qual a menor altura?
+c) Qual a média das alturas?
+d) Qual o indice da maior altura?
+e) Adicione a altura 1.97 ao indice 2
+f) Adicione a altura 2.08 ao final da lista
+g) Remova a maior altura
+h) Qual a soma das alturas?
+
+
+alturas = [1.99, 2.01, 1.89, 1.65, 2.25, 2.02, 1.85, 1.99, 2.00, 2.05]
+
+for altura in alturas:
+    print(altura, end=' ')
+    if altura > 2.02:
+        print('Altura acima da média')
+
+
+1. Percorra a lista de alturas e ao final informe quantas estão acima e quantas estão abaixo da média
+
+pessoa = {
+    "nome": "Carlos",
+    "idade": 32,
+    "profissao": "dev",
+
+}
+
+print(pessoa)
+
+# Como acessar um valor de um dicionário?
+print(pessoa["nome"])
+pessoa["nome"] = "Carlos Sousa"
+print(pessoa)
+
+pessoa["habilidades"] = "javascript, python"
+print(pessoa)
+---------------------------------------------------------------------
+
+1. Crie um dicionário e armazene o peso e altura que desejar.
+2. Crie uma nova chave chamada IMC, onde o seu valor vai ser o peso / altura²
+3. Crie uma nova chave chamada pesoIdeal, onde o valor será True se estiver entre 18.5 e 24.9
+
+
+dados = {
+    "peso": 82,
+    "altura": 1.81
+}
+
+dados["imc"] = dados["peso"] / dados["altura"] ** 2
+
+if dados['imc'] > 18.4 and dados['imc'] < 24.9:
+    dados['pesoIdeal'] = True
+else:
+    dados['pesoIdeal'] = False
+
+print(dados)
+
+-------------------------------------------------------------------------------
+
+'''
+PROTOCOLO HTTP
+-> request e reponse
+
+MÉTODOS
+- GET 
+- POST
+- PUT
+- DELETE
+
+ROTA
+- Caminho/Path de um servidor
+ex: www.meusite/home, www.meusite/imagens
+www.meusite/pesquisa    
+
+REST
+
+'''
+
+# importando o fastAPI
+from fastapi import FastAPI
+
+# Criando a API
+app = FastAPI()
+
+# Como criar uma rota?
+# / -> root, inicio
+@app.get('/')
+async def helloWorld():
+    return {"hello": "world"}
+-------------------------------------------------------
+
+
+# @name hello_world
+GET http://127.0.0.1:8000/

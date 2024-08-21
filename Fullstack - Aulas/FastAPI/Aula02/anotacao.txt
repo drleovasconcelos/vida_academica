@@ -1,0 +1,207 @@
+AULA 2 - https://www.invertexto.com/fastapiaula02
+
+https://www.canva.com/design/DAGMc6Yu-XY/1u82V2CHi72_f5DtaD1Fkg/edit?utm_content=DAGMc6Yu-XY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+
+CRAIR UM AMBIENTE VIRTUAL - python -m venv venv ===>> venv\Scripts\activate
+SE DER ERRO AO CRIAR O AMBIENTE VIRTUAL - entra no POWER SHELL
+set-ExecutionPolicy remotesigned
+
+criando o ambiente (comandos) -> pip freeze > requirements.txt
+
+instalar o fast api ===> pip install fastapi
+instalar o uvicorn ===> pip install uvicorn
+
+para testar a api -> uvicorn main:app --reload 
+
+EXTENSÃO REST Client - instalar essa extensão para rodas a api (não fazer no navegador)
+cria o arquivo -> client.http
+# @name teste_get
+botão SEND REQUEST (CLICAR PARA TESTAR -  É DIRECIONADO PARA O TESTE) 
+GET http://127.0.0.1:8000/
+
+###
+# @name teste_get_infinity
+GET http://127.0.0.1:8000/infinity (ROTA PARA TESTAR)
+
+
+comando para rodar (sempre colocar quando parar) - python main.py 
+
+################ arquivo 1. main
+https://www.canva.com/design/DAGMc6Yu-XY/1u82V2CHi72_f5DtaD1Fkg/edit?utm_content=DAGMc6Yu-XY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+
+from fastapi import FastAPI
+from models import Curso 
+
+# controllers
+app = FastAPI()
+
+@app.get('/')
+async def root():
+    return {"hello": "world"}
+
+
+@app.get('/infinity')
+async def infinity():
+    return {"infinity": "school"}
+
+
+@app.get('/meus-dados')
+async def listarMeusDados():
+    return {"nome": "Carlos",
+             "idade": 32, "profissao": "dev"}
+
+
+cursos = [
+    {"codigo": 1, "nome": "python",
+      "cargaHoraria": 100, "disponivel": True,
+      "notaCorte": 7.5},
+
+    {"codigo": 2, "nome": "javascript",
+      "cargaHoraria": 50, "disponivel": False,
+      "notaCorte": 6}
+]
+
+
+
+@app.get('/cursos')
+async def getCursos():
+    return cursos
+
+
+# Trabalhando com path params
+@app.get('/cursos/{curso_id}')
+async def getCursoById(curso_id: int):
+    for curso in cursos:
+        if curso['codigo'] == curso_id:
+            return curso
+
+    return {"erro": "curso não encontrado"}
+    
+# Trabalhando com query Params
+@app.get('/cursos-by-nota')
+async def getCursoByNota(nota: float):
+    resultado = []
+    for curso in cursos:
+        if curso['notaCorte'] >= nota:
+            resultado.append(curso)
+    return resultado
+
+@app.post('/cursos')
+async def addCurso(curso: Curso):
+    print(curso)
+    cursos.append(curso)
+    return {"success": "ok"}
+
+
+@app.put('/cursos/{curso_id}')
+async def editCurso(curso_id: int, curso: Curso):
+    for c in cursos:
+        if c['codigo'] == curso_id:
+            c['nome'] = curso.nome
+            c['cargaHoraria'] = curso.cargaHoraria
+            c['notaCorte'] = curso.notaCorte
+            c['disponivel'] = curso.disponivel
+            return c
+    return {"erro": "curso não encontrado"}
+
+
+@app.delete('/cursos/{curso_id}')
+async def deleteCurso(curso_id: int):
+    for curso in cursos:
+        if curso['codigo'] == curso_id:
+            cursos.remove(curso)
+            return {"success": "ok"}
+    
+    return {"erro": "true"}
+
+
+
+if __name__ == '__main__':
+    import uvicorn
+    uvicorn.run('main:app',
+                host='0.0.0.0',
+                reload=True,
+                port=8000)
+-------------------------------------------------------------
+
+from pydantic import BaseModel
+
+class Curso(BaseModel):
+    codigo: int
+    nome: str
+    cargaHoraria: int
+    disponivel: bool
+    notaCorte: float   
+
+
+====================================
+
+# @name teste_get
+GET http://127.0.0.1:8000/
+
+###
+
+# @name teste_get_infinity
+GET http://127.0.0.1:8000/infinity
+
+
+###
+
+# @name teste_get_meus_dados
+GET http://127.0.0.1:8000/meus-dados
+
+
+###
+
+# @name get_cursos
+GET http://127.0.0.1:8000/cursos
+
+
+###
+
+# @name get_curso_by_id
+GET http://127.0.0.1:8000/cursos/3
+
+
+###
+
+# @name get_curso_by_nota
+GET http://127.0.0.1:8000/cursos-by-nota?nota=7
+
+
+###
+
+# @name post_curso
+POST http://localhost:8000/cursos
+Content-Type: application/json
+
+{
+    "codigo": 3,
+    "nome": "FastAPI",
+    "cargaHoraria": 40,
+    "disponivel": true,
+    "notaCorte": 8.5
+}
+
+
+###
+
+# @name put_curso
+PUT http://localhost:8000/cursos/1
+Content-Type: application/json
+
+{
+    "codigo": 1,
+    "nome": "FastAPI",
+    "cargaHoraria": 40,
+    "disponivel": true,
+    "notaCorte": 8.5
+}
+
+
+###
+
+# @name delete_curso
+DELETE http://localhost:8000/cursos/1
