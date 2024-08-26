@@ -27,7 +27,15 @@ function buscarEndereco() {
             .then(response => {
                 return response.json()
             })
-            .then(dados => preencherEndereco(dados))
+            .then(dados => {
+                if (dados.hasOwnProperty("erro")) {
+                   end.value = "Endereço não encontrado!!!" 
+                }
+                else {
+                    preencherEndereco(dados)
+                }
+            })
+            
     }
     else {
         end.value = 'Cep inválido!!!'
