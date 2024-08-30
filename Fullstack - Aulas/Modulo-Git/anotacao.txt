@@ -1,0 +1,513 @@
+https://github.com/in100tiva/Workshop
+
+toools.design
+
+
+https://readme.so/editor
+
+
+https://chromewebstore.google.com/detail/leads-extractor-social-me/nljnogdbefgdiejolejlajbghojopcpb?hl=pt-BR
+**************************************************************************************************************************************************************************************
+******************************************************************************Aula de GitHub - getulio*****************************************************************************
+
+link aulas:
+https://drive.google.com/drive/folders/1bAvIadWbf3NMv67RBZeZTRttEtoPkHzj?usp=sharing
+
+comandos:
+https://gist.github.com/GetulioLT/6bce0d1f93937da1aaea050c20a8fb21
+documentação do git (explica cada comando) show: https://ndpsoftware.com/git-cheatsheet.html#loc=index;
+
+dontpad: getulio/409git
+
+Anotações:
+https://quark-punishment-c77.notion.site/Anota-es-GitHub-56d7c1cd3a254937a21f7f8e20ed87db?pvs=4
+
+repositorio:
+https://github.com/GetulioLT/git
+
+Etapas. 
+Initialize this repository with:
+( ) Add a README file
+This is where you can write a long description for your project. Learn more about READMEs. (serve para chamar atenção de
+outros autores para a necessidade de novas bibliotecas ou serviços) - Seriam orientações sobre o arquivo.
+
+
+***** gitignore - ignorar arquivos para o git
+
+comandos:
+
+***** git --version (identifica as versões)
+
+***** identifica o github
+
+"
+$ git config --global user.email "lfreire1985@gmail.com"
+
+***** git init "aula 06" --> cria o repositório no prompt de comando
+
+*****identificar a pasta no computador
+cd nome_da_pasta
+
+***** verificar o arquivo 
+git status
+
+*****ordem para fazer um commit
+$ git init
+$ git add primeiroArquivo.py (muda o status do arquivo para que o git comece a seguir o arquivo)
+$ git commit -m "Primeira Atualização"
+
+
+*********************************...INICIA AQUI - A PARTE INVERTIDA...****
+****para você clonar (puxar do github) para a sua máquina um repositório externo 
+$ git clone https://github.com/drleovasconcelos/git.git
+
+$ git add . --> adiciona todos os arquivos.
+$ git add nome_do_arquivo --> adiciona o arquivo específico.
+
+Moscou08@Moscou08 MINGW64 ~/Desktop/drleovasconcelos/git (main)
+$ git commit -m "primeirar alteração"
+
+*****após modificações preciso enviar para o github(repositório externo)
+$ git push origin main                                                                              
+
+$ git push
+
+***** para atualizar o arquivo local baixando do repositório remoto
+Moscou08@Moscou08 MINGW64 ~/Desktop/drleovasconcelos/git (main)
+$ git pull (atualiza, baixando as coisas do repositório remoto para o local)
+ 
+git log (mostra todos os commits que foram feitos, e todos que estavam nele)
+git log --oneline (mostra todos os commits em 1 linha) top
+: (q volta para o terminal)
+
+git revert código-do-commit (será feito um novo commit por cima do commit retirado, porém ele ainda pode ser visto se tiver interesse)
+git reset código-do-commit  (apaga aquele commit)
+git reset HEAD~2 (voltou 2 commit e apagou o restante que tinha depois)
+------------------- caminho inverso --------------------
+git clone https://github.com/drleovasconcelos/git.git (pega o repositório criado no github e leva para o vscode) 
+
+shift+fn+insert - colar dentro do git bast
+ctualização no githut online)
+git pull (puxa a alteração do git hub para dentro do computador)
+
+
+git branch s
+econd - cria uma ramificação do projeto
+git branch - verifica as ramificações criadas
+git checkout second (muda para a segunda ramificação)
+git checkout -b second (cria a branch e lá abre a nova)
+
+git branch -M main (troca o nome da branch - ramificação)
+
+git merge second (se você estiver na main, ele puxa da second para a main)
+git merge --abort (cancela a mudança/merge)
+depois do commit não tem como abortar (Cuidado)
+
+-------------
+organizações (contas em conjunto)
+faz o clone no pc, em seguida abre no VSCode
+
+git fetch - verifica tudo que tem no repositório remoto, e procura as atualizações
+git pull - baixa essas atualizações
+git revert numeração (essa numeração está no repositório - ex: 3d216ac) 
+
+
+***************************************** ramificação no github*********************************************
+etapas da branch (ramificações do projeto)
+1. git branch second (ramificação)
+obs: git branch - ele vê quantas ramificações possuem
+2. cria o arquivo
+3. git checkout second (ele vai para second - o arquivo criado estará na second)
+4. git checkout main (ele volta para a principal e o arquivo não aparece)
+
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git add .
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git commit -m "1 commit"
+[main (root-commit) fce8372] 1 commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 a.py
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git add .
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git commit -m "2 commit"
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git checkout -b second
+Switched to a new branch 'second'
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git add .
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git commit -m "3 commit"
+[second b0b4289] 3 commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 b.py
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git checkout main
+Switched to branch 'main'
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git add .
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git commit -m "4 commit"
+[main dbcff10] 4 commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 c.py
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git checkout second
+Switched to branch 'second'
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git checkout main
+Switched to branch 'main'
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git push origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 409 bytes | 409.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/drleovasconcelos/git1.git
+ * [new branch]      main -> main
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git checkout second
+Switched to branch 'second'
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git push origin main
+Everything up-to-date
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git push
+fatal: The current branch second has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin second
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git push --set-upstream origin second ------------------------------------------------------- antes de fazer qualquer commit/push, precisa publicar a ramificação na nuvem
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 232 bytes | 232.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'second' on GitHub by visiting:
+remote:      https://github.com/drleovasconcelos/git1/pull/new/second
+remote:
+To https://github.com/drleovasconcelos/git1.git
+ * [new branch]      second -> second
+branch 'second' set up to track 'origin/second'.
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git push origin main
+Everything up-to-date
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git merge second
+Already up to date.
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git merge second -----------------------------------------------------------------junta os arquivos da principal para as ramificações principais
+Merge made by the 'ort' strategy.
+ b.py | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 b.py
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git log
+commit 16d28dfeeef28d308cfafe1ed20b4a6e8ecd49d0 (HEAD -> main)
+Merge: dbcff10 b0b4289
+Author: drleovasconcelos <lfreire1985@gmail.com>
+Date:   Wed Oct 25 11:22:57 2023 -0300
+
+    Merge branch 'second'
+
+commit dbcff10a8ab2889d578be89d921a8bdfc8a96309 (origin/main)
+Author: drleovasconcelos <lfreire1985@gmail.com>
+Date:   Wed Oct 25 11:10:49 2023 -0300
+
+    4 commit
+
+commit b0b4289cb398c1afa870a3179a05aa8d00cae229 (origin/second, second)
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git branch -d second
+Deleted branch second (was b0b4289).
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git checkout second
+Switched to a new branch 'second'
+branch 'second' set up to track 'origin/second'.
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git checkout second
+Switched to branch 'second'
+Your branch is up to date with 'origin/second'.
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git checkout second
+Switched to branch 'second'
+Your branch is up to date with 'origin/second'.
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git branch -d second -- ----------------------------------------------------------deletar ramificação
+Deleted branch second (was b0b4289).
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git checkout second
+Switched to a new branch 'second'
+branch 'second' set up to track 'origin/second'.
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git branch
+  main
+* second
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git branch -d second
+error: Cannot delete branch 'second' checked out at 'C:/Users/Londres31/Desktop/git1'
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git branch -d second
+Deleted branch second (was b0b4289).
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git branch
+* main
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git checkout second
+Switched to a new branch 'second'
+branch 'second' set up to track 'origin/second'.
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (second)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git add .
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git commit -m "7 commit"
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$ git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 442 bytes | 442.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/drleovasconcelos/git1.git
+   dbcff10..16d28df  main -> main
+
+MOSCOW2@MOSCOW02 MINGW64 ~/Desktop/git1 (main)
+$
+
+********************************************fork*****************************************
+Fork:
+
+Definição: Um fork é uma cópia de um repositório Git que fica sob o controle de outra conta de usuário.
+Finalidade: O fork é comumente usado em plataformas como o GitHub, onde permite que você crie uma cópia independente de um repositório mantido por outra pessoa ou organização. A ideia é permitir que você faça modificações sem afetar diretamente o projeto original.
+Propriedades: Um fork é geralmente associado a uma "solicitação de pull" (pull request). Isso significa que, quando você faz alterações no seu fork, você pode sugerir que essas alterações sejam incorporadas de volta ao repositório original.
+
+
+********************************************pull request************************************
+
+
+leads ex
+git config --global user.name "drleovasconcelos"
+ git config --global user.email "lfreire1985@gmail.com"
+
+
+
+Clonar um repositório:
+
+bash
+Copiar código
+git clone <url-do-repositorio>
+Substitua <url-do-repositorio> pelo URL do repositório que você deseja clonar.
+
+Navegar até o diretório do repositório clonado:
+
+bash
+Copiar código
+cd <nome-do-repositorio>
+Substitua <nome-do-repositorio> pelo nome do diretório do repositório.
+
+Verificar o status do repositório:
+
+bash
+Copiar código
+git status
+Adicionar arquivos ao estágio (stage) para commit:
+
+bash
+Copiar código
+git add <arquivo>
+Para adicionar todos os arquivos modificados:
+
+bash
+Copiar código
+git add .
+Fazer um commit das mudanças:
+
+bash
+Copiar código
+git commit -m "Mensagem do commit"
+Enviar as mudanças para o repositório remoto:
+
+bash
+Copiar código
+git push
+Puxar as mudanças do repositório remoto para o repositório local:
+
+bash
+Copiar código
+git pull
+Verificar os commits no histórico:
+
+bash
+Copiar código
+git log
+Verificar as branches existentes e a branch atual:
+
+bash
+Copiar código
+git branch
+Criar uma nova branch:
+
+bash
+Copiar código
+git branch <nome-da-branch>
+Mudar para uma branch diferente:
+
+bash
+Copiar código
+git checkout <nome-da-branch>
+Mesclar uma branch em outra (por exemplo, mesclar uma branch de recurso na branch principal):
+
+bash
+Copiar código
+git merge <nome-da-branch>
+Se você estiver trabalhando com um repositório remoto específico, como GitHub, GitLab ou Bitbucket, a URL do repositório será fornecida por essas plataformas e pode ter a forma https:// ou git@ para SSH.
+
+Se precisar de mais detalhes ou tiver algum problema específico, é só me falar!
+
+
+
+Você disse:
+comando confg para acesasr o git
+O ChatGPT disse:
+ChatGPT
+Para configurar o Git no seu ambiente local, você precisará usar alguns comandos git config para definir suas preferências e credenciais. Aqui estão os principais comandos para configurar o Git:
+
+Configurar o nome de usuário:
+
+bash
+Copiar código
+git config --global user.name "Seu Nome"
+Configurar o e-mail do usuário:
+
+bash
+Copiar código
+git config --global user.email "seu-email@example.com"
+Configurar o editor de texto padrão (por exemplo, usar o nano):
+
+bash
+Copiar código
+git config --global core.editor nano
+Você pode substituir nano pelo editor de sua preferência, como vim, code (para VS Code), etc.
+
+Configurar a ferramenta de mesclagem (merge) padrão:
+
+bash
+Copiar código
+git config --global merge.tool <ferramenta>
+Onde <ferramenta> pode ser vimdiff, meld, kdiff3, etc.
+
+Configurar o formato de saída de log (por exemplo, formato simplificado):
+
+bash
+Copiar código
+git config --global format.pretty oneline
+Verificar as configurações atuais:
+
+bash
+Copiar código
+git config --list
+
+Comandos:
+
+git config --global user.name "drleovasconcelos"
+ git config --global user.email "lfreire1985@gmail.com"
+git init
+git add .
+git commit -m "15 commit"
+
+
+
