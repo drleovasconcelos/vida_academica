@@ -1,0 +1,15 @@
+https://drive.google.com/file/d/1_VCcFvZiOhBPR2Ov_fb1rKh9LdvqXA08/view
+https://www.invertexto.com/209aula24
+
+extrai o dados da promisse (usa then)
+
+async determina que a função é assincrona
+await é igual ao then (um substitui o outro)
+
+// alt+shift+f - indentação instantânea 
+
+fazer funcionar o alt + shift + fazer
+configuração => pesqusia emmet e digita a linha de format
+
+    "emmet.preferences": {
+        "format.forceIndentationForTags": ["body"]
