@@ -7,8 +7,9 @@ const input = document.querySelector('.buscar')
 const btnNext = document.querySelector('.btn-next')
 const btnPrev = document.querySelector('.btn-prev')
 
-let pokemonAtual = 100
+let pokemonAtual = 150
 
+// await espera o dado (dar um tempo)
 // link da api // https://pokeapi.co/api/v2/pokemon/ditto - detalhe = usar crase onde está o link
 async function fetchPokemon(pokemon){
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}` 
@@ -22,9 +23,18 @@ async function fetchPokemon(pokemon){
 }
 // fetchPokemon(pokemonAtual) - teste
 
-async function renderPokemon(pokemon) {
+async function renderPokemon(data) {
     pokemonName.innerText = 'Carregando...'
     pokemonNumber.innerText = ''
+    const pokemon = await fetchPokemon(data)
+    if (pokemon) {
+        pokemonImage.style.display = 'block'
+        pokemonName.innerText = pokemon.name
+        pokemonNumber.innerText = pokemon.id
+        // sprites está a imagem do pokemon na API -> sprites/versions/generation-v/black-white
+        pokemonImage.src = pokemon['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
+        
+    }
 }
 
 renderPokemon(pokemonAtual)
