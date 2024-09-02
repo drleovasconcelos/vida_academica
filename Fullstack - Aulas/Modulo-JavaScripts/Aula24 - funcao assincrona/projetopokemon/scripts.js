@@ -9,6 +9,7 @@ const btnPrev = document.querySelector('.btn-prev')
 
 let pokemonAtual = 1
 
+// código relacionado a api
 // await espera o dado (dar um tempo)
 // link da api // https://pokeapi.co/api/v2/pokemon/ditto - detalhe = usar crase onde está o link
 async function fetchPokemon(pokemon){
@@ -23,6 +24,7 @@ async function fetchPokemon(pokemon){
 }
 // fetchPokemon(pokemonAtual) - teste
 
+// responsável a carregar no front
 async function renderPokemon(data) {
     pokemonName.innerText = 'Carregando...'
     pokemonNumber.innerText = ''
@@ -53,6 +55,13 @@ form.addEventListener('submit', (e) => {
 btnNext.addEventListener('click', () => {
     pokemonAtual++
     renderPokemon(pokemonAtual)
+})
+
+btnPrev.addEventListener('click', () => {
+    if(pokemonAtual > 1) {
+        pokemonAtual--
+        renderPokemon(pokemonAtual)
+    }
 })
 
 renderPokemon(pokemonAtual)
