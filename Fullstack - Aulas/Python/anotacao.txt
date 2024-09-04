@@ -1,0 +1,2589 @@
+
+https://www.invertexto.com/aulaterca
+
+sites para treino
+
+https://judge.beecrowd.com/pt/login?redirect=%2Fpt
+https://www.hackerrank.com/
+https://leetcode.com/
+https://www.codewars.com/
+
+
+******************************************************************************************************** FULLSTACK********************************************************************************************************
+__________________________________________________________________________________
+FullStack - Infinity - https://dontpad.com/fsSeg209Python
+Telefone academico: 85 98173-8109
+
+**************************************************************************************
+Material do professor:
+https://drive.google.com/drive/folders/1-EIp3utwVrisl7gQIQzpVb2ytzM4WrLU
+
+**************************************************************************************
+EMAIL: projetosfortal@infinityschool.com.br
+
+Assunto: numero da turma - TURMA 209 DFS
+Corpo do email: Nome completo | numero da aula | Título do projeto
+https://dontpad.com/fsSab714React
+************************************************************************************** AULA 1
+exercícios : python brasil exercícios.
+--------------------------------- MAIS EXERCÍCIOS : https://wiki.python.org.br/EstruturaSequencial
+
+Observações:
+print("Olá Mundo")
+
+control + ; = comnetá várias linhas de 1 vez
+
+
+#comentário de 1 linha
+
+"""cometário 
+de várias linhas""" q
+
+
+#01.exercício 1 - Faça um programa em Python que imprima o seu nome
+#nome = input("Digite seu nome: ")
+#print("Seu nome é: "+ nome)
+ou
+#nome = "Leonardo" #texto entre " ", sempre
+#print("Seu nome é: "+ nome)
+
+#02.Faça um programa em Python que imprima o produto dos valores 30 e 27.
+#n1 = 30
+#n2 = 27
+#produto = 30 * 27
+#print(produto)
+#ou----
+#n1 = int(input("Digite o valor 1: ")) 
+#n2 = int(input("Digite o valor 2: "))
+#print("os valores são: ", n1, n2)
+#ou----
+#print(30*27)
+
+#03.Faça um programa em Python que imprima a média aritmética entre os números 5, 8, 12.
+#n1 = int(input("Digite o valor 1: "))
+#n2 = int(input("Digite o valor 2: ")) #o int na frente permite que o sistema some os valores)
+#n3 = int(input("Digite o valor 3: ")) # se não tiver o int na frente , ele vai concatenar 
+#media = ((n1+n2+n3)/3)
+#print ("A media entre os valores: ", media)
+#ou-----
+#print((5+8+12)/3)
+
+#04. Faça um programa em Python que leia e imprima um número inteiro.
+#n1 = int(input("Digite o valor 1: "))
+#print("o valor e: ", n1)
+
+#05. Faça um programa em Python que leia dois números reais e os imprima.
+#n1 = float(input("Digite o valor 1: "))
+#n2 = float(input("Digite o valor 2: "))
+#print ("Os valores são: ",n1, ',', n2)
+#ou----
+#print ("1º número" ,n1,"\n2º número: ", n2)
+
+#06. Faça um programa em Python que leia um número inteiro e imprima o seu antecessor e o seu sucessor.
+#n1 = int(input("Digite o valor 1: "))
+#print ("Os valores são: ",n1+1, ',', n1-1) #só o que não vem entre aspas é número (concatenação)
+
+#07. Faça um programa em Python que leia o nome o endereço e o telefone de um cliente e ao final, imprima esses dados.
+#nome = input("Digite o nome: ")
+#endereco = input ("Digite o endereco: ")
+#telefone = int(input("Digite o telefone: "))
+#print ("Dados: ", nome, ',', endereco, ',', telefone)
+
+#08. Faça um programa em Python que leia três números reais e calcule a média aritmética destes números. Ao final, o programa deve imprimir o resultado do cálculo
+#n1 = int(input("Digite o valor 1: "))
+#n2 = int(input("Digite o valor 2: "))
+#n3 = int(input("Digite o valor 3: "))
+#media = ((n1+n2+n3)/3)
+#print ("A media entre os valores: ", media)
+
+#09. Faça um programa em Python que leia dois números reais e calcule as quatro operações básicas entre estes dois
+#números, adição, subtração, multiplicação e divisão. Ao final, o programa deve imprimir os resultados dos cálculos.
+#n1 = int(input("Digite o valor 1: "))
+#n2 = int(input("Digite o valor 2: "))
+#print(n1+n2)
+#print(n1-n2)
+#print(n1*n2)
+#print(n1/n2)
+
+#10. Faça um programa em Python que efetue a apresentação do valor da conversão em real (R$) de um valor lido em dólar
+#(US$). Para isso, será necessário também ler o valor da cotação do dólar.
+valor_real = float(input("Qual o valor em real: ")) 
+cotacao = float(input("Cotação do Dia: "))
+valor_dolar = valor_real / cotacao
+print(valor_dolar) 
+
+
+
+#11. João Papo-de-Pescador, homem de bem, comprou um microcomputador para controlar o rendimento diário de seu trabalho. Toda vez que ele traz um peso de peixes maior que o estabelecido pelo regulamento de pesca do estado de São Paulo (50 quilos) deve pagar uma multa de R$ 4,00 por quilo excedente. João precisa que você faça um programa que leia a variável peso (peso de peixes) e calcule o excesso. Gravar na variável excesso a quantidade de quilos além do limite e na variável multa o valor da multa que João deverá pagar. Imprima os dados do programa com as mensagens adequadas.
+#peso = float(input("Digite o peso do peixe: "))
+#x = peso - 50
+#valorPago = x * 4.0 
+#print(valorPago)
+
+#q11
+peso = float(input("Informe o peso dos peixes em Kg: ")) #52 kg
+if peso > 50.0:
+    excesso = peso - 50.0
+    multa = excesso * 4.0
+    print('Excesso: ', excesso)
+    print('Multa: ', multa)
+    
+print('Peso: ', peso)
+
+12. Faça um Programa que pergunte quanto você ganha por hora e o número
+de horas trabalhadas no mês. Calcule e mostre o total do seu salário no
+referido mês, sabendo-se que são descontados 11% para o Imposto de Renda,
+8% para o INSS e 5% para o sindicato, faça um programa que nos dê:
+a. valor do salário bruto.
+a. + Salário Bruto : R$
+b. - IR (11%) : R$
+c. - INSS (8%) : R$
+d. - Sindicato ( 5%) : R$
+e. + Salário Liquido : R$
+Obs.: Salário Bruto - Descontos = Salário Líquido.
+
+valor_hora = float( input("Digite quanto você ganha por hora: ") )
+total_horas = int( input("Digite o total de horas trabalhadas no mês: ") )
+salario_bruto = valor_hora * total_horas
+desconto_ir = salario_bruto * 0.11 #11%
+desconto_inss = salario_bruto * 0.08 #8%
+desconto_sindicato = salario_bruto * 0.05 #5%
+desconto_total = desconto_ir + desconto_inss + desconto_sindicato
+salario_liquido = salario_bruto - desconto_total
+
+# print(salario_bruto)
+# print(desconto_ir)
+# print(desconto_inss)
+# print(desconto_sindicato)
+# print(salario_liquido)
+
+# f-string ou string formatada                                                          
+print(f"(+) Salário Bruto = R${salario_bruto}\n"                               #\n é parágrafo
+        f"(-) IR (11%) = R${desconto_inss}\n"                                       
+        f"(-) INSS (8%) = R${desconto_inss}\n"					#{  } substitui a concatenação 
+        f"(-) Sindicato (5%) = R${desconto_sindicato}\n" 
+        f"{'-' * 30}\n"
+        f"(+) Salário Líquido = R${salario_liquido}")
+
+
+************************************************************************************** AULA 2
+
+GERANDO NÚMEROS ALEATÓRIOS
+
+import random
+
+#randint()
+x = random.randint(6, 10) - vai de 6 até 10
+print(f"x: {x}")
+
+
+#randrange()
+y = random.randrange(10) - vai de zero até 10
+print(f"y: {y}")
+
+----------------------------------------------------------------- STRINGS
+
+a = "Fernanda"
+b = "olá mundo!"
+cpf = "54879522164"
+telefone = "85974688512"
+senha = "DE4Gd#$a)"
+
+#length -> tamanho / comprimento
+print(len(senha))
+8
+
+#acessando uma letra em específico
+print(a[3])
+n
+
+-----------------------------------------------------------------
+
+txt = 'It\´s raining outside' # a \ serve para fugir da regra
+
+---------------------------------------------------------------------------------------------------------------------------------- CONDICIONAIS
+
+#01. Faça um Programa que peça as 4 notas bimestrais, mostre a média e a situação final do aluno. Aprovado com média maior ou igual a 7.
+nota1 = float(input("Digite a 1ª nota: "))
+nota2 = float(input("Digite a 2ª nota: "))
+nota3 = float(input("Digite a 3ª nota: "))
+nota4 = float(input("Digite a 4ª nota: "))
+media = (nota1+nota2+nota3+nota4)/4
+if media>=7:
+    print("aprovado")
+else:
+    print("reprovado")
+
+
+# if -> "se"
+# else -> "senão"
+# elif -> "else if" -> "senão se"
+
+nota1 = float(input("Nota 1 :"))
+nota2 = float(input("Nota 2 :"))
+
+media = (nota1 + nota2) / 2
+
+# if media >= 7:
+#     print("O aluno foi aprovado!")
+# elif media >=5:
+#     print("O aluno pode ir para a prova final")
+# else:
+#     print("O aluno lascou-se!!!")
+
+
+# if aninhado:
+if media >= 7:
+    print("O aluno foi aprovado")
+elif media >=5:
+    print("Você vai pra prova final")
+    media_final = 3.5
+    if media_final >= 4:
+        print("Você passou por AF")
+    else:
+        print("Você reprovou")
+else:
+    print("Foi reprovado sem chance de AF.")
+
+-------------------------------------------------------------------------
+# #01. Faça um Programa que peça as 4 notas bimestrais, mostre a média e a situação final do aluno. Aprovado com média maior ou igual a 7.
+# nota1 = float(input("Digite a 1ª nota: "))
+# nota2 = float(input("Digite a 2ª nota: "))
+# nota3 = float(input("Digite a 3ª nota: "))
+# nota4 = float(input("Digite a 4ª nota: "))
+# media = (nota1+nota2+nota3+nota4)/4
+# print(f"Sua media é: {media}")
+# if media>=7:
+#     print("aprovado")
+# else:
+#     print("reprovado")
+
+# #02.Faça um programa que leia dois valores numéricos inteiros e efetue a adição, caso o resultado seja maior que 10, apresentá-lo. 
+# valor1 = int(input("Digite o primeiro valor: "))
+# valor2 = int(input("Digite o segundo valor: "))
+# soma = valor1 + valor2
+# if soma > 10:
+#        print(f"O valor {soma} é maior que 10")
+# else:
+#       print(f"O valor {soma} é menor que 10")
+
+# #03. Faça um programa que leia dois valores inteiros e efetue a adição. Caso o valor somado seja maior que 20, este deverá ser 
+# # apresentado somando-se a ele mais 8, caso o valor somado seja menor ou igual a 20, este deverá ser apresentado subtraindo-se 5.
+# valor1 = int(input("Digite o valor1: "))
+# valor2 = int(input("Digite o valor2: "))
+# soma = valor1 + valor2
+# if soma > 20:
+#     adicao = soma + 8
+#     print(f"A soma dos valores foi: {soma}")
+#     print(f"O valor da soma, com acrescimo de 8 é {adicao}")
+# else:
+#     subtracao = soma - 5
+#     print(f"O valor da soma é {soma}")
+# #     print(f"O valor da subtração de 5 é {subtracao}")
+# ou
+# if soma > 20:
+#     print(soma + 8)
+# else: 
+#     print(soma - 5)
+
+# #04. Faça um programa que leia um número e imprima uma das duas mensagens: "É múltiplo de 3"ou "Não é múltiplo de 3". 
+# numero = int(input("Digite o número: "))
+# if numero % 3 == 0:
+#     print(f"O {numero} é multiplo de 3")
+# else:
+#     print(f"O {numero} não é múltiplo de 3")
+
+# # 05. Faça um programa que leia um número e informe se ele é divisível por 3 e por 7.
+# numero = int(input("Digite o número: "))
+# if numero % 3 == 0:
+#     if numero % 7 == 0:
+#         print("O é divisível por 3 e por 7.")
+# else:
+#     print("Não é divisível por 3 e")
+
+# #06. Faça um programa que permita entrar com o ano de nascimento da pessoa e com o ano atual.
+# # O programa deve imprimir a idade da pessoa. Não se esqueça de verificar se o ano de nascimento informado é válido.
+
+# dataNascimento = int(input("Digite a Data de Nascimento: "))
+# anoAtual = int(input("Digite o Ano Atual: "))
+# idade = anoAtual - dataNascimento
+# if dataNascimento < anoAtual:
+#     print(f"Você tem {idade} anos.")
+# else:
+#     print("Data não é válida")
+
+--------------
+MAIs EXERCÍCIOS: https://wiki.python.org.br/EstruturaDeDecisao
+----------------------------------------------------------------------------------------
+
+
+
+
+***************************************************************************************LAÇO DE REPETIÇÃO - PYTHON*************************************************************
+
+
+
+Aula 04 ************************************************************************
+
+#while
+#1ª inicialização
+i = 1
+soma = 0
+#2ª condição
+while i<=5:
+    num = int(input("Informe um número: "))
+    soma = soma + num
+    print(num)
+    #3ª incrementar 1 ao i(acrescentar 1 ao i)
+    i = i + 1    
+print("Soma: ", soma)
+print("Média: ", soma/5)
+
+#q04
+04. Em uma escola, os alunos das turmas do fundamental fizeram uma prova de matemática. Cada turma possui um número de alunos. 
+Criar um programa que imprima: 
+• quantidade de alunos aprovados; 
+• média de cada turma; 
+• percentual de reprovados. 
+
+Obs.: Considere aprovado com nota >= 7.0
+
+i = 1
+somaNotas = 0
+qtdeAprovados = 0
+qtdeReprovados = 0
+while i<=5:
+    nota = float(input("Informe a nota: ")) #10
+    if nota>=7.0:
+        qtdeAprovados = qtdeAprovados + 1
+    else:
+        qtdeReprovados = qtdeReprovados + 1 
+    somaNotas = somaNotas + nota
+    i=i+1
+print("Qtde de aprovados: ", qtdeAprovados)   
+print("Média da turma: ", somaNotas/5)
+
+***********************************************************************Aula 05 
+#q05
+##Uma pesquisa de opinião realizada no Ceará com 50 pessoas, teve as seguintes perguntas: 
+##Qual o seu time de coração? 
+##1-Fortaleza; 
+##2-Ceará; 
+##3-Ferroviário; 
+##4-Icasa; 
+##5-Outros 
+##• Onde você mora? 
+##1-Fortaleza; 
+##2-Caucaia; 
+##3-Outros 
+##• Qual o seu salário? 
+
+##Faça um programa que imprima:
+## o número de torcedores por clube; 
+## a média salarial dos torcedores do Fortaleza; 
+## o número de pessoas moradoras de Caucaia, torcedores do Ferroviário;
+## o número de pessoas de Fortaleza torcedores do Ceará.'''
+
+i = 1
+qtdeFortaleza=0
+qtdeCeara=0
+qtdeFerroviario=0
+qtdeIcasa=0
+qtdeOutrosTimes=0
+qtdeLugarFortaleza=0
+qtdeLugarCaucaia=0
+qtdeLugarOutro=0
+somaSalario=0
+qtdeCaucaiaFerroviario=0
+qtdeFortalezaCeara=0
+
+while i<=50:
+    salario = float(input("Qual seu salário? "))
+    time = int(input("Qual o seu time de coração? \n 1 - Fortaleza;\n 2 - Ceará; \n 3 - Ferroviário; \n 4 - Icasa; \n 5 - Outros; \n"))
+    if time == 1:
+        qtdeFortaleza = qtdeFortaleza + 1
+        somaSalario = somaSalario + salario
+    elif time == 2:
+        qtdeCeara = qtdeCeara + 1
+    elif time == 3:
+        qtdeFerroviario = qtdeFerroviario + 1
+    elif time == 4:
+        qtdeIcasa = qtdeIcasa + 1
+    else:
+        qtdeOutrosTimes = qtdeOutrosTimes + 1
+    lugar = int(input("Onde você mora?  \n 1 - Fortaleza ;\n 2 - Caucaia; \n 3 - Outros;"))
+    if lugar == 1:
+        qtdeLugarFortaleza = qtdeLugarFortaleza + 1
+    elif lugar == 2:
+        qtdeLugarCaucaia = qtdeLugarCaucaia + 1
+    else:
+        qtdeLugarOutro = qtdeLugarOutro + 1  
+    
+    if time==3 and lugar==2:
+        qtdeCaucaiaFerroviario = qtdeCaucaiaFerroviario + 1
+    if time==2 and lugar==1:
+        qtdeFortalezaCeara = qtdeFortalezaCeara + 1
+        
+    i = i + 1
+    
+mediaSalarialFortaleza = somaSalario/qtdeFortaleza
+#saida de dados
+print("Qtde de torcedores do Fortaleza: ", qtdeFortaleza)
+print("Qtde de torcedores do Ceará: ", qtdeCeara)
+print("Qtde de torcedores do Ferroviário: ", qtdeFerroviario)
+print("Qtde de torcedores do Icasa: ", qtdeIcasa)
+print("Qtde de torcedores de outros times: ", qtdeOutrosTimes)
+print("Média salarial dos torcedores do Fortaleza: ", mediaSalarialFortaleza)
+#q01 FOR
+
+tabuada = int(input("Informe a tabuada: ")) #6
+for i in range(1,11):
+    print(tabuada, " * ", i, " = ", i*tabuada)
+
+
+-----
+##Em um campeonato Europeu de Volleyball, se inscreveram 30 países. Sabendo-se que na lista oficial de cada país consta, além de outros dados, 
+##peso e idade de 12 jogadores, crie um programa que apresente as seguintes informações: 
+
+##• O peso médio e a idade média de cada um dos times; 
+##• O atleta mais pesado de cada time; 
+##• O atleta mais jovem de cada time; 
+##• O peso médio e a idade média de todos os participantes. 
+
+somaIdade=0
+somaPeso=0
+maiorPeso=0
+menorIdade=0
+x = 1
+for i in range(12):
+    idade = int(input("Informe a idade: "))#12
+    somaIdade = somaIdade + idade
+    if x==1 or idade<menorIdade:
+        menorIdade=idade
+        x=x+1
+    peso = float(input("Informe o peso: ")) #100kg
+    somaPeso = somaPeso + peso
+    if peso>maiorPeso:
+        maiorPeso=peso #100        
+    
+mediaIdade = somaIdade/12
+mediaPeso = somaPeso/12
+print("Média de peso da equipe: ", mediaPeso)
+print("Média de idades da eqipe: ", mediaIdade)
+print("Maior peso: ", maiorPeso)
+print("Menor idade: ", menorIdade)
+
+------------
+
+Uma empresa de fornecimento de energia elétrica faz a leitura mensal dos medidores de consumo. Para cada consumidor, são digitados os seguintes dados: 
+• número do consumidor 
+• quantidade de kWh consumidos durante o mês 
+• tipo (código) do consumidor 
+1-residencial, preço em reais por kWh = 0,3 
+2-comercial, preço em reais por kWh = 0,5 
+3-industrial, preço em reais por kWh = 0,7 
+Os dados devem ser lidos até que seja encontrado o consumidor com número 0 (zero). 
+O programa deve calcular e imprimir: 
+• O custo total para cada consumidor 
+• O total de consumo para os três tipos de consumidor 
+• A média de consumo dos tipos 1 e 2 
+
+i = 0
+numConsumidor = int(input("Informe o número do consumidor ou 0 para sair: "))
+while numConsumidor!=0:
+    qtdekwhMes = float(input("informe a quantidade de kWh mês: "))
+    tipoConsumidor = int(input("informe o tipo de consumidor: \n 1 - Residencial; \n 2 - Comercial; \n 3 - Industria"))
+    if tipo == 1:
+        valorTotal = qtdekwhMes*0.3
+    elif tipo == 2:
+        valorTotal = qtdekwhMes*0.5
+    else:
+        valorTotal = qtdekwhMes*0.7
+    print("Valor a pagar: ", valorTotal)
+    numConsumidor = int(input("Informe o número do consumidor ou 0 para sair: "))
+
+
+******************************************************************************************************************Lista e Trupa************************************************************************************
+Dada a lista abaixo, faça o que se pede:
+lista = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+
+
+#q01
+lista.reverse()
+print(lista)
+
+#q02
+lista.sort()
+print(lista)
+
+#q03
+lista.append(27)
+print(lista)
+#q04
+lista.remove(9)
+print(lista)
+#q05
+lista.pop(9)
+print(lista)
+#q06
+#print(sum(lista))
+#q07
+#print(min(lista))
+#q08
+#for i in lista:
+    #if i%2==0:
+        #print(i)
+#q09
+#for i in lista:
+    #if i%2!=0:
+        #print(i)
+#q10
+lista.insert(4,89)
+lista.insert(5,91)
+print(lista)
+#q11
+print(len(lista))
+
+x = lista.index(14)
+print(x)
+
+
+x = lista.index(14)
+print(x)
+
+
+q.2 Ler uma lista de 5 números inteiros e mostre cada número da lista. 
+l = [] #lista vazia 
+for i in range(5):
+    #l[i] = int(input("Informe o numero: ")) #2
+    l.append(int(input("Informe o numero: ")))    
+print(l)
+
+q.3 Ler uma lista de 10 números inteiros e mostre-os na ordem inversa.
+l = []
+for i in range(5):
+    l.append(int(input("Digite o número: ")))
+    l.reverse()
+print(l)
+
+q4. Ler uma lista com 4 notas, em seguida o programa deve exibir as notas e a média. 
+lnotas = []
+for i in range(4):
+    lnotas.append(float(input("Digite o número: ")))
+print(lnotas)
+media = sum(lnotas)/4
+print(media)
+
+q5. Ler uma lista com 20 idades e exibir a maior e menor.
+lidade = []
+for i in range(10):
+    lidade.append(int(input("Digite o número: ")))
+print(lidade)
+maiorIdade = max(lidade)
+menorIdade = min(lidade)
+print("Maior idade: ", maiorIdade)
+print("Menor idade: ", menorIdade)
+
+q6. Faça um programa que armazene 10 letras em uma lista e imprima uma listagem numerada.
+lista = []
+for i in range(3):
+    lista.append(input("Digite as letras: "))
+print(lista)
+for i, p in enumerate(lista):
+    print(i+1,"-",p)
+
+
+q7. Ler uma lista de 15 números inteiros e mostre cada número juntamente com a sua posição na lista. 
+Criando a lista numerica
+lista = []
+# Usando o Input() vamos coletar do usuário qual o número a ser adicionado.
+for i in range(15):
+    numero = int(input('Informe o número: '))
+    lista.append(numero)
+    
+for i,l in enumerate(lista):
+    print(i+1, " -> ", l)
+
+q.11
+Crie uma lista com os nomes dos super-heróis que devem participar da Iniciativa Vingadores seguindo a ordem: 
+• Homem de Ferro 
+• Capitão América 
+• Thor 
+• Hulk 
+• Viúva Negra 
+• Gavião Arqueiro
+a. Agora, inclua o Homem-Aranha no final da lista e imprima em qual posição está o Thor.
+b. Infelizmente a Viúva Negra e o Homem de Ferro não fazem mais parte da Iniciativa Vingadores, então retire-os da lista.
+
+lista = ["Homem de Ferro", "Capitão América", "Thor", "Huck", "Viúva Negra", "Gavião Arqueiro"]
+lista.append("Homem-Aranha")
+print(lista.index("Thor")) ## index retorna o indice ----> se eu quiser retornar a posição eu coloco a posição no final --> print(lista.index("Thor")+1)
+for i,item in enumerate (lista):   ## item são todos os valores dentro da lista
+    print(i + 1 ,"=>", item) ## +1 trabalha a posição
+lista.remove("Homem de Ferro")
+lista.remove("Viúva Negra")
+##del lista[0]
+##del lista[2]
+print(lista)
+
+
+#q09
+#Faça um programa que armazene 8 números em uma lista e 
+# imprima todos os números. Ao final, imprima o total de números
+# múltiplos de seis. 
+
+listaNumeros = []
+for i in range(8):
+    listaNumeros.append(int(input("Informe um número inteiro: ")))
+print(listaNumeros)  
+listaMultiplos = []
+for i in listaNumeros:
+    if i%6==0:
+        print(i)
+        listaMultiplos.append(i)
+print(listaMultiplos)  
+
+
+*********************************************************Tupla*********************************************************
+q.1 Dada uma tupla T de n valores inteiros, escreva um programa que remova todos os números pares da tupla.
+T = ()
+qtde = int(input("Qual a quantidade de números: "))
+listaT = list(T)
+for i in range(qtde):
+    listaT.append(int(input("Digite os números: ")))
+for i in listaT:
+    if i%2==0:
+        listaT.remove(i)
+T = tuple(listaT)
+print(T)
+
+q.2 Dadas duas tuplas P1 e P2, ambas com n valores reais que representam as notas de uma turma na prova 1 e na prova 2, respectivamente, escreva um programa que calcule a média da turma nas provas 1 e 2, imprimindo em qual das provas a turma obteve a melhor média.
+Tprova1 = ()
+Tprova2 = ()
+qtdeAlunos = int(input("Qual a quantidade de alunos: "))
+listaT1 = list(Tprova1)
+listaT2 = list(Tprova2)
+for i in range(qtdeAlunos):
+    listaT1.append(int(input("Digite os Nota1: ")))
+    listaT2.append(int(input("Digite os Nota2: ")))
+for i in range(qtdeAlunos):  
+    a = sum(listaT1)/qtdeAlunos
+    print("Média =", a)
+    b = sum(listaT2)/qtdeAlunos
+    print("Média =", b)
+for i in range(qtdeAlunos):
+    if a>b:
+        print("A prova 1 teve melhor nota")
+    else:
+        print("A prova 2 teve melhor nota")
+
+
+
+*******************************************************SET *******************************************************
+aula
+set1 = {"Gabriel","Danny","Arthur"}
+set2 = ["Lucas", "João"]
+set1.update(set2)
+print(set1)
+print(len(set1))
+print(type(set1))
+set1.add("Ana")
+print(set1)
+set1.remove("Gabriel")
+print(set1)
+set1.discard("Lucas")
+print(set1)
+x = set1.pop()
+print(x)
+print(set1)
+set1.clear()
+print(set1)
+del set1
+print(set1)
+
+questões 
+Transforma a lista abaixo em um set: lista = [1,2,6,9,5,2]
+Remova um elemento do conjunto e mostre qual foi excluído;
+Verifique se o número 9 existe no set;
+Adicione o número 10 ao conjunto;
+Remova o item 5 do set;
+Crie uma cópia do conjunto;
+Atualize um conjunto pela a união com outro conjunto.
+Faça união do conjunto da questão 6 com da 7;
+
+lista = [1,2,6,9,5,2]
+
+print(type(lista))
+set1 = set(lista)
+print(type(set1))
+
+item = set1.pop()
+print(item)
+
+if 9 in set1:
+    print("Temos o número 9 no conjunto!!")
+
+set1.add(10)
+print(set1)
+
+set1.remove(5)
+print(set1)
+
+set2 = set1.copy()
+print(set2)
+set2.add(15)
+
+set3 = set1.union(set2)
+print(set3)
+
+set4 = set2.union(set3)
+print(set4)
+
+
+***********************************************************dicionários*********************************************************************************************
+
+#print(len(carros))
+m = carros["bom?"]
+print(m)
+x = carros.keys()
+print(x)
+y = list(x)
+print(y[3])
+
+
+familia = {
+    "mae" : {
+        "nome":"Ana",
+        "idade":64
+        },
+    "pai" : {
+        "nome":"Jose",
+        "idade":67,
+        "habilidades":["Responsavel","Presente"]
+        },
+    "filha" : {
+        "nome":"Sofia",
+        "idade":4
+        },
+    "filho" : {
+        "nome":"Gabriel",
+        "idade":10
+        },
+    "cachorro" : {
+        "nome":"Julieta",
+        "idade":1
+        }
+}
+#print(len(familia))
+print(familia["pai"]["habilidades"][1])
+
+
+#q01
+d = {
+    "nome":"Juci",
+    "idade":37,
+    "telefone":"(85) 98888-8888",
+    "endereco":"Rua 12, 15"
+}
+print(d)
+
+#q02
+print(d["nome"])
+
+#q03
+
+n = input("Informe o nome: ")
+i = int(input("Informe a idade: "))
+t = input("Informe o telefone: ")
+e = input("Informe o endereço: ")
+dict = {
+    "nome": n,
+    "idade": i,
+    "telefone": t,
+    "endereco": e
+}
+print(dict)
+#q03
+dict = {}
+
+num = int(input("Qtde: ")) #2
+for i in range(num):
+    nome = input("Informe o nome: ")
+    dict["nome",i+1] = nome
+    idade = int(input("Informe a idade: "))
+    dict["idade",i+1] = idade
+
+print(dict)
+
+
+q4
+d = {
+    "nome": "Leo",
+    "idade":15,
+    "telefone": 85985449394
+}
+
+for x,y in d.items():
+    print({x:y})
+
+
+q5
+#q05
+agenda = {}
+
+qtdeContatos = int(input("Qtde de contatos?  ")) #2
+for i in range(qtdeContatos):
+    nome = input("Informe o nome: ")
+    telefone = int(input("Informe o telefone: "))
+    chave = f'contato{i+1}
+    agenda[chave] = {
+	"nome": nome,
+	"telefone": telefone	
+}
+print (agenda)
+print(dict)
+
+******************************************************************************************************função
+https://www.invertexto.com/aulaterca
+
+# Como criar uma função?
+def autenticarCliente():
+    conta = input('Digite a conta: ')
+    senha = input('Digite sua senha: ')
+    if senha == '123' and conta == '123':
+        print('autenticado')
+    else:
+        print('falha na autenticação')
+
+# Como chamar uma função?
+autenticarCliente()
+# recarga celular
+autenticarCliente()
+# pagamento de boleto
+autenticarCliente()
+------------------------------------------------------------------
+1. Escreva uma função para calcular a área de um triangulo, para isso leia a base e a altura do triangulo e utilize a formula
+area = base * altura / 2
+
+def calcularAreaTriangulo():
+    base = float(input('Digite a base: '))
+    altura = float(input('Digite a altura: '))
+    area = base * altura / 2 
+    print(f"Area = {area}")
+
+calcularAreaTriangulo()
+-------------------------------------------
+
+2. Escreva uma função para calcular o imc de um usuário, para isso leia peso e altura e aplique a formula
+imc = peso / altura ** 2
+
+def calcularImc():
+    peso = float(input('Digite o peso: '))
+    altura = float(input('Digite a altura: '))
+    imc = peso / altura ** 2
+    print(f"IMC = {imc:.2f}")
+
+calcularImc()
+----------------------------
+3. Escreva uma função para converter real para dolar, para isso leia o valor em real e utilize a cotação 4.95
+def converterRealDolar():
+    real = float(input('Digite o valor em reais: '))
+    dolar = real / 4.95
+    print(f"Dolar: {dolar:.2f}")
+
+converterRealDolar()
+-----------------------------------------------------
+4. Escreva uma função para converter horas para minutos, para isso leia o valor das horas em inteiro
+
+def converterHoras():
+    horas = int(input('Digite a quantidade de horas: '))
+    minutos = horas * 60
+    print(f"Minutos: {minutos}")
+
+converterHoras()
+------------------------------------------------------
+5. Escreva uma função para calcular a área de um trapézio, leia base maior, base menor, altura e aplique na formula
+area = (base maior + base menor) * altura / 2
+
+def calcularAreaTrapezio():
+    baseMaior = float(input('Digite a base maior: '))
+    baseMenor = float(input('Digite a base menor: '))
+    altura = float(input('Digite a altura do trapézio: '))
+    area = (baseMenor + baseMaior) * altura / 2
+    print(f"Area do trapézio = {area}")
+
+calcularAreaTrapezio()
+
+-----------------------------------------------------
+
+# Parametros de uma função
+# print('Ola')
+# input('Digite alguma coisa: ')
+# max([1, 2, 3, 4])
+# round(10.95334)
+
+def somarDoisNumeros(num1, num2):
+    resultado = num1 + num2
+    print(f"Resultado = {resultado}")
+
+
+somarDoisNumeros(5, 7)
+n1 = float(input('Digite o valor: '))
+n2 = float(input('Digite o valor: '))
+somarDoisNumeros(n1, n2)
+----------------------------------------------------
+1. Escreva uma função que recebe o base e altura de um retangulo por parametro e imprima sua área
+area = base * altura
+
+def calcularAreaRetangulo(base, altura):
+    area = base * altura
+    print(f"Area = {area}")
+
+calcularAreaRetangulo(10, 8)
+--------------------------------------------------
+
+2. Escreva uma função que recebe o raio de um circulo por parametro e imprima a sua area
+area = 3.14 * raio ** 2
+
+def calcularAreaCirculo(raio):
+    area = 3.14 * raio ** 2
+    print(f"Area = {area}")
+
+
+calcularAreaCirculo(100)
+----------------------------------------------
+3. Escreva uma função que recebe a distancia (km) percorrida em uma viagem por parametro e imprima o consumo do combustivel nessa viagem, considerando que o veiculo faz 12km/l
+
+ef calcularConsumoVeiculo(distancia):
+    consumo = distancia / 12
+    print(f'Consumo = {consumo}')
+
+calcularConsumoVeiculo(300)
+------------------------------------------------
+4. Escreva uma função que recebe a distancia (km) percorrida em uma viagem e o tempo em horas por parametro e imprima a velocidade media dessa viagem 
+velo = distancia / tempo
+
+def calcularVelocidadeMedia(distancia, tempo):
+    velocidade = distancia / tempo
+    print(f"Velocidade = {velocidade}Km/h")
+
+calcularVelocidadeMedia(140, 2)
+---------------------------------------------------
+5. Escreva uma função  que recebe uma distancia em km por parametro e a converta para metros
+
+def conveterKmMts(km):
+    metros = km * 1000
+    print(f"Metros = {metros}")
+
+conveterKmMts(2)
+
+-------------------DESAFIO----------------- 
+1. Escreva uma função que recebe um valor (int) em reais e informe a quantidade de notas de 100, 50, 20, 10, 5, 2 e 1 são necessárias para reproduzir este valor. Ex:
+1111 = 
+11 notas de 100
+0 notas de 50
+0 notas de 20
+1 nota de 10
+0 notas de 5
+0 notas de 2
+1 nota de 1
+
+# teste
+'''
+1. Escreva uma função que recebe um valor (int)
+ em reais e informe a quantidade
+ de notas de 100, 50, 20, 10, 5, 2 e 1 são necessárias para
+ reproduzir este valor. Ex:
+1111 =
+11 notas de 100
+0 notas de 50
+0 notas de 20
+1 nota de 10
+0 notas de 5
+0 notas de 2
+1 nota de 1
+
+'''
+
+def calcularNotas(valor: int):
+    qtd100 = valor // 100
+    valor = valor % 100
+    qtd50 = valor // 50
+    valor = valor % 50
+    qtd20 = valor // 20
+    valor = valor % 20
+    qtd10 = valor // 10
+    valor = valor % 10
+    qtd5 = valor // 5
+    valor = valor % 5
+    qtd2 = valor // 2
+    valor %= 2
+
+    print(f"{qtd100} nota(s) de R$ 100")
+    print(f"{qtd50} nota(s) de R$ 50")
+    print(f"{qtd20} nota(s) de R$ 20")
+    print(f"{qtd10} nota(s) de R$ 10")
+    print(f"{qtd5} nota(s) de R$ 5")
+    print(f"{qtd2} nota(s) de R$ 2")
+    print(f"{valor} nota(s) de R$ 1")
+
+calcularNotas(1111)
+
+
+
+
+
+
+-------------------------------------------------------------
+
+# funções com retorno
+# nome = input('Digite o nome: ')
+# print(nome)
+
+maior_valor = max(10, 9)
+print(maior_valor)
+print(max(20, 50))
+-------------------------------------------------------------
+
+def somarDoisNumeros(num1: float, num2: float):
+    resultado = num1 + num2
+    return resultado  # 100
+    print('esse codigo não roda')
+    
+soma = somarDoisNumeros(30, 70)
+print(soma)
+------------------------------------------------------------
+
+def verificarNumero(numero: int):
+    if numero % 2 == 0:
+        return "Número é par"
+    else:
+        return "Número é ímpar"
+
+resultado = verificarNumero(10)
+print(resultado)
+
+-----------------------------------------------------------------------
+
+1. Escreva uma função que recebe 3 notas por parametro e retorne a média dessas notas
+
+def calcularMedia(nota1: float, nota2: float, nota3: float):
+    media = (nota1 + nota2 + nota3) / 3
+    return media
+
+
+res = calcularMedia(7, 7.5, 9)
+print(round(res, 2))
+
+----------------------------------------------------
+
+
+2. Escreva uma função que recebe a velocidade (km) e o tempo da viagem em horas por parametro, em seguida informe o consumo de combustivel da viagem, considerando que o veiculo faz 12km/l
+
+def calcularConsumoViagem(velocidade: int, tempo: int):
+    distancia = velocidade * tempo
+    consumo = distancia / 12
+    return consumo
+
+res = calcularConsumoViagem(100, 4)
+print(res)
+-----------------------------------------------
+3. Escreva uma função que recebe o lado de um pentagono por parametro e retorne o seu perimetro
+perimetro = lado * 5
+
+def calcularPerimetro(lado: float):
+    perimetro = lado * 5
+    return perimetro
+
+res = calcularPerimetro(7)
+print(res)
+----------------------------------------------
+
+4. Escreva uma função que recebe a distancia percorrida em uma viagem, o consumo que o veiculo faz e o valor do litro de combustivel por parametro. Em seguida retorne o valor em reais gastos nesta viagem
+
+def calcularGastoViagem(distancia, consumo, valorLitro):
+    consumoViagem = distancia / consumo
+    gasto = consumoViagem * valorLitro
+    return gasto
+
+
+res = calcularGastoViagem(100, 10, 5.87)
+print(round(res, 2))
+
+
+5. Escreva uma função que recebe a temperatura em celsius por parametro e a retorne em fahrenheit
+f = (c * 9 / 5) + 32
+
+def converterTemperatura(celsius):
+    f = (celsius * 9 / 5) + 32
+    return f
+
+print(converterTemperatura(30))
+
+----------------------------- DESAFIO -------------------------------
+1. Escreva uma função que recebe um número por parametro e retorne se ele é ou não um número primo
+numero primo => só é divisivel por 1 e ele mesmo
+
+
+6 % 1 = 0
+6 % 2 = 0
+6 % 3 = 0
+6 % 4 != 0
+6 % 5 != 0
+6 % 6 = 0
+
+5 % 1 = 0
+5 % 2 != 0
+5 % 3 != 0
+5 % 4 != 0
+5 % 5 = 0
+
+def verificarNumero(numero: int):
+    divisores = 0
+    for num in range(1, numero + 1):
+        if numero % num == 0:
+            divisores += 1
+
+    if divisores > 2:
+        return "Não é primo"
+    else:
+        return "É primo"
+
+print(verificarNumero(5))
+print(verificarNumero(6))
+
+
+-----------------------------------------------------------------------
+
+Calculadora:
+def somar(num1, num2):
+	soma = num1 + num2
+	return soma
+
+def subtrair(num1, num2):
+	return num1 - num2
+	
+def multiplicar(num1, num2):
+	return num1 * num2
+
+def dividir(num1, num2):
+	return num1 / num2
+	    
+opcao = int(input('Informe a operação: \n 1 - Soma; \n 2 - Subtrair; \n 3 - Multiplicar; \n 4 - Dividir; \n')) 
+num1 = int(input('Informa o numero 1: ')) 
+num2 = int(input('Informa o numero 2: ')) 
+if opcao==1:
+	print(somar (num1 ,num2))
+elif opcao==2:
+	print(subtrair (num1 ,num2))             
+elif opcao==3:
+	print(multiplicar (num1 ,num2))
+else:
+	print(dividir (num1 ,num2))
+
+#q1.
+### Faça um programa que leia três números e, para cada um, imprimir o dobro. 
+##O cálculo deverá ser realizado por uma função e o resultado impresso ao final do  programa. 
+# resposta da prof=
+# def dobro(numero):
+#     return numero * 2
+# for i in range(3)
+#     num = int(input('Informa o numero: ')) 
+#     print(dobro(num))
+# 
+#minha resposta:
+# def dobro1 (num1):
+#     return num1 * 2
+# def dobro2 (num2):
+#     return num2 * 2
+# def dobro3 (num3):
+#     return num3 * 2
+# num1 = int(input('Informa o numero 1: ')) 
+# num2 = int(input('Informa o numero 2: ')) 
+# num3 = int(input('Informa o numero 3: '))
+# x = dobro1 (num1)
+# y = dobro2 (num2)
+# z = dobro3 (num3)
+# print('Qual o dobro do valor 1: ', x)
+# print('Qual o dobro do valor 2: ', y)
+# print('Qual o dobro do valor 3: ', z)
+
+#q2. Faça um programa que receba as notas de três provas e calcule a média. Para o cálculo, escreva uma função. O programa deve imprimir a média ao final.
+
+# def media (nota1, nota2, nota3):
+#     return (nota1+nota2+nota3)/3
+# nota1 = float(input('Informa o nota 1: ')) 
+# nota2 = float(input('Informa o nota 2: ')) 
+# nota3 = float(input('Informa o nota 3: '))
+# x = media(nota1, nota2, nota3)
+# print (f'Qual a média: {x:.2f}')
+
+# q3.
+# Em épocas de pouco dinheiro, os comerciantes estão procurando aumentar suas vendas oferecendo desconto. 
+# Faça um programa que permita entrar com o valor de um produto e o percentual de desconto e imprimir o novo 
+# valor com base no percentual informado. Para fazer o cálculo, implemente uma função.
+
+# def valorFinal (preco, desconto):
+#     desconto = preco * (desconto / 100) 
+#     valor = preco - desconto 
+#     return valor
+# preco = float(input('Informa o valor do produto: '))
+# desconto = float(input('Informa o valor do desconto: '))
+# x = valorFinal(preco, desconto)
+# print (f'Valor do produto: {x}')
+# print (f'Valor do desconto: {desconto}%')
+
+# q.4 Faça um programa que leia o saldo e o % de reajuste de uma aplicação financeira e imprimir o novo saldo após o reajuste. O cálculo deve ser feito por uma função.
+
+# def saldoFinal (saldoInicial, reajuste):
+#     reajuste = saldoInicial * (reajuste/100)
+#     valor = saldoInicial + reajuste
+#     return valor
+
+# saldoInicial = float(input('Informa o valor do saldo: '))
+# reajuste = float(input('Informe a porcentagem de reajuste: '))
+# x = saldoFinal (saldoInicial, reajuste)
+# print (f'Valor do produto: {x}')
+# print (f'Valor do desconto: {reajuste}%')
+
+# q.5 Faça um programa que verifique quantas vezes um número é divisível por outro. A função deve receber dois parâmetros, o dividendo e o divisor. 
+#Ao ler o divisor, é importante verificar se ele é menor que o dividendo. Ao final imprima o resultado.
+
+# def qtdeDivisivel (dividendo, divisor):
+#     cont = 0
+#     if divisor>dividendo:
+#         print('Erro. Divisor maior que o dividendo')
+#     else:
+#         while dividendo >= divisor:
+#             dividendo = dividendo/divisor
+#             cont+=1
+#     return cont    
+
+# dividendo = int(input('Informa o valor do dividendo: '))
+# divisor = int(input('Informa o valor do divisor: '))
+# x = qtdeDivisivel(dividendo, divisor)
+# print(f'Quantas vezes é divisivel: {x}')
+
+
+
+*************************************************************************************************************Aula 06 - Projeto Funções
+
+Assunto: numero da turma - TURMA 714 DFS
+Corpo do email: Leonardo Freire Vasconcelos | Aula 6 | Título do projeto - Projeto Funções (Agenda Telefonica)
+
+#declaração do dicionario
+agenda = {}
+
+#funções
+def inserirContato(nome,telefone):
+    if nome!='' and telefone !='':
+        agenda[nome] = telefone
+        print("Contato cadastrado com sucesso!!")
+        print(agenda)
+    else:
+        print("Erro ao cadastrar o contato!!") 
+    
+def buscarContato(nome):
+    pass
+def buscarContatos():
+    for name in agenda:
+        print("Contato: ", name, " - ",agenda.get(name))
+def alterarContato(nome,telefone):
+    if nome in agenda:
+        agenda.update({nome:telefone})
+    else:
+        print("Contato não localizado!!")
+        escolha = input("Deseja acrescentar esse contato? \n 1 - Sim; \n 2 - Não. \n" )
+        if escolha == 1:
+            inserirContato(nome,telefone)
+        else:
+            buscarContatos()
+def excluirContato(nome):
+    agenda.pop(nome)
+    print("Contato excluído com sucesso!!")
+def limparAgenda():
+    agenda.clear()
+    print("Agenda vazia!!")
+
+sair = False
+while sair != True:    
+    opcao = int(input("Escolha uma opção: \n 1 - Adicionar contato; \n 2 - Alterar contato; \n 3 - Mostrar todos os contatos; \n 4 - Buscar contato; \n 5 - Excluir contato; \n 6 - Limpar agenda; \n 0 - Sair; \n"))
+    if opcao == 1:
+        nome = input("Informe o nome: ")
+        telefone = input("Informe o telefone: ")
+        inserirContato(nome,telefone)
+    elif opcao == 2:
+        nome = input("Informe o nome: ")
+        telefone = input("Informe o telefone: ")
+        alterarContato(nome,telefone)
+    elif opcao == 3:
+        buscarContatos()
+    elif opcao == 4:
+        nome = input("Informe o nome: ")
+        buscarContato(nome)
+    elif opcao == 5:
+        limparAgenda()
+    elif opcao == 0:
+        sair = True
+    else:
+        print("Opção inválida!!")
+
+ 
+***********************************************************************Aula 07 - bibliotecas python********************************************************************
+
+def somar(num1,num2,num3):
+    return num1+num2+num3
+
+def multiplicar(num1,num2,num3):
+    return num1*num2*num3
+
+def mostrarMinhaAgenda():
+    p1 = {
+        "nome":"Juci",
+        "idade":36,
+        "cidade":"Maracanaú"
+        }
+    return p1
+
+***********************************main.py
+
+import meuModuloMat
+import math 
+
+num1 = int(input("Informe o primeiro valor: "))
+num2 = int(input("Informe o segundo valor: "))
+num3 = int(input("Informe o terceiro valor: "))
+a = meuModuloMat.mostrarMinhaAgenda()
+print(a["idade"])
+print(meuModuloMat.somar(num1,num2,num3))
+print(meuModuloMat.multiplicar(num1,num2,num3))
+print(math.sqrt(num3))
+print(math.pow(num1,2))
+
+***********************************************************
+
+#q01
+import meuModuloMat
+
+base = float(input("Informe a base: "))
+altura = float(input("Informe a altura: "))
+
+print("Perímetro: ",meuModuloMat.calcularPerimetro(base,altura))
+print("Área: ",meuModuloMat.calcularArea(base,altura))
+print("Diagonal: ",meuModuloMat.calcularPerimetro(base,altura))
+
+
+import math
+def calcularPerimetro(base,altura):
+    return 2 * (base + altura)
+
+def calcularArea(base,altura):
+    return base * altura
+
+def calcularDiagonal(base,altura):
+    return math.sqrt(base*base + altura*altura)
+
+
+#q03 - 3. Calcule e exiba na tela a área do círculo de raio 4cm. ok
+print("Área do Circulo: ", math.pi*4)
+
+
+#q04 - Calcule e exiba na tela as raízes de 9, 16, 20, 25 e 42. ok
+import math
+
+print(math.sqrt(9))
+print(math.sqrt(16))
+print(math.sqrt(20))
+print(math.sqrt(25))
+print(math.sqrt(42))
+
+#q05 - Calcule a hipotenusa de um triângulo cujos catetos são 9cm e 4cm.
+print("Hipotenusa: ", math.hypot(9, 4))
+
+#q06 - Calcule o volume do cilindro de raio 6cm e altura 5cm.
+print("Área do Cilindro: ", math.pi*(math.pow(6,2))*5)
+
+
+#q07 7. A cantina do setor III está realizando um sorteio de 50kg, 30kg e 20kg de açaí. Construa um programa que ajude a seu João a identificar os 3 vencedores. 
+# O programa deve ler o nome de n candidatos e sortear 3 vencedores. O programa não pode repetir vencedores.
+
+candidatos = []
+i = 0
+for i in range(5):
+    nome = int(input('Informe o nome: '))
+    candidatos.append(nome)
+    
+print(f"Candidatos vencedores: {random.randint(1,3)}")
+
+
+**********************************************************__Aula 08- Revisao q2
+
+pratos={
+    'vegetariano':180,
+    'Peixe':230,
+    'Frango':250,
+    'Carne':350
+}
+
+sobremesas={
+    'Abacaxi':75,
+    'Sorvete':110,
+    'Mousse':170,
+    'Chocolate':200,
+}
+
+bebidas={
+    'chá':20,
+    'Suco laranja':70,
+    'Suco melão':100,
+    'Refrigerante diet':65
+}
+
+calorias=[]
+
+while True:
+    print('Escolha uma opção de prato:')
+
+    for prato in pratos.keys():
+        print(prato)
+
+    print()
+    choice1=input('')
+    if choice1 in pratos.keys():
+        print('Ótima escolha')
+        print()
+        print('Agora escolha uma opção de sobremesa:')
+
+        for sobremesa in sobremesas.keys():
+            print (sobremesa)
+
+        choice2=input()
+        if choice2 in sobremesas.keys():
+            print('Òtima escolha!')
+            print()
+            print('Agora escolha uma opção de Bebida:')
+
+            for bebida in bebidas.keys():
+                print(bebida)
+
+            print()
+            choice3=input()
+            if choice3 in bebidas.keys():
+                print('Maravilha')
+                calorias_totais=pratos[choice1]+sobremesas[choice2]+bebidas[choice3]
+                print(f'O valor total de calorias do seu prato é {calorias_totais}')
+                break
+
+
+            else:
+                print('Opção inválida!')
+
+
+        else:
+            print('Opção inválida.')
+
+
+
+    else:
+        print('Opção inválida!')
+        print()
+
+#q03
+qtdeVolume = pesoTotal = 0
+resp = int(input("Deseja cadastrar uma caixa? 1 - Sim ou 2 - Não \n"))
+while resp==1:
+    qtdeVolume+=1
+    peso = float(input("Informe o peso da caixa: "))
+    pesoTotal+=peso
+    resp = int(input("Deseja cadastrar uma caixa? 1 - Sim ou 2 - Não \n"))
+else:
+    print("Programa encerrado!")  
+print(pesoTotal)  
+print(qtdeVolume) 
+pesoMedio = pesoTotal / qtdeVolume
+print(pesoMedio)
+
+********************Calculadora - Revisão*********************
+def somar (num1, num2):
+    return num1 + num2
+def subtrair (num1, num2):
+    return num1 - num2
+operacaoMat = input("Qual operação matemática você deseja: \n 1 - Soma, \n 2 - Subtração, \n")
+num1 = int(input("Digite o primeiro numero: "))
+num2 = int(input("Digite o segundo numero: "))
+operacaoMat = int(operacaoMat)
+if operacaoMat == 1:
+    x = somar(num1, num2)
+    print (f"O resultado da soma é: {x}")
+elif operacaoMat == 2:
+    y = subtrair(num1, num2)
+    print (f"O resultado da subtração é: {y}")
+
+
+
+**************************************************** tkainter ********************************************************
+
+
+******************************************************Aula 09
+
+from tkinter import *
+def delEntrada():
+    entrada.delete(0,END)
+    
+def imprimirSaudacao():
+    print("Olá",entrada.get() ,"Como estão seus estudos?")
+    delEntrada()
+    
+janela = Tk()
+janela.title("Agenda de contatos")
+janela.geometry("600x400+500+200")
+janela.iconbitmap("agenda.ico")
+janela.resizable(False, False)
+janela.minsize(300,200) 
+janela.maxsize(800,600)
+titulo = Label(janela,text="Nome",
+               fg="black",
+               bg="red",
+               font=("Verdana", 36, "bold", "italic") )
+entrada = Entry(janela,fg="white",
+               bg="black",
+               width=10)
+enviar = Button(janela,
+                text="Enviar",
+                command=imprimirSaudacao)
+titulo.pack(side="left",padx=10,pady=5)
+entrada.pack(side="left",padx=10,pady=5)
+enviar.pack(side="left",padx=10,pady=5)
+mainloop()
+
+*******************************************
+from tkinter import *    
+janela = Tk()
+janela.title("Agenda de contatos")
+janela.geometry("600x400+500+200")
+janela.iconbitmap("agenda.ico")
+janela.resizable(False, False)
+label1 = Label(janela,text="Label 1")
+label2 = Label(janela,text="Label 2")
+label3 = Label(janela,text="Label 3")
+label4 = Label(janela,text="Label 4")
+label1.pack(side="top")
+label2.pack(side="bottom")
+label3.pack(side="left")
+label4.pack(side="right")
+mainloop()
+
+********************************
+from tkinter import *
+def somar():
+    soma = int(entrada1.get()) + int(entrada2.get())
+    resultado
+    
+janela = Tk()
+janela.title("Calculadora")
+janela.geometry("600x400+500+200")
+janela.iconbitmap("agenda.ico")
+janela.resizable(False, False)
+
+num1 = Label(text="Informe o primeiro valor: ")
+num2 = Label(text="Informe o segundo valor: ")
+entrada1 = Entry(width=50)
+entrada2 = Entry(width=50)
+resultado = Label(text="RESULTADO")
+calcular = Button(text="Somar",command=somar)
+num1.pack()
+entrada1.pack()
+num2.pack()
+entrada2.pack()
+calcular.pack()
+resultado.pack()
+mainloop()
+
+******************************************************************
+from tkinter import *
+
+def delEntry():
+    entrada1.delete(0, END)
+    entrada2.delete(0, END)
+
+def somar():
+    global soma, resultado
+    soma = int(entrada1.get()) + int(entrada2.get())
+    resultado.destroy()
+    resultado = Label(janela, text=f"SOMA: {soma}")
+    resultado.pack(pady=10)
+    entrada1.focus() ## o cursor já aparece no campo para digitar
+    delEntry()
+    
+janela = Tk()
+janela.title("Calculadora")
+janela.geometry("600x400+500+200")
+# janela.iconbitmap("agenda.ico")
+janela.resizable(False, False)
+
+num1 = Label(text="Informe o primeiro valor: ")
+num2 = Label(text="Informe o segundo valor: ")
+entrada1 = Entry(width=50)
+entrada2 = Entry(width=50)
+resultado = Label(text="RESULTADO")
+calcular = Button(text="Somar",command=somar)
+num1.pack()
+entrada1.pack()
+num2.pack()
+entrada2.pack()
+calcular.pack()
+resultado.pack()
+mainloop()
+
+
+
+---------------------------------------- TKINTER II -----------------------------------------------
+
+----------------- Combobox ----------------
+
+from tkinter import *
+from tkinter.ttk import *
+
+janela = Tk()
+
+lista = ['segunda-feira', 'terça-feira',
+         'quarta-feira', 'quinta-feira',
+         'sexta-feira', 'sábado', 'domingo']
+
+combobox = Combobox(janela, values=lista)
+combobox.pack()
+
+janela.mainloop()
+
+
+-------------- Barra de Progressão --------------
+
+from tkinter import *
+from tkinter.ttk import *
+from time import sleep
+janela = Tk()
+
+def iniciar_download():
+    for i in range(101):
+        barra_progressao['value'] = i
+        barra_progressao.update()
+        sleep(0.05)
+        if i == 100:
+           # 1 forma:
+           #  label_status['text'] = 'Concluído!'
+           # 2 forma
+            label_status.config(text='Concluído')
+
+label = Label(
+    text='Barra de Progressão',
+    font='Arial 16'
+)
+label.pack(pady=40)
+
+barra_progressao = Progressbar(
+    length=300
+)
+barra_progressao.pack()
+# barra_progressao.start(10)
+
+botao = Button(
+    text='Ok',
+    command=iniciar_download
+)
+botao.pack(pady = 10)
+
+label_status = Label(
+    text='Em andamento',
+    font='Arial 14'
+)
+label_status.pack()
+
+janela.mainloop()
+
+---------------- Separador -----------------------
+
+from tkinter import *
+from tkinter.ttk import *
+
+janela = Tk()
+
+label_1 = Label(
+    text='Texto 1',
+    font='Verdana 16'
+)
+label_1.pack()
+
+separador = Separator()
+separador.pack(ipadx = 300, pady = 20)
+
+label_2 = Label(
+    text='Texto 2',
+    font='Verdana 16'
+)
+label_2.pack()
+
+sizegrip = Sizegrip()
+sizegrip.pack(anchor = SE, expand=True)
+
+janela.mainloop()
+
+----------------------- PRÁTICA 1-------------------------
+
+from tkinter import *
+from tkinter.ttk import *
+from time import sleep
+
+janela = Tk()
+janela.title(" Simulação de Download")
+
+def iniciar_download():
+    for i in range(101):
+        barra_progressao['value'] = i
+        barra_progressao.update()
+        sleep(0.05)
+
+        if i == 100:
+            label.config(text='Download Concluído')
+            # label['text'] = 'Download Concluído'
+
+barra_progressao = Progressbar(
+    length=300
+)
+barra_progressao.pack(pady = 20)
+
+botao = Button(
+    text='Iniciar Download',
+    command=iniciar_download
+)
+botao.pack()
+
+label = Label(
+    text='Aguardando início do download'
+)
+label.pack(pady=20)
+janela.mainloop()
+
+---------------------------- PRÁTICA 2 ------------------------
+
+from tkinter import *                ## é um módulo de interface gráfica de usuário (GUI)
+from tkinter.ttk import *
+
+janela = Tk()
+
+def ler():
+    nome = entrada_nome.get()
+    idade = int(entrada_idade.get())
+    if idade < 0 or idade > 170:
+        idade = 'Nulo'
+    turma = entrada_turma.get()
+
+    tabela.insert('', 'end',
+                  values=(nome, idade, turma))
+
+    entrada_nome.delete(0, 'end')
+    entrada_idade.delete(0, 'end')
+    entrada_turma.delete(0, 'end')
+
+label_nome = Label(
+    text='Nome:'
+)
+label_nome.pack(pady=10)
+
+entrada_nome = Entry()
+entrada_nome.pack()
+entrada_nome.focus()
+
+label_idade = Label(
+    text='Idade:'
+)
+label_idade.pack(pady=10)
+
+entrada_idade = Entry()
+entrada_idade.pack()
+
+label_turma = Label(
+    text='Turma:'
+)
+label_turma.pack(pady=10)
+
+# entrada_turma = Entry()
+# entrada_turma.pack()
+lista = ['Python', 'Dev', 'Data']
+entrada_turma = Combobox(values=lista)
+entrada_turma.pack()
+
+botao = Button(
+    text='Cadastrar',
+    command=ler
+)
+botao.pack(pady=10)
+
+tabela = Treeview(columns=('Nome', 'Idade',
+                           'Turma'),
+                  show='headings')
+tabela.pack()
+tabela.heading('Nome', text='Nome')
+tabela.heading('Idade', text='Idade')
+tabela.heading('Turma', text='Turma')
+
+janela.mainloop()
+
+
+
+_________________________________
+AUTENTICAÇÃO DE SITE - Feito por mim
+from tkinter import *
+from tkinter.ttk import *
+
+def entrar():
+    
+    login = "Leo"
+    senha = "12345"
+    if login1.get() == login and senha1.get() == senha:
+        print("Seja bem vindo!")
+    else:
+        print("Usuário ou senha incorreta")
+
+janela = Tk()
+
+janela.title("Autenticação")
+
+login = Label(text="Usuário")
+login1 = Entry(width = 50)
+login.pack()
+login1.pack()
+
+senha = Label(text="Senha")
+senha1 = Entry(width = 50)
+senha.pack()
+senha1.pack()
+
+butao_entrar = Button(text="Entrar", command=entrar)
+butao_entrar.pack()
+
+janela.mainloop()
+
+
+**********************************************************************************************************************************
+
+
+________________________________POO_________________________
+
+class Carro:
+    def __init__(self, marca, modelo, ano, possui_4_rodas) -> None:       ##método construtor (init) serve para informar as informações padrões /// self é uma super em java herança 
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+        self.possui_4_rodas = possui_4_rodas
+    
+    def ligar(self):
+        return f"O {self.modelo} está ligado"
+
+Orochi = Carro("Renault", "Oroch", "2019", True)
+
+print(Orochi.modelo)
+print(Orochi.ligar())
+
+__________________________
+class Cachorro:  #classe
+    def __init__(self, nome, raca, idade) -> None: ## primeiro se define as caracteristicas da classe
+        self.nome = nome ##atributo
+        self.raca = raca ##atributo
+        self.idade = idade ##atributo
+    
+    def latir(self):  #método
+        print(self.nome, "está latindo!!")
+
+    def comer(self):
+        return self.nome, "da raca", self.raca, "come 10kg de ração por semana."
+
+cachorro1 = Cachorro("Julieta", "SRD", 3)
+Cachorro2 = Cachorro("Falk", "Pastor", 7)
+
+print("Nome: ",cachorro1.nome, "\n Raça: ", cachorro1.raca, "\n Idade: " , cachorro1.idade) ## cuidado com as virgulas
+cachorro1.latir() #chamada do método latir
+print(cachorro1.comer()) #chamada do método comer
+
+_____________________________________________________
+
+class Pessoa():
+    def __init__ (self, nome, idade, peso, genero):
+        self.nome = nome
+        self.idade = idade
+        self.peso = peso
+        self.genero = genero
+
+    def mostrarPessoa(self):
+        print ("Nome: ", self.nome, "\n Idade: ", self.idade, "\n Peso: ", self.peso, "\n Genero: ", self.genero)
+    
+pessoa1 = Pessoa("Leonardo", "38", "105", "Masculino")
+pessoa1.mostrarPessoa()
+
+______________________________________________________
+
+class Empresa:
+    def __init__(self, nome, cargo, salario):
+        self.nome = nome
+        self.cargo = cargo
+        self.salario = salario
+
+    def adicionar(self):
+        print(self.nome, "foi adicionado")
+    
+    def remover(self):
+        print(self.nome, "foi demitido")
+
+    def listar(self):
+        print(lista.append(self.name)) ## corrigir
+
+    def aumentarSalario(self):
+        return self.salario*0.1+self.salario
+        
+lista = []
+func1 = Empresa("Leo","Fisio", 2000)
+print("Salario Antigo: ", func1.salario) ##Aqui é um atributo
+print("Novo Salario: ", func1.aumentarSalario()) ## Aqui é um método
+
+__________________________________________________________________
+atividade
+class Conta():
+    def __init__(self, agencia, conta, cpf, nome, saldo): ##construtor == são as informações fundamentais (código só irá rodar com elas)
+        self.conta = conta ## atributo 
+        self.agencia = agencia ## atributo
+        self.cpf = cpf ## atributo
+        self.nome = nome ## atributo
+        self.saldo = saldo ## atributo
+        
+    def mostrarSaldo(self): ## método
+        return self.saldo
+    
+    def depositar(self,valor): ## método
+        self.saldo = self.saldo + valor
+        print("Depósito realizado com sucesso!!!")  
+
+    def sacar(self,valor): ## método
+        if self.saldo >= valor:
+            self.saldo = self.saldo - valor
+            print(" Saque realizado com sucesso!!!")  
+        else:
+            print("Saque não autorizado!!!")
+
+    def mostrarValores(self):
+        print("Cliente: ", self.nome, "\n CPF: ", self.cpf, "\n Agencia: ", self.agencia, "\n Conta: ", self.conta)
+
+
+
+#############Fora da Classe Conta - instanciar fora da classe
+
+## instanciar objetos
+
+conta1 = Conta("12345", "1345-6", "000.000.001-89", "Juci", 50)
+conta1.mostrarValores()
+print("Saldo: ", conta1.mostrarSaldo())
+conta1.sacar(100)
+print("Saldo: ", conta1.mostrarSaldo())
+conta1.sacar(30)
+print("Saldo: ", conta1.mostrarSaldo())
+conta1.depositar(200)
+print("Saldo: ", conta1.mostrarSaldo())
+
+
+__________________POO - HERANÇA____________________________
+class Animal():
+    def __init__(self, nome):
+        self.nome = nome
+    # def fazerSom(self):
+    #     pass
+
+class Cachorro(Animal):
+    def fazerSom(self):
+        return "Woof"
+    
+class Gato(Animal):
+    def fazerSom(self):
+        return "Meow"
+    
+c1 = Cachorro("Rex")
+g1 = Gato("Whiskers")
+
+print(c1.nome, "faz", c1.fazerSom())
+print(g1.nome, "faz", g1.fazerSom())
+
+01. Primeira questão dos slides(classe Forma e suas filhas Círculo e Retângulo - calcular medidas);
+
+import math
+class Forma():
+    def calcularArea():
+        pass
+    def calcularPerimetro():
+        pass
+
+class Retangulo(Forma):
+    def __init__(self,base,altura):
+        self.base = base
+        self.altura = altura
+    def calcularArea(self):
+        return self.base*self.altura
+    def calcularPerimetro(self):
+        return (2*self.base) + (2*self.altura)
+    
+class Circulo(Forma):
+    def __init__(self,raio):
+        self.raio = raio
+    def calcularArea(self):
+        return math.pi*math.pow(self.raio,2)
+    def calcularPerimetro(self):
+        return 2*math.pi*self.raio
+    
+f1 = Forma()
+c1 = Circulo(10)
+r1 = Retangulo(15,63)
+
+print("Area do circulo: ", c1.calcularArea())
+print("Perimetro do circulo: ", c1.calcularPerimetro())
+print("***************************")
+print("Area do retangulo: ", r1.calcularArea())
+print("Perimetro do retangulo: ", r1.calcularPerimetro())
+        
+
+
+
+02. Na classe Conta, faça as classes filhas Conta Corrente e Conta Poupança;
+
+class Conta():
+    def __init__(self,nome,saldo):
+        self.nome=nome
+        self.saldo=saldo
+        
+    def sacar(self,valor):
+        self.saldo = self.saldo-valor
+        return self.saldo 
+    
+class ContaCorrente(Conta):
+    def __init__(self, nome, saldo, taxa):
+        super().__init__(nome, saldo)
+        self.taxa=taxa
+        
+    def sacar(self,valor):
+        self.saldo=self.saldo-valor-(self.saldo*self.taxa)
+        return self.saldo
+
+class ContaPoupanca(Conta):
+    def __init__(self, nome, saldo):
+        super().__init__(nome, saldo)
+        
+
+c = Conta("Juci",100)
+cc = ContaCorrente("Ana",100,0.1)
+cp = ContaPoupanca("Paulo",100)
+print(c.sacar(50))
+print(cc.sacar(50))
+print(cp.sacar(50))
+
+03. Na classe Pessoa, faça as classes filhas Pessoa Física e Pessoa Jurídica;
+04. Terçeira questão dos slides(classe Calculadora).
+05. Crie a classe Imovel, que possui um endereço e um preço.
+a. crie uma classe Novo, que herda Imovel e possui um adicional no preço. Crie métodos de
+acesso e impressão deste valor adicional.
+b. crie uma classe Velho, que herda Imovel e possui um desconto no preço. Crie métodos de
+acesso e impressão para este desconto.
+
+class Imovel():
+    def __init__(self,endereco,preco):
+        self.endereco=endereco
+        self.preco=preco
+        
+    def mostrarPreco(self):
+        return self.preco
+    
+    
+class Novo(Imovel):
+    def __init__(self, endereco, preco):
+        super().__init__(endereco, preco)
+        
+    def mostrarPreco(self,adicional):
+        self.preco=self.preco+adicional
+        return self.preco    
+    
+class Velho(Imovel):
+    def __init__(self, endereco, preco):
+        super().__init__(endereco, preco)
+        
+    def mostrarPreco(self,desconto):
+        self.preco=self.preco-desconto
+        return self.preco 
+    
+i = Imovel("Rua A, 10",600000)
+iN = Novo("Rua B, 80",50000)
+iV = Velho("Rua C, 90",50000)
+print(iN.mostrarPreco(1000))
+print(iV.mostrarPreco(1000))
+
+
+*********************************************************************
+
+Crie uma classe chamada Ingresso que possui um valor em reais e um
+método imprimeValor().
+a. crie uma classe Normal, que herda de Ingresso e possui um método
+(nome a sua escolha) que imprime: "Ingresso Normal".
+b. crie uma classe VIP, que herda de Ingresso e possui um valor adicional.
+Crie um método que retorne o valor do ingresso VIP (com o adicional
+incluído). OBS:: sobrescreva o método imprimeValor() da classe
+Ingresso.
+c. crie uma classe CamaroteInferior (que possui a localização do ingresso
+e métodos para acessar (get e set) e imprimir esta localização) e uma
+classe CamaroteSuperior, que é mais cara (possui valor adicional). Esta
+última possui um método para retornar o valor do ingresso. Ambas as
+classes herdam a classe VIP.
+
+CRUD LIVRO *************************************************************************
+
+# Criar uma aplicação de gerenciamento de biblioteca com classes e POO para representar livros, membros e a biblioteca.
+
+# Passos do projeto:
+# Criação de Classes:
+# Crie as seguintes classes: Livro, Membro, Biblioteca.
+# Classe Livro: A classe Livro deve conter atributos como título, autor, ID (autoincrement), estatus de empréstimo (disponível ou emprestado).
+# Classe Membro: A classe Membro deve conter atributos como nome, número de membro e histórico de livros emprestados.
+# Classe Biblioteca: A classe Biblioteca deve conter um catálogo de livros disponíveis, um registro de membros e métodos para empréstimo, devolução e pesquisa de livros.
+
+
+# # Implemente métodos na classe Biblioteca para:
+
+# # Adicionar livros ao catálogo.
+# # Adicionar membros à biblioteca.
+# # Permitir empréstimo de livros por
+# # membros.
+# # Registrar a devolução de livros.
+# # Pesquisar livros por título, autor ou ID.
+# Criar uma aplicação de gerenciamento de biblioteca com classes e POO para representar livros, membros e a biblioteca.
+
+
+from tkinter import *
+from tkinter.ttk import *
+listaLivros = 0
+l= 0
+i = 0
+def adicionar(self):
+    global titulo, autor
+    titulo = self.entrada1.get()
+    autor = self.entrada2.get()
+    if titulo == "" or autor == "":
+        print("Livro não adicionado")   
+    else: 
+        l = Livro(titulo,autor)
+        listaLivros.append(l)
+        print("Livro Adicionado com Éxito")
+        entrada1.delete(0,END)
+        entrada2.delete(0,END)
+        
+def mostrar():
+    for i in listaLivros:
+        print(i.titulo)
+        print(i.autor)
+        print(i.ID)
+        print(i.Status)
+
+def editar(self):
+    titulo1 = self.entrada1.get()
+    for i in listaLivros:
+        if i.titulo==titulo:
+        listaLivros.update(titulo1)
+        titulo1 = input("Como será o novo nome: ")
+        listaLivros.append(titulo1)
+
+def excluir():
+    for i in l:
+        r
+
+def emprestar():
+    for i in 
+    
+janela = Tk()
+janela.title("Livraria do Leonardo")
+janela.geometry("600x400+500+200")
+janela.iconbitmap("book-bookmark-icon_34486.ico")
+janela.resizable(False, False)
+
+titulo = Label(text="Informe o Título do Livro: ")
+autor = Label(text="Informe o Autor: ")
+entrada1 = Entry(width=50)
+entrada2 = Entry(width=50)
+cadastrarLivro = Button(text="Cadastrar Livro",command=adicionar)
+titulo.pack()
+entrada1.pack()
+entrada1.focus() 
+autor.pack()
+entrada2.pack()
+mostrarLivro = Button(text="Mostrar Livro",command=mostrar)
+editarLivro = Button(text="Editar Livro",command=editar)
+excluirLivro = Button(text="Excluir Livro",command=excluir)
+emprestarLivro = Button(text="Emprestar Livro",command=emprestar)
+cadastrarLivro.pack(side="right")
+mostrarLivro.pack(side="right")
+editarLivro.pack(side="right")
+excluirLivro.pack(side="right")
+emprestarLivro.pack(side="right")
+
+
+mainloop()
+
+
+# titulo =  0
+# livro = 0
+
+# class Livro():
+#     def __init__(self, titulo, autor, ID, status_emprestimo): ## AUQI SÓ ENTRA O QUE FOR PEDIDO
+#         self.titulo = titulo
+#         self.autor = autor
+#         self.ID = ID ### NÃO PRECISA COLOCAR
+#         self.status_emprestimo = status_emprestimo ## NÃO PRECISA COLOCAR
+
+# class Membro():
+#     def __init__(self, nome, numero_membro, historico_emprestados):
+#         self.nome = nome
+#         self.numero_membro = numero_membro
+#         self.historico_emprestados = historico_emprestados
+
+# class Biblioteca():
+#     def __init__(self, catalogo_disponiveis, registro_membros, emprestimo, devolucao, pesquisar_livros) -> None:
+#         self.catalogo_disponiveis = catalogo_disponiveis
+#         self.registro_membros = registro_membros
+#         self.emprestimo = emprestimo 
+#         self.devolucao = devolucao
+#         self.pesquisar_livros = pesquisar_livros
+    
+
+#     def registro_membros(self):
+#         pass
+
+#     def emprestarLivro(self):
+#         pass
+    
+#     def devolverLivro(self):
+#         pass
+
+#     def excluirlivro(self):
+#         pass
+
+#     def alterarLivro(self):
+#         pass
+
+#     def catalogo_disponiveis(self):
+#         pass
+  
+#     def pesquisar_livros(self):
+#         pass
+
+
+**************************************************************************************Projeto POO prof
+
+def btnInserir_Click(self):
+        titulo = self.txtTitulo.get()
+        autor = self.txtAutor.get()
+        
+        if titulo=="" or autor=="":
+            self.varResultado.set("Erro ao inserir novo registro.")
+            self.lblResultado.configure(background="#99FF99")
+        else:
+            l = Livro(titulo,autor)
+            listaLivros.append(l)
+            self.varResultado.set("Registro inserido.")
+            self.lblResultado.configure(background="#99FF99")
+            #self.varTitulo.set("")
+            #self.varAutor.set("")
+            self.txtTitulo.focus()
+            
+    
+    def btnMostrar_Click(self):
+        print("*********Livros**********")
+        for i in listaLivros:            
+            print(i.titulo)
+            print(i.autor)
+            print(i.ID)
+            print(i.status)
+            print("*************************")
+
+
+def btnEditar_Click(self):
+        titulo = self.txtTitulo.get().split()
+        autor = self.txtAutor.get().split()
+        id = self.txtTitulo.get().split()
+        for obj in listaLivros:
+            #print('test')
+            if obj.ID==1:
+                obj.titulo = titulo
+                obj.autor = autor
+                self.varResultado.set("Registro alterado.")
+                self.lblResultado.configure(background="#99FF99")
+                #self.varTitulo.set("")
+                #self.varAutor.set("")
+                self.txtTitulo.focus()
+            else:
+                self.varResultado.set("Erro ao alterar registro.")
+                self.lblResultado.configure(background="#99FF99")
+    
+    def btnExcluir_Click(self):
+        id = self.txtTitulo.get().split()
+        for obj in listaLivros:
+            #print('test')
+            if obj.ID==1:
+                #print('test')
+                listaLivros.remove(obj) 
+                self.varResultado.set("Registro excluído.")
+                self.lblResultado.configure(background="#99FF99")
+                #self.varTitulo.set("")
+                #self.varAutor.set("")
+                self.txtTitulo.focus()
+            else:
+                self.varResultado.set("Erro ao excluir registro.")
+                self.lblResultado.configure(background="#99FF99")
+                
+
+
+
+------------------------------------------------------------------aluno_model ------------------------------
+
+iimport uuid ##gera um numerop de 32 caracteres
+class Aluno:
+    def __init__(self, nome, idade, curso, nota):
+        self.matricula = uuid.uuid4()
+        self.nome = nome
+        self.idade = idade
+        self.curso = curso
+        self.nota = nota
+
+if __name
+
+________________________________________aluno_data --------------------------------
+
+import pymysql.cursors
+from aluno_model import Aluno
+
+class AlunoData:
+    def __init__(self):
+        self.conexao = pymysql.connect(
+            user='root',
+            host='localhost',
+            password='',
+            database='escola',
+            cursorclass=pymysql.cursors.DictCursor
+        )
+
+        self.cursor = self.conexao.cursor()
+
+    def insert(self, aluno: Aluno):
+        try:
+            sql = "INSERT INTO alunos (matricula, nome, idade, curso, nota) VALUES (%s, %s, %s, %s, %s)"    # a \ serve para informar que a linha será quebrada
+
+            self.cursor.execute(sql, (aluno.matricula,
+                                      aluno.nome,
+                                      aluno.idade,
+                                      aluno.curso,
+                                      aluno.nota))
+            self.conexao.commit() #salvar na tabela
+        except Exception as error:
+            print(f"Erro ao cadastrar! Erro:{error}")
+
+    def update(self, aluno: Aluno):
+        try:
+            sql = "UPDATE alunos SET nome = %s, idade = %s, curso = %s, nota = %s WHERE matricula = %s"
+            self.cursor.execute(sql, (aluno.nome,
+                                  aluno.idade,
+                                  aluno.curso,
+                                  aluno.nota,
+                                  aluno.matricula))
+            self.conexao.commit()  # salvar na tabela
+
+        except Exception as error:
+            print(f"Erro ao aditar! Erro:{error}")
+
+    def delete(self, matricula: str):
+        try:
+            sql = "DELETE FROM alunos WHERE matricula = %s"
+            self.cursor.execute(sql, matricula)
+            self.cursor.commit()
+        except Exception as error:
+            print(f"Erro ao deletar! Erro:{error}")
+
+    def select(self):
+        try:
+            sql = "SELECT * FROM alunos"
+            self.cursor.execute(sql)
+            alunos = self.cursor.fetchall()     #quarda os dados em 1 dicionário
+            return alunos
+        except Exception as error:
+            print(f"Erro ao listar! Erro:{error}")
+
+if __name__ == "__main__":
+    AlunoData()
+
+
+------------- app ______________________________
+
+from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+from aluno_model import Aluno
+from aluno_data import AlunoData
+
+class App:
+    def __init__(self):
+        self.db = AlunoData()
+
+        self.janela = Tk()
+        self.janela.title('SysAlunos')
+
+        # Label
+        self.label_matricula = Label(self.janela, text="Matricula",
+                                     font="Tahoma 14 bold", fg="red")
+        self.label_matricula.grid(row=0, column=0)
+
+        # Entry
+        self.txt_matricula = Entry(self.janela, font="Tahoma 14",
+                                   width=27, state=DISABLED)
+        self.txt_matricula.grid(row=0, column=1)
+
+        # Label
+        self.label_nome = Label(self.janela, text="Nome",
+                                font="Tahoma 14 bold", fg="red")
+        self.label_nome.grid(row=1, column=0)
+
+        # Entry
+        self.txt_nome = Entry(self.janela, font="Tahoma 14",
+                              width=27)
+        self.txt_nome.grid(row=1, column=1)
+
+        # Label
+        self.label_idade = Label(self.janela, text="Idade",
+                                 font="Tahoma 14 bold", fg="red")
+        self.label_idade.grid(row=2, column=0)
+
+        # Entry
+        self.txt_idade = Entry(self.janela, font="Tahoma 14",
+                               width=27)
+        self.txt_idade.grid(row=2, column=1)
+
+        # Label
+        self.label_curso = Label(self.janela, text="Curso",
+                                 font="Tahoma 14 bold", fg="red")
+        self.label_curso.grid(row=3, column=0)
+
+        self.cursos = ['Python', 'Javascript', 'Django', 'ReactJs']
+        self.cb_cursos = ttk.Combobox(self.janela, values=self.cursos, width=28,
+                                      font="Tahoma 12")
+        self.cb_cursos.grid(row=3, column=1)
+
+        # Label
+        self.label_nota = Label(self.janela, text="Nota",
+                                font="Tahoma 14 bold", fg="red")
+        self.label_nota.grid(row=4, column=0)
+
+        # Entry
+        self.txt_nota = Entry(self.janela, font="Tahoma 14",
+                              width=27)
+        self.txt_nota.grid(row=4, column=1)
+
+        # botões
+        self.button_adicionar = Button(self.janela, font="Tahoma 12 bold", width=7,
+                                       text="Adicionar", fg="red",
+                                       command=self.adicionarAluno)
+        self.button_adicionar.grid(row=5, column=0)
+
+        # botões
+        self.button_editar = Button(self.janela, font="Tahoma 12 bold", width=7,
+                                    text="Editar", fg="red",
+                                    command=self.editarAluno)
+        self.button_editar.grid(row=5, column=1)
+
+        # botões
+        self.button_deletar = Button(self.janela, font="Tahoma 12 bold", width=7,
+                                     text="Deletar", fg="red",
+                                     command=self.deletarAluno)
+        self.button_deletar.grid(row=5, column=2)
+
+        # frame
+        self.frame = Frame(self.janela)
+        self.frame.grid(row=6, column=0, columnspan=3)
+
+        self.colunas = ['Matricula', 'Nome', 'Idade', 'Curso', 'Nota']
+        self.tabela = ttk.Treeview(self.frame, columns=self.colunas, show='headings')
+        for coluna in self.colunas:
+            self.tabela.heading(coluna, text=coluna)
+            self.tabela.column(coluna, width=110)
+        self.tabela.pack()
+        self.tabela.bind('<ButtonRelease-1>', self.selecionarAluno)
+
+        self.atualizarTabela()
+        self.janela.mainloop()
+
+    def limparCampos(self):
+        self.txt_nome.delete(0, END)
+        self.txt_idade.delete(0, END)
+        self.txt_nota.delete(0, END)
+        self.cb_cursos.set("")
+        self.txt_matricula.config(state=NORMAL)
+        self.txt_matricula.delete(0, END)
+        self.txt_matricula.config(state=DISABLED)
+
+    def atualizarTabela(self):
+        # Limpa a tabela
+        for linha in self.tabela.get_children():
+            self.tabela.delete(linha)
+
+        alunos = self.db.select()
+        for aluno in alunos:
+            self.tabela.insert("", END, values=(aluno['matricula'],
+                                                aluno['nome'],
+                                                aluno['idade'],
+                                                aluno['curso'],
+                                                aluno['nota']))
+
+    def selecionarAluno(self, event):
+        linha_selecionada = self.tabela.selection()[0]
+        item = self.tabela.item(linha_selecionada)['values']
+        self.limparCampos()
+        self.txt_matricula.config(state=NORMAL)
+        self.txt_matricula.insert(0, item[0])
+        self.txt_matricula.config(state=DISABLED)
+        self.txt_nome.insert(0, item[1])
+        self.txt_idade.insert(0, str(item[2]))
+        self.cb_cursos.set(item[3])
+        self.txt_nota.insert(0, str(item[4]))
+
+    def criarAluno(self):
+        nome = self.txt_nome.get()
+        idade = int(self.txt_idade.get())
+        curso = self.cb_cursos.get()
+        nota = float(self.txt_nota.get())
+        aluno = Aluno(nome, idade, curso, nota)
+        return aluno
+
+    def adicionarAluno(self):
+        self.criarAluno()
+        self.db.insert(aluno)
+        messagebox.showinfo("Sucesso!", "Aluno cadastrado com sucesso")
+        self.limparCampos()
+        self.atualizarTabela()
+
+    def editarAluno(self):
+        aluno = self.criarAluno()
+        aluno.matricula = self.txt_matricula.get() #está pegando a matrícula gerada
+        self.db.update(aluno)
+        messagebox.showinfo("Sucesso!", "Dados Alterados com Sucesso")
+        self.limparCampos()
+        self.atualizarTabela()
+
+
+    def deletarAluno(self):
+        aluno = self.criarAluno()
+        aluno.matricula = self.txt_matricula.get()
+        self.db.delete(aluno)
+        messagebox.showinfo("Sucesso!", "Aluno Excluído com Sucesso")
+        self.limparCampos()
+        self.atualizarTabela()
+
+if __name__ == "__main__":
+    app = App()
+
+a
