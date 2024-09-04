@@ -1,0 +1,617 @@
+workshop - SQL
+INVERTEXTO: https://www.invertexto.com/workshopsql
+
+SQL - Site para estudar
+https://mystery.knightlab.com/walkthrough.html
+
+SERVER:
+https://dev.mysql.com/downloads/mysql/
+
+WORKBENCH:
+https://dev.mysql.com/downloads/installer/
+
+POPSQL
+https://popsql.com/
+
+VERCEL
+https://vercel.com/
+
+PLOTLY - DRASHBOAR
+https://plotly.com/ 
+
+query - consulta dos dados
+SQL ISLAND - SQLPD - JOGOS
+
+SCHEMA:
+https://mystery.knightlab.com/schema.png
+
+SITE PARA ESTUDAR LIGUAS E COMPUTAÇÃO
+roadmap.sh 
+dataschool.com - https://dataschool.com/how-to-teach-people-sql/left-right-join-animated/
+https://sqlpd.com/
+
+*****ESTUDANDO******
+SELECT count(*) as quantidade /*muda o nome*/
+FROM person;
+
+SELECT * 
+FROM person 
+LIMIT 10; /*LIMITA 10 PESSOAS DA TABELA NA ORDEM*/
+
+SELECT DISTINCT type  /*DISTINCT - FILTRE OS TIPOS*/
+FROM crime_scene_report; /*QUAIS OS CRIMES COMETERAM*/
+
+SELECT * 
+FROM crime_scene_report
+WHERE city = 'SQL City' OR  /*FILTRA AS CIDADES*/ 
+
+SELECT * 
+FROM crime_scene_report
+WHERE city = 'SQL City' and type = 'murder' /*FILTRA AS CIDADES E O CRIME*/ 
+
+SELECT *
+FROM person
+WHERE name LIKE 'An%' OR address_street_name = 'Northwestern Dr'  /*AN% SERVE PARA PESQUISAR QUEM TIOVER ESSAS LETRAS*/ 
+
+
+Try out UPPER() and LOWER(). maiúsculo e minúsculo
+SELECT DISTINCT city 
+FROM crime_scene_report 
+WHERE LOWER(city) ='sql city';
+
+try out some comparison operators. /*define as palavras entre*/
+SELECT DISTINCT city 
+FROM crime_scene_report 
+WHERE city BETWEEN 'W%' AND 'Z%'; 
+
+TESTEMUNHA ================
+SELECT max(address_number) 
+FROM person; /*conseguimos achar o número da ultima casa*/
+
+SELECT * FROM person WHERE name = 'Annabel Miller'
+
+SELECT *
+FROM person
+WHERE address_number = 4919;
+
+SELECT * 
+FROM person
+ORDER BY address_number DESC LIMIT 10;
+
+SELECT person.name, income.*
+FROM person
+JOIN income
+  ON person.ssn = income.ssn /* CONECTA AS DUAS CHAVES ESTRANGEIRAS*/
+  ORDER BY income.annual_income
+  ASC LIMIT 1
+  /*DESC LIMIT 1*/
+
+-> DEPOIMENTOS:
+
+SELECT p.name,i.transcript
+FROM person p
+JOIN interview i
+ON p.id = i.person_id
+WHERE p.name = 'Annabel Miller' OR p.name = 'Morty Schapiro'
+
+* OBS - CPF É STRING - CHAR 13 OU 11
+---------------------------------------------------------------------------------------------------------------
+*  */
+W3SCHOOLS.COM (TEM TODAS AS ORIENTAÇÕES DE DOCUMENTAÇÕES
+/* Comentário em SQL */
+
+/* DDL */
+
+/*  CRIAR BANCO DE DADOS */
+
+CREATE DATABASE estoque;
+
+produto_id INT PRIMARY KEY AUTO_INCREMENT (A MÁQUINA ACRESCENTA O ID DE FORMA AUTOMÁTICA),
+
+CREATE TABLE clientes( cliente_id INT PRIMARY KEY, nome VARCHAR(40) NOT NULL, tel VARCHAR(40) NOT NULL, uf VARCHAR(40) NOT NULL, sexo CHAR(1) NOT NULL, renda FLOAT NOT NULL, dtnascto DATE NOT NULL ); 
+-------------------------------------------------------------------------------------------------------------
+Banco de Dados:
+Questão DDL Slide 1
+
+
+CREATE TABLE Funcionários (
+    Código INT PRIMARY KEY,
+    PrimeiroNome VARCHAR(50),
+    SegundoNome VARCHAR(50),
+    TerceiroNome VARCHAR(50), ---> são a quantidade de caracteres
+    UltimoNome VARCHAR(50),
+    DataNascimento DATE,
+    CPF VARCHAR(11),
+    RG VARCHAR(20),
+    Endereço VARCHAR(100),
+    CEP VARCHAR(10),
+    Cidade VARCHAR(50),
+    Fone VARCHAR(20),
+    Função VARCHAR(50),
+    Salário DECIMAL(10,2),
+    CodigoDepartamento INT,
+    FOREIGN KEY (CodigoDepartamento) REFERENCES Departamentos(Código)
+);
+
+ALTER TABLE alunos ADD email VARCHAR(50) NOT NULL; (ALTERAR TABELA)
+ALTER TABLE alunos CHANGE nome nome_aluno VARCHAR (45) NOT NULL; (ALTERAR O NOME DA COLUNA)
+ALTER TABLE alunos MODIFY idade DATE NOT NULL;  (MODIFY ALTERA O TIPO)
+ALTER TABLE alunos DROP email (APAGA A COLUNA EM-MAIL);
+DROP TABLE curso; (exclui a tabela inteira);
+DROP DATABASE escola;
+
+CREATE TABLE Departamento (
+    Código INT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Localização VARCHAR(100),
+    CodigoFuncionario INT,
+    FOREIGN KEY (CodigoFuncionario) REFERENCES Funcionários(Código)
+);
+
+INSERT INTO Funcionários (Código, PrimeiroNome, SegundoNome, TerceiroNome, UltimoNome, DataNascimento, CPF, RG, Endereço, CEP, Cidade, Fone, Função, Salário, CodigoDepartamento)
+VALUES
+    (1, 'João', 'Silva', '', 'Santos', '1990-05-15', '12345678901', '1234567', 'Rua A', '12345-678', 'São Paulo', '123456789', 'Analista', 5000.00, 1),
+    (2, 'Maria', 'Fernandes', '', 'Santana', '1992-09-20', '10987654321', '7654321', 'Rua B', '98765-432', 'Rio de Janeiro', '987654321', 'Gerente', 8000.00, 2),
+    (3, 'Pedro', 'Oliveira', '', 'Ribeiro', '1985-02-10', '56789012345', '6543210', 'Rua C', '54321-098', 'Belo Horizonte', '654321098', 'Desenvolvedor', 4000.00, 1),
+    -- Adicione mais linhas para os demais funcionários
+    (12, 'Ana', 'Santos', '', 'Martins', '1991-07-18', '90817263545', '7894561', 'Rua L', '87654-321', 'Porto Alegre', '987654321', 'Analista', 5500.00, 3);
+
+
+DELETE FROM Funcionários
+WHERE Código IN (3, 7);
+
+UPDATE Funcionários
+SET Salário = Salário * 1.05;
+ou
+UPDATE Funcionários
+SET Salário = Salário * 1.05
+WHERE Código IN (1, 3, 5);
+
+UPDATE Funcionários
+SET Salário = Salário * 1.07
+WHERE Função = 'Gerente';
+
+INSERT INTO Departamento (Código, Nome, Localização, CodigoFuncionario)
+VALUES
+    (1, 'Vendas', 'São Paulo', 2),
+    (2, 'RH', 'Rio de Janeiro', 4),
+    (3, 'TI', 'Belo Horizonte', 6);
+
+SELECT *
+FROM Departamento;
+
+SELECT CONCAT(PrimeiroNome, ' ', SegundoNome, ' ', TerceiroNome, ' ', UltimoNome) AS NomeCompleto
+FROM Funcionários
+WHERE Função = 'Gerente';
+
+SELECT *
+FROM Funcionários
+WHERE MONTH(DataNascimento) = <número do mês>;
+
+DELETE FROM Funcionários;
+DELETE FROM Departamento;
+
+
+
+create database Sistema_Academico;
+
+USE sakila;
+
+SELECT title, rental_rate from film where rental_rate > 3.00;
+
+/* SELECT DISTINCT actor.actor_id, actor.first_name, actor.last_name
+FROM actor
+JOIN film_actor ON actor.actor_id = film_actor.actor_id
+JOIN film ON film_actor.film_id = film.film_id
+WHERE film.rental_rate > 0; */
+
+SELECT DISTINCT actor.first_name FROM actor join film_actor on actor.actor_id = film_actor.actor_id;
+					
+-- APRESENTE A QUANTIDADE DE FILMES POR DURACAO DA LOCACAO (FROUP BY)
+
+SELECT COUNT(*) as quantidade, rental_duration from film group by rental_duration;
+
+-- liste o valor do filme com maior preco
+
+SELECT MAX(rental_rate) from film;
+
+-- apresente o filme que possuem no titulo a palavra west
+
+select * from film where title like '%WEST%';
+
+-- Liste os clientes que nao estao ativos;
+
+select * from customer where active = 0;
+
+
+create database Sistema_Academico;
+
+USE sakila;
+
+SELECT title, rental_rate from film where rental_rate > 3.00;
+
+/* SELECT DISTINCT actor.actor_id, actor.first_name, actor.last_name
+FROM actor
+JOIN film_actor ON actor.actor_id = film_actor.actor_id
+JOIN film ON film_actor.film_id = film.film_id
+WHERE film.rental_rate > 0; */
+
+SELECT DISTINCT actor.first_name FROM actor join film_actor on actor.actor_id = film_actor.actor_id;
+					
+-- APRESENTE A QUANTIDADE DE FILMES POR DURACAO DA LOCACAO (FROUP BY)
+
+SELECT COUNT(*) as quantidade, rental_duration from film group by rental_duration;
+
+-- liste o valor do filme com maior preco
+
+SELECT MAX(rental_rate) from film;
+
+-- apresente o filme que possuem no titulo a palavra west
+
+select * from film where title like '%WEST%';
+
+-- Liste os clientes que nao estao ativos;
+
+select * from customer where active = 0;
+
+-- liste o titulo e a descricao do filme ordenados pelo titulo em ordem descendente;
+
+select title , description from film order by title desc;
+
+-- liste o titulo e a descricao do filme ordenando pelo titulo do filme de forma ascendente e a descricao de forma descendente
+
+select title , description from film order by title asc , description desc;
+
+-- liste os diferentes valores de taxa de locacao do filme
+
+select distinct rental_rate from film;
+
+-- liste a quantidade de filmes com duracao de locacao igual a 7
+
+select COUNT(*) from film where rental_duration = 7;
+
+-- liste titulo, rental rate , valor da taxa de locacao acrescentando 1,50 em cada filme 
+
+select title, rental_rate, rental_rate + 1.50 as nova_taxa from film;
+
+-- liste os filmes que possuem categorias cadastradas;
+
+Select * from film where film_id IN ( select film_id from film_category);
+
+-- liste os filmes que nao possuem categorias cadastradas;
+Select * from film where film_id NOT IN ( select film_id from film_category);
+
+-- liste os filmes que nao possuem categorias cadastradas COM EXISTS;
+
+select * from film where exists (select *from film_category where film.film_id = film_category.film_id);
+
+--  Utilizando a cláusula CASE, exiba o título do filme concatenado com o texto 'muitos dias', 
+-- caso o tempo de locação seja de 7 dias
+ -- do filme. Caso o tempo de locação seja de 3 dias, então exiba o título concatenando 
+-- com 'Poucos Dias'. Caso contrário, exiba a mensagem 'Só final de Semana':
+
+select title, CASE
+when rental_duration = 7 then CONCAT(title, 'muitos dias')
+when rental_duration = 3 THEN  CONCAT(title , 'poucos dias')
+else 'Só final de semana'
+end as mensagem 
+from film;
+
+
+
+********************************************************************SQL I
+
+/* DDL */ /*CRIAR BANCO DE DADOS */ CREATE DATABASE estoque; 
+
+
+CREATE TABLE produtos(
+	produto_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45) NOT NULL,
+    estoque INT NOT NULL,
+    preco FLOAT NOT NULL,
+    categoria VARCHAR(20) NOT NULL
+);
+	 
+
+ALTER TABLE alunos CHANGE nome nome_aluno VARCHAR(45) NOT NULL;
+
+ALTER TABLE alunos MODIFY idade DATE NOT NULL;
+
+ALTER TABLE alunos DROP email;
+
+DROP TABLE cursos;
+
+
+
+
+**************************************************
+
+https://drive.google.com/file/d/1jr_Iev62bu3GW46RIt9Sm_j0pFDrbt71/view
+
+--------------------------------------------------------------------------
+
+CREATE TABLE alunos (
+	matricula INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(150) NOT NULL,
+    idade INT,
+    endereco VARCHAR(250)
+);
+
+CREATE TABLE professores (
+	matricula INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(150) NOT NULL,
+	especialidade VARCHAR(100),
+    endereco VARCHAR(250)
+);
+
+CREATE TABLE turmas (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    horario_inicio TIME,
+    dia_semana ENUM('SEG', 'TER', 'QUA', 'QUI',
+                   'SEX', 'SAB', 'DOM')
+);
+
+CREATE TABLE disciplinas (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(150) NOT NULL,
+    qtd_aulas INT NOT NULL
+);
+
+
+CRUD
+- CREATE 
+- READ
+- UPDATE
+- DELETE
+
+INSERT INTO ALUNOS (nome, endereco, idade) VALUES ('JONAS', 'AV A, 165', 19);
+
+--------------------------------
+/*
+Operadores relacionais
+>, <, >=, <=, !=, =
+------------------------
+Operadores lógicos 
+and, or, not
+*/
+
+
+UPDATE alunos SET nome = 'Jonas Lopes', endereco = 'Av. I, 3333' WHERE matricula = 1;
+
+DELETE FROM alunos WHERE matricula = 1;
+
+
+
+# CREATE DATABASE loja;
+
+CREATE TABLE produtos (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    categoria ENUM ('perifericos', 'processadores', 'monitores'),
+    preco FLOAT
+);
+
+
+
+INSERT INTO produtos (nome, categoria, preco) VALUES
+('mouse sem fio', 'perifericos', 199.99),
+('teclado mecanico', 'perifericos', 250.50),
+('intel i3', 'processadores', 699.99),
+('fone sem fio', 'perifericos', 79.99),
+('monitor aoc', 'monitores', 899.99);
+
+
+UPDATE produtos SET nome = 'mouse razer' WHERE id = 1;
+
+DELETE FROM produtos WHERE id = 3;
+
+UPDATE produtos SET preco = preco * 0.9 WHERE categoria = 'perifericos';
+
+
+# SELECT * FROM produtos;
+
+/*Selecionando colunas em uma tabela */
+# SELECT nome, preco FROM produtos;
+
+# Aplicando filtros usando WHERE	
+# SELECT * FROM produtos WHERE categoria = 'perifericos';
+
+# SELECT * FROM produtos WHERE preco > 150 and preco < 700;
+
+# Funções 
+# Como realizar contagens?
+# SELECT count(*) FROM produtos;
+
+# Como pegar o maior valor de uma coluna?
+# SELECT MAX(preco) FROM produtos;
+
+# Como pegar o menor preço de uma coluna?
+# SELECT MIN(preco) FROM produtos;
+
+# Como pegar a média?
+SELECT AVG(preco) FROM produtos;
+SELECT format(avg(preco), 2) FROM alunos ### (formata as casas decimais);
+
+integração com o banco de dados
+
+pip install pymysql  ## primeiro instala o pacote de conexão
+import pymysql.cursors   ##importar a biblioteca
+conexao = pymysql.connect(
+    host='localhost',   ##servidor
+    user='root',    ##usuário
+    password='', ##senha
+    database='escola' ##banco de dados
+)
+
+se der probelam, vc deve usar 
+pip install virtuallenv
+virtuallenv env
+env\Scripts\activate
+
+
+
+1. Na tabela de alunos filtre
+- Todos os alunos com idade acima de 20 anos
+- Qual a quantidade de alunos da tabela?
+- Qual a maior idade dos alunos?
+- Qual a menor idade?
+- Qual a média de idade?
+
+
+aula 3---------------------------------------------------------------------------
+projeto de banco de dados
+
+import pymysql.cursors
+try:
+    #try identifica o erro e gera uma mensagem
+    conexao = pymysql.connect(
+        host='localhost',
+        user='root',
+        password='',
+        database='escola',
+        cursorclass = pymysql.cursors.DictCursor
+        #VEM COMO DICIONÁRIO
+    )
+
+except Exception as error:
+    print(f'Erro ao criar a conexão! erro:{error}')
+
+def listarlunos():
+    #como criar um cursor?? é quem vai gerar a ação
+    cursor = conexao.cursor()
+    cursor.execute('SELECT * FROM alunos')
+    alunos = cursor.fetchall()
+    ## com esse comando a lista estará fatiada e organizada
+    print(alunos)
+    for aluno in alunos:
+        print(aluno)
+
+def inserirAluno(nome: str, idade: int, nota: float):
+    try:
+        cursor = conexao.cursor()
+        sql = "INSERT INTO alunos (nome, idade, nota) VALUES (%s,%s, %s)"
+        cursor.execute(sql, (nome, idade, nota))
+        conexao.commit()
+        # com esse comando ele consegue salvar
+        print('Dados cadastrados com sucesso!')
+    except Exception as erro:
+        print(f'Erro ao cadastrar! erro:{erro}')
+
+
+def atualizarDados(nome: str, idade: int, nota: float, matricula: int ):
+    try:
+        cursor = conexao.cursor()
+        sql = ("UPDATE alunos SET nome = %s, idade = %s, nota = %s WHERE matricula = %s")
+        cursor.execute(sql, (nome, idade, nota, matricula))
+        conexao.commit()
+    # com esse comando ele consegue salvar
+        print('Dados alterados com sucesso!')
+    except Exception as erro:
+        print(f'Erro ao alterar! erro:{erro}')
+
+def deleteAluno(matricula: int):
+    try:
+        # if len(buscarPorMatricula(matricula))>=1:
+        cursor = conexao.cursor()
+        sql = ("DELETE FROM alunos WHERE matricula = %s") #parenceses é para escrever o comando em mais de 1 linha
+        cursor.execute(sql, (matricula))
+        conexao.commit()
+        print('Dados excluídos com sucesso!')
+        # else:
+        #     print("matricula não encontrada")
+    except Exception as erro:
+        print(f'Erro ao excluir! erro:{erro}')
+
+def buscarPorMatricula(matricula: int):
+    try:
+        sql = "SELECT * FROM alunos WHERE matricula = %s"
+        cursor = conexao.cursor()
+        cursor.execute(sql, (matricula))
+        aluno = cursor.fetchall()   #separa os dados em listas
+        return aluno
+    except Exception as erro:
+        print(f'Erro ao consultar! erro:{erro}')
+
+# listarlunos()
+# inserirAluno("Leandro", 31, 9.9)
+# atualizarDados("Marcos", 55, 10, 2)
+# deleteAluno(13)
+print(buscarPorMatricula(11))
+print(buscarPorMatricula(20))
+
+professor fez
+
+import pymysql.cursors
+
+try:
+    conexao = pymysql.connect(
+        host='localhost',
+        user='root',
+        password='',
+        database='escola',
+        cursorclass=pymysql.cursors.DictCursor
+    )
+except Exception as error:
+    print(f'Erro ao criar a conexão! erro: {error}')
+
+
+def buscarPorMatricula(matricula: int):
+    try:
+        sql = "SELECT * FROM alunos WHERE matricula = %s"
+        cursor = conexao.cursor()
+        cursor.execute(sql, matricula)
+        aluno = cursor.fetchall()
+        return aluno
+    except Exception as erro:
+        print(f"Erro ao consultar! {erro}")
+
+
+print(buscarPorMatricula(3))  # lista
+print(buscarPorMatricula(20))  # tupla vazia
+
+
+def listarAlunos() -> None:
+    # Como criar um cursor?
+    cursor = conexao.cursor()
+    cursor.execute('SELECT * FROM alunos')
+    alunos = cursor.fetchall()
+
+    for aluno in alunos:
+        print(aluno)
+
+
+def inserirAluno(nome: str, idade: int, nota: float) -> None:
+    try:
+        cursor = conexao.cursor()
+        sql = "INSERT INTO alunos (nome, idade, nota) VALUES (%s, %s, %s)"
+        cursor.execute(sql, (nome, idade, nota))
+        conexao.commit()
+        print('Dados cadastrados com sucesso!')
+    except Exception as erro:
+        print(f'Erro ao cadastrar! {erro}')
+
+
+def atualizarDados(nome: str, idade: int, nota: float, matricula: int) -> None:
+    try:
+        cursor = conexao.cursor()
+        sql = ("UPDATE alunos SET nome = %s, idade= %s, nota = %s WHERE "
+               "matricula = %s")
+        cursor.execute(sql, (nome, idade, nota, matricula))
+        conexao.commit()
+        print('Dados alterados com sucesso!')
+    except Exception as erro:
+        print(f"Erro ao atualizar! Erro: {erro}")
+
+
+def deletarAluno(matricula: int) -> None:
+    try:
+        if len(buscarPorMatricula(matricula)) >= 1:
+            cursor = conexao.cursor()
+            sql = "DELETE FROM alunos WHERE matricula = %s"
+            cursor.execute(sql, matricula)
+            conexao.commit()
+            print('Dados apagados com sucesso!')
+        else:
+            print('Matricula não encontrada!')
+    except Exception as erro:
+        print(f'Erro ao deletar! {erro}')
