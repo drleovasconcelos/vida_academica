@@ -1,0 +1,1365 @@
+Aula 1- https://www.invertexto.com/209aula01
+Aula 2- https://www.invertexto.com/209aula02
+Aula 3- https://www.invertexto.com/209aula03
+Aula 4- https://www.invertexto.com/209aula04
+Aula 5- https://www.invertexto.com/209aula05
+Aula 6- https://www.invertexto.com/209aula06
+Aula 7- https://www.invertexto.com/209aula07
+
+alt+z = a linha desce
+https://drive.google.com/file/d/1XEggK20XiCUzHKbp0111CUVxN7Ecj9Dr/view
+https://drive.google.com/file/d/1G4OGEowxem7xj6SMUtzFuIMPWmQEt5mJ/view
+https://drive.google.com/file/d/1LnxO1ZGc7qf3CGAc-4ETBzPLG4HMRttO/view
+https://drive.google.com/file/d/1Y1QDB_n_ssyuATyP95fyhOr7uh17I3O7/view
+56
+https://drive.google.com/file/d/1bK3JzKRJNPtof8Wr_JuTZhyYmd4Y1w8x/view
+
+*https://icons.getbootstrap.com/
+*dica de site - flexbox froggy 
+*https://www.w3schools.com/html/default.asp
+*Bootstrap 5 Quick Snippets (extensão interessante)
+*https://www.docker.com/ = máquina virtual, para rodar projetos.
+
+video - html: https://www.youtube.com/watch?v=wwqOJ2o84S4&pp=ygUVZm9ybXVsYXJpbyBodG1sIGUgY3Nz
+
+https://www.youtube.com/watch?v=wwqOJ2o84S4&pp=ygUVZm9ybXVsYXJpbyBodG1sIGUgY3Nz
+rocketseat
+
+https://www.youtube.com/watch?v=3a9Qd026DOI&list=PLnDvRpP8Bnez2LJGshXKtid2f-aUkFOqM
+-----------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <title>Aula 01</title>
+    </head>
+
+    <body>
+        <h1>Essa é a primeira aula</h1>
+        <h2>Este é um exemplo de h2</h2>
+        <h3>Este é um exemplo de h3</h3>
+        <h4>Este é um exemplo de h4</h4>
+        <h5>Este é um exemplo de h5</h5>
+        <h6>Este é um exemplo de h6</h6><s></s>
+        <p>Nosso primeiro módulo tem 8 aulas!</p>
+        <p align="right">Este é um segundo paragrafo</p>
+
+
+        <img src="infinity.jpg"
+        alt="Logo da infinity"
+        title="Logo da infinity">
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png">
+        
+        
+        <img src="imagens/html.jpg" width="300" height="300">
+    
+
+        <br>
+        <a href="https://www.google.com">Clique aqui!</a>
+
+        <br>
+        <a href="exemplo.html">Ir para Home</a>
+
+        
+
+
+
+    </body>
+</html>
+
+-----------------------------[
+
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        <h1>Bem vindo a home</h1>
+        <a href="aula01.html">Voltar</a>
+
+        <a href="#contato">Contato</a>
+        <a href="#sobre">Sobre</a>
+        <section id="contato">
+            <h1>Esta é a seção de contato</h1>
+        </section>
+
+        <section id="sobre">
+            <h1>Esta é a seção sobre</h1>
+        </section>
+        <a href="http://www.google.com">
+            <img src="infinity.jpg">
+        </a>
+
+revisão
+
+<!DOCTYPE html> <!--##área que o sistema consegue entender a pesquisa-->
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão - Aula 01</title>
+</head>
+<body> <!--copo da página (iremos trabalhar mais aqui)-->
+    <h1 align="right">Currículo</h1>
+    <p>
+        Leonardo Freire
+    </p>
+    <a href="https://google.com">google</a>
+    <a href="https://www.microsoft.com">microsoft</a> <!--links de direcionamento-->
+    <img src="sunset.jpg"> <!--colocar foto /podemos usar o URL para doiminuir o consumo da memória-->
+    <a href="http://www.google.com"> 
+        <img src="sunset.jpg" title="sol" alt="por do sol"> <!--transformei o link em uma imagem / aut= texto alternativo para deficiente visual-->
+    </a>
+</body>
+</html>
+
+    </body>
+</html>
+
+
+aula 2---------
+https://www.invertexto.com/209aula02
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leonardo Freire</title>
+</head>
+<body>
+    <ul>
+        <h1>Cursos que desejo realizar</h1>
+        <dl>
+        </dl><li><dt>Ciências da Computação</dt></li>
+            <dd>Graduação</dd>
+        <li>Fullstack</li>
+        <li>Ciências de Dados</li>
+        </dl>
+    </ul>
+    <hr>
+    <ol>
+        <h1>Cursos que realizei</h1>
+        <li>Primeiros Socorros</li>
+        <li>Github</li>
+        <li>Inglês</li>
+    </ol>
+</body>
+</html>++
+
+
+-----------------------Criando um formulário ---------------------------------
+
+<html>
+    <head>
+        <title>Cadastro</title>
+    </head>
+    <body>
+        <h1 align="center">Cadastro</h1>
+        <p align="center">Complete as Informações</p>
+        <fieldset align="center"> <!--Caixa que aparece no site-->
+            <form action="#" method="POST">  <!--action = informa para onde vai a informação do site-->
+                <label>Nome:</label> <br> <!--br = quebra a linha-->
+                <input type=""text" placeholder="Primeiro nome" required> <!--required é preenchimento obrigatório-->
+                <br>
+
+                <label for="sobrenome">Sobrenome:</label> <br> <!--br = quebra a linha-->
+                <input type=""text" placeholder="Segundo nome" id="sobrenome" required> <!--required é preenchimento obrigatório-->
+                <br>
+
+                <label>E-mail</label><br>
+                <input type=""email" placeholder="seu@email.com" required> <br>
+
+                <label>
+                    <b>De qual lado da aplicação você desenvolve?</b> <br>
+                </label>
+                <input type="radio" name="dev" valeu="front"> Front-End <br>   <!--name = seleciona apenas 1 na caixa-->
+                <input type="radio" name="dev" valeu="back"> Back-End <br>  <!-- value = determina o que foi escolhido-->
+                <input type="radio" name="dev" valeu="full"> Fullstack <br>
+
+                <!--criar caixa de seleção-->
+                <label>
+                    <b>Senioridade?</b>
+                </label> <br>
+                <select>
+                    <option disabled selected>--Selecione--</option>
+                    <option>Junior</option>
+                    <option>Pleno</option>
+                    <option>Senior</option>
+                </select> <br> 
+
+                <!--Criar uma coixa de seleção multipla / NAME = TUDO DA MESMA CATEGORIA-->
+                <label>
+                    <b>Selecione as linguagens que você trabalha?</b><br>
+                </label>
+                <input type="checkbox" name="lang" valeu="html"> HTML E CSS 
+                <input type="checkbox" name="lang" valeu="js"> JAVASCRIPT
+                <input type="checkbox" name="lang" valeu="py"> PYTHON
+                <input type="checkbox" name="lang" valeu="flash"> FLASK
+                <input type="checkbox" name="lang" valeu="django"> DJANGO
+                <br>
+                
+                <!--Caixa de texto-->
+                <label>
+                    <b>Conte suas experiência na área:</b>
+                </label> <br>
+                <textarea rows="4" cols="50"></textarea> <br>
+
+                <!--Criar um botão de envio-->
+                <input type="submit" value="enviar">
+            </form>
+        </fieldset>
+    </body>
+</html>
+
+---------------------------atividade em sala -------------------------
+<html>
+    <head>
+        <title>Cadstro de Produtos</title>
+    </head>
+    <body>
+        <h1 align="center">Código do Produto</h1>
+        <p align="center">Complete as informações</p>
+        <fieldset align="center"> 
+        <label>Código do Produto</label>
+            <input type="number" placeholder="Primeiro nome" required>
+            <br>
+        <label>Nome do produto</label>
+            <input type="text" placeholder="Nome do produto" required>
+            <br>
+        <label>Preço do Produto</label>
+            <input type="number" placeholder="Nome do produto" required>
+            <br>
+        <label>
+            <b>Categoria</b> <!--negrito-->
+        </label>
+        <select>
+            <option disabled selected>--Selecione--</option>
+            <option>Perifericos</option>
+            <option>Monitores</option>
+            <option>Processadores</option>
+            <option>Acessórios</option>
+        </select> <br>
+        
+        <label> 
+            <b> Descrição do produto:</b>
+        </label> <br>
+        <textarea rows="4" cols="50"></textarea>
+        <br>
+
+        <label>
+            <b>Quantidade em Estoque</b>
+        </label>
+        <input type="number" required> <br>
+
+        <input type="submit" value="Enviar">
+    </body>
+
+</html>
+
+
+
+__________________revisão________________
+<html>
+    <head>
+        <title>Aula de Revisão</title>
+    </head>
+    <body>
+        <h1>Cadastro de produtos</h1>
+        <form action="#" method="GET">
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" required><br>
+            <label for="codigo">Produto:</label>
+            <input type="text" id="produto" required><br>
+            <label for="codigo">Preço:</label>
+            <input type="number" id="preco" required placeholder="Apenas Números"><br>
+            
+            <label for="categoria">Categoria:</label>
+            
+            <select>
+                <option disabled selected>--Selecione--</option>
+                <option value="acessórios">Acessórios</option>
+                <option value="periféricos">Periféricos</option>
+                <option value="smartphones">Smartphones</option>
+                <option value="notebooks">Notebooks</option>
+            </select>  <br>
+
+            <label for="disponivel">Disponível</label>
+            <input type="checkbox" id="disponivel"> <br>    
+            
+            <label for="descricao">Descrição</label>
+            <textarea name="descricao" columns="5" rows="4"></textarea> <br>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </body>
+</html>
+
+
++++++++++++++++aula 3+++++++++++++++=
+agrupamento - tags para organização <div> (restante) <span> (mais utilizado em texto)
+<nav> menu do site - topo do site
+<footer> roda pé
+
+<html>
+    <head>
+        <title>
+            Aula 03 - Agrupamento
+        </title>
+    </head>
+    <body>
+        <div id="header">
+            <h1><span style="color: rgb(51, 143, 25);">Título</span> da página</h1> 
+            <!-- span me permite que eu trabalhe isolado-->
+            <h2>Descrição do Título</h2>
+        </div>
+        <div id="content">
+            <p>Conteúdo da página</p>
+        </div>
+
+        <header>
+            <h1>Logo</h1>
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Contato</li>
+                    <li>Sobre</li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="conteudo">
+            <h1>Título</h1>
+            <p>Descrição do Conteúdo</p>
+        </section>
+        <footer>
+            <p>Todos os direitos reservados</p>
+        </footer>
+
+        <main>
+            <section>
+                <h1>Título 1</h1>
+                <p>Conteúdo 1</p>
+            </section>
+            <section>
+                <h1>Título 2</h1>
+                <p>Conteúdo 2</p>
+            </section>
+        </main>
+    </body>
+</html>
+
+
+atividade 0
+
+<html>
+    <head>
+        <title>Compras</title>
+        <h1>Título1</h1>
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Contato</li>
+                    <li>Sobre</li>
+                </ul>
+            </nav>      
+    </head>
+    <main>
+        <article>
+            <h1>Título 1</h1>
+            <p>Conteúdo 1</p>
+        </article>
+        <article>
+            <h1>Título 2</h1>
+            <p>Conteúdo 2</p>
+        </article>
+    </main>
+    <aside>
+        <div>Artigos </div>
+    </aside>
+    
+    <footer>Direitos Reservados</footer>
+</html>
+
+++++++++++++++++++++++++++++++=tabela aula 3+++++++++++++
+<!-- Atividade 01 -->
+<!--
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+</head>
+<body>
+    <table border="1" style="border-collapse: collapse;"> <!-- uniu as bordas--
+        <tr> <!--cabeçalho dad tabela tr(tabela horizontal) th(tabela na vertical)--
+            <th>Nome</th> 
+            <th>Marca</th>
+            <th>Ano</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td>Volkswagen</td>
+            <td>Golf</td>
+            <td>2009</td>
+            <th>R$ 38.500</th>
+        </tr>
+        <tr>
+            <td>Fiat</td>
+            <td>Palio</td>
+            <td>2010</td>
+            <th>R$ 19.750</th>
+        </tr>
+        <tr>
+            <td>Honda</td>
+            <td>Civic</td>
+            <td>2012</td>
+            <th>R$ 61.500</th>
+        </tr>
+        <tfoot>
+            <tr>                
+                <td colspan="4">Todos os usuários</td>
+            </tr>
+        </tfoot>
+    </table>
+    
+</body>
+</html>
+-->
+
+<!-- Atividade 2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Tabela</th>
+            <th>Hora da Saída</th>
+            <th>Hora da Chegada</th>
+            <th>Classe do Ônibus</th>
+            <th>Tarifa normal</th>
+            <th>Frequência</th>
+        </tr>
+        <tr>
+            <th>Cidade A</th>
+            <td>6</td>
+            <td>14</td>
+            <td>Convencional</td>
+            <td>20</td>
+            <td>Diária</td>
+        </tr>
+        <tr>
+            <th>Cidade B</th>
+            <td>12</td>
+            <td>15</td>
+            <td>Leito</td>
+            <td>15</td>
+            <td>Domingo</td>
+        </tr>
+        <tfoot>
+            <tr>                
+                <td colspan="6">Horário dos Ônibus</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
+
+
+Atividade aula 4
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo - Seletores simples</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0; /* preenchimento/ espaçamento interno*/
+            font-family: Helvetica;
+            background-color: #f4f4f4;
+
+        }
+/* usado como seletor universal */
+        a {  /*para link*/
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;  /*10px - top-bottom 15* left-right*/
+            display: inline-block; /* inline - links tem altura agora*/
+            font-weight: bold;
+        }
+
+        /* pegar elementos da mesma class -> .semantico */
+        .semantico {
+            padding: 20px; /* 20px para todas as direções */
+            margin: 10px;
+            background-color: #fff;
+            border-radius: 8px; /* arredonda os cantos */
+        }
+/* pegar o elemento do ID */
+        #nav-bar {
+          background-color: #333;
+          color: white;  
+          text-align: center;
+        }
+        article {
+            float: left;
+            width: 70%
+        }
+       
+        aside {
+            float: left;
+            width: 20%
+        }
+
+        footer {
+            clear: both; /* não ficar jogado de lado, desta forma fazemos essa limpeza */
+            text-align: center;
+            color: black;
+        }
+        /* selecionando todos os parágrafos dentro de um footer (rodapé) <footer><p><p></footer>*/
+        footer p {
+            background-color: #333;
+            color: white;         
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="semantico">
+        <h1>Aprendendo seletores - CSS</h1>
+        <nav class="semantico" id="nav-bar">
+            <a href="#">Home</a>
+            <a href="#">Sobre</a>
+            <a href="#">Serviços</a>
+            <a href="#">Contatos</a>
+        </nav>
+    </header>
+    <main>
+        <article class="semantico">
+            <h2>Titulo do artigo</h2>
+            <p>Este é o conteúdo do nosso artigo. 
+                Este artigo foi produzido pelos alunos
+                da turma 209 DFS da Infinity school
+            </p>
+        </article>
+        <aside class="semantico">
+            <h3>Sobre o autor</h3>
+            <p>
+                Esta é uma descrição sobre o autor.
+                Siga-o nas redes sociais, instagram,
+                facebook e twitter.
+            </p>
+        </aside>
+    </main>
+    <footer class="semantico">
+        <p>Todos os direitos reservados - 2024®</p>
+    </footer>
+
+</body>
+</html>
+
+
+-------------------------------Arquivo principal ----------------------------
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo - Seletores simples</title>
+    <link rel="stylesheet" href="style2.css">
+
+</head>
+<body>
+    <header class="semantico">
+        <h1>Aprendendo seletores - CSS</h1>
+        <nav class="semantico" id="nav-bar">
+            <a href="#">Home</a>
+            <a href="#">Sobre</a>
+            <a href="#">Serviços</a>
+            <a href="#">Contatos</a>
+        </nav>
+    </header>
+    <main>
+        <article class="semantico">
+            <h2>Titulo do artigo</h2>
+            <p>Este é o conteúdo do nosso artigo. 
+                Este artigo foi produzido pelos alunos
+                da turma 209 DFS da Infinity school
+            </p>
+        </article>
+        <aside class="semantico">
+            <h3>Sobre o autor</h3>
+            <p>
+                Esta é uma descrição sobre o autor.
+                Siga-o nas redes sociais, instagram,
+                facebook e twitter.
+            </p>
+        </aside>
+    </main>
+    <footer class="semantico">
+        <p>Todos os direitos reservados - 2024®</p>
+    </footer>
+
+</body>
+</html>
+
+Style2.css --------------------------------
+
+        * {
+            margin: 0;
+            padding: 0; /* preenchimento/ espaçamento interno*/
+            font-family: Helvetica;
+            background-color: #f4f4f4;
+
+        }
+/* usado como seletor universal */
+        a {  /*para link*/
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;  /*10px - top-bottom 15* left-right*/
+            display: inline-block; /* inline - links tem altura agora*/
+            font-weight: bold;
+        }
+
+        /* pegar elementos da mesma class -> .semantico */
+        .semantico {
+            padding: 20px; /* 20px para todas as direções */
+            margin: 10px;
+            background-color: #fff;
+            border-radius: 8px; /* arredonda os cantos */
+        }
+/* pegar o elemento do ID */
+        #nav-bar {
+          background-color: #333;
+          color: white;  
+          text-align: center;
+        }
+        article {
+            float: left;
+            width: 70%
+        }
+       
+        aside {
+            float: left;
+            width: 20%
+        }
+
+        footer {
+            clear: both; /* não ficar jogado de lado, desta forma fazemos essa limpeza */
+            text-align: center;
+            color: black;
+        }
+        /* selecionando todos os parágrafos dentro de um footer (rodapé) <footer><p><p></footer>*/
+        footer p {
+            background-color: #333;
+            color: white;         
+            text-decoration: underline;
+        }
+
+==============================Aula 5 - revisão da aula 4====================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão - Aula 05</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="fixed">FIXED</div>
+        <div id="relative">RELATIVE</div>
+        <div id="absolute">ABSOLUTE</div>
+        <div id="sticky">STICKY</div>
+    </div>
+</body>
+</html>
+
+css
+* {
+    box-sizing: border-box; 
+    /* tudo é visto como caixa, assim definimos */
+    margin: 0;
+    padding: 0;
+}
+
+/* sempre usar # para estilizar um ID */
+#container{
+    width: 400px;
+    height: 400px;
+    border: 1px solid #000
+}
+
+#container div{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+}
+
+body {
+    height: 150vh;
+}
+/* vh permite que role a página / fixed permanece fíxo */
+#fixed{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#relative{
+    position: relative;
+    left: 150px;
+}
+/* relative se posiciona a partir de zero */
+#absolute{
+    position: absolute;
+    left: 135px;
+}
+/* se movimenta de acordo com a posição acima dele */
+#sticky{
+    position: sticky;
+    left: 300px;
+    top: 300px;
+}
+/* ele se movimenta, mas é barrado quando aparece outro em cima */
+
+html - explicação flex================
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsividade</title>
+    <link rel="stylesheet" href="aula06.css">
+</head>
+<body>
+    <h1>Aula 06 - Responsividade</h1>
+    <div id="container"></div>
+    <div id="box"></div>
+
+    <div id="flex-container">
+        <div class="flex-item">Leonardo</div>
+        <div class="flex-item">Freire</div>
+        <div class="flex-item">Vasconcelos</div>
+        <div class="flex-item">Leonardo</div>
+        <div class="flex-item">Freire</div>
+        <div class="flex-item">Vasconcelos</div>
+    </div>
+</body>
+</html>
+
+
+====css
+
+:root {
+    font-size: 16px;
+}
+
+#container {
+    width: 6.25rem;
+    height: 6.25rem;
+    border: 1px solid black;
+}
+/* unidade de medida relativa 
+(se adatam de acordo com a medida da tela
+- vh vw (se ajustam ao tamanho de tela) rem (fixo, porem se adapta ao tamanho da fonte*/
+
+#box {
+    width: 50vw;
+    height: 50vh;
+    border: 1px solid black;
+}
+
+/* flexbox - permite tratar a caixa como flexivel */
+#flex-container{
+    height: 500px;
+    width: 500px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row; /* define o eixo principal */
+    justify-content: space-around; /* alinhar elementos na horizontal */
+    align-items: center; /*alinha na vertical*/
+    flex-wrap: nowrap; /*joga para baixo*/
+    gap: 10px; /*cria o espaçamento*/
+} 
+/* flex-start / space-around / space-between /... tem que ver */
+
+.flex-item {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    background-color: crimson;
+}
+
+
+Efeito ------------------------------- acordeon ------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex - Acordeon</title>
+    <link rel="stylesheet" href="acordeon.css">
+</head>
+<body>
+    <div class="container">
+        <div class="acordeon" style="background-image:
+         url(https://images.pexels.com/photos/283196/pexels-photo-283196.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);"></div>
+
+        <div class="acordeon" style="background-image:
+        url(https://images.pexels.com/photos/692064/pexels-photo-692064.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);"></div>
+
+        <div class="acordeon" style="background-image:
+        url(https://images.pexels.com/photos/97904/pexels-photo-97904.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);"></div>
+
+        <div class="acordeon" style="background-image:
+        url(https://images.pexels.com/photos/681405/pexels-photo-681405.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);"></div>
+
+        <div class="acordeon" style="background-image:
+        url(https://images.pexels.com/photos/724712/pexels-photo-724712.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);"></div>
+
+        <div class="acordeon" style="background-image:
+        url(https://images.pexels.com/photos/192774/pexels-photo-192774.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);"></div>
+
+
+        <div class="acordeon" style="background-image:
+        url(https://images.pexels.com/photos/681335/pexels-photo-681335.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);"></div>
+
+
+        <div class="acordeon" style="background-image:
+        url(https://images.pexels.com/photos/731082/pexels-photo-731082.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);"></div>
+
+    </div>
+</body>
+</html>
+
+-------------------------------------------- css ------------------------------------------------
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.acordeon {
+    flex: 1;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    transition: .6s;
+}
+
+.acordeon:hover {
+    flex-basis: 65vh;
+}
+
+
+_____________________________revisão________________________-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão</title>
+    <style>
+        .container {
+            height: 400px;
+            width: 400px; /* se eu não defino o tamanho, fica na tela toda */
+            border: 1px solid #000;
+            display: flex; /*muda a direção*/
+            flex-direction: row; /*row ou colums - define a direção do eixo*/
+            justify-content: center; /* flex-start / center / flex-end = posições */
+            /* justify-content: space-around / space-evenly / space-between; - ganha a mesma margem */
+            align-items: stretch; /* fica esticado % baseline = linha no meio, mantendo todos na mesma altura */
+        }
+        .item {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            border: 1px solid black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div> <!--.item*3-->
+        <div class="item">2</div>
+        <div class="item">3</div>
+        
+        </div>
+    </div>
+</body>
+</html>
+
+________________________
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 07</title>
+    <!-- link do css fica no final do head -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+    <!-- btn-primary - estilizado (retangulo azul ao redor do nome exemplo)  -->
+    <button class="btn btn-primary btn-lg">Exemplo</button>
+    <button class="btn btn-secondary btn-sm">Exemplo</button> 
+    <button class="btn btn-danger">Exemplo</button>
+    <button class="btn btn-warning">Exemplo</button>
+    <button class="btn btn-success">Exemplo</button>
+
+
+    <div class="container.xl bg-primary border-black p-0" style="height: 100px;">Exemplo 
+        <div class="bg-dark h-25 w-50 mt-3"></div>
+    </div>
+
+    <div class="container-xl d-flex flex-row justify-content-center align-items-center min-vh-100">
+        <h1>Utilizando flex-container</h1>
+    </div>
+
+    <div class="container-xl d-flex gap-5 flex-column justify-content-center align-items-center min-vh-100">
+        <span class="bg-primary text-white px-5 py-3">Item 1</span>
+        <span class="bg-primary text-white px-5 py-3">Item 1</span>
+        <span class="bg-primary text-white px-5 py-3">Item 1</span>
+    </div>
+    
+    <!-- link do js fica no final do body -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+--------------------------------------------------
+*menu responsivo*
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 07</title>
+    <!-- link do css fica no final do head -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="#" class="navbar-brand">Infinity</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Togglenavigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-nav">
+            <ul class="navbar-nav">
+                <li class="navbar-item-active">
+                    <a href="#" class="nav-link">
+                        <span class="sr-only"></span>Home</a>
+                </li>
+                <li class="navbar-item-active">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+                <li class="navbar-item-active">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="navbar-item-active">
+                    <a href="#" class="nav-link">Products</a>
+                </li>                
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- link do js fica no final do body -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+-----------------------------------------------------portifólio---------------------------------
+
+
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portifólio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--navbar navbar-expand-lg: se adapta ao tamanho da tela / brand = para logo-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Leonardo Freire Vasconcelos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="#sobre" class="nav-link active">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projetos" class="nav-link">Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contato" class="nav-link">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Hero section / lead tem mais destaque-->
+    <header class="bg-primary text-white text-center p-5">
+        <h1>Bem vindo ao meu portifólio</h1>
+        <p class="lead">Sou Acadêmico de Ciências da Computação e Desenvolvedor Fullstack da Infinity Scholl
+        </p>
+    </header>
+
+    <!--Section Sobre-->
+    <section class="py-5" id="sobre">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <p>Sou acadêmico de Ciências da Computação e Trabalho como Desenvolvimento Fullstack, e estou buscando projetos na área HTML, CSS e Javascript</p>
+        </div>
+    </section>
+
+    <!--Sections Skills-->
+    <section class="bg-light py-5" id="skills">
+        <div class="container">
+            <h2>Minhas Skills</h2>
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>Frontend</h3>
+                    <p>HTML, CSS e Javascript</p>
+                </div>
+
+                <div class="col-lg-4">
+                    <h3>Backend</h3>
+                    <p>Python, Java,  C++, NodeJs</p>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h3>Ferramentas e Outros</h3>
+                    <p>Git, Github, Docker, UX, Análise de Requisitos, Banco de Dados (MySQL)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--section projects / atalho =id é #projetos + classe é .container-->
+    <section id="projetos" class="py-5">
+        <div class="container">
+            <h2>Projetos</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="#" class="card-img-top" alt="projeto-1">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Projeto Um
+                            </h5>
+                            <p class="card-text">
+                                Este é o projeto de encerramento de módulo
+                            </p>
+                            <a href="#" class="btn btn-primary">Mais Info</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="#" class="card-img-top" alt="projeto-2">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Projeto Dois
+                            </h5>
+                            <p class="card-text">
+                                Este é o projeto de encerramento de módulo
+                            </p>
+                            <a href="#" class="btn btn-primary">Mais Info</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="#" class="card-img-top" alt="projeto-3">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Projeto Três
+                            </h5>
+                            <p class="card-text">
+                                Este é o projeto de encerramento de módulo
+                            </p>
+                            <a href="#" class="btn btn-primary">Mais Info</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+-------------------------------
+
+style.css
+body {
+    padding-top: 60px;
+}
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+---------------------------portifólio do professor 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Meu portifólio</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a href="#" class="navbar-brand">Infinity</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navBar">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="#sobre" class="nav-link active">Sobre</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#skills" class="nav-link">Skills</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#projects" class="nav-link">Projetos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#contato" class="nav-link">Contato</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero section -->
+        <header class="bg-primary text-white text-center p-5">
+            <h1>Bem vindo ao meu portfólio</h1>
+            <p class="lead">Sou um desenvolvedor fullstack da infinity school
+            </p>
+        </header>   
+        
+        <!-- Section sobre -->
+        <section class="py-5" id="sobre">
+            <div class="container">
+                <h2>Sobre mim</h2>
+                <p>
+                    Trabalho com desenvolvimento e estou buscando projetos na area de HTML, CSS e Javascript
+                </p>
+            </div>
+        </section>
+
+
+        <!-- section skills -->
+        <section class="bg-light py-5" id="skills">
+            <div class="container">
+                <h2>Minhas skills</h2>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h3>Frontend</h3>
+                        <p>HTML, CSS, Javascript</p>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h3>Backend</h3>
+                        <p>NodeJs, Python, Java</p>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h3>Ferramentas e outros</h3>
+                        <p>Git, Github, Docker</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- section projects -->
+        <section id="projects" class="py-5">
+            <div class="container">
+                <h2>Projetos</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="#" class="card-img-top" alt="projeto-1">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Projeto Um
+                                </h5>
+                                <p class="card-text">
+                                    Este é o projeto de encerramento de módulo
+                                </p>
+                                <a href="#" class="btn btn-primary">Mais info</a>
+                            </div> <!-- card-body -->
+
+                        </div> <!-- card -->
+                    </div> <!-- col-md-4 -->
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="#" class="card-img-top" alt="projeto-2">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Projeto dois
+                                </h5>
+                                <p class="card-text">
+                                    Este é o projeto de Metade de módulo
+                                </p>
+                                <a href="#" class="btn btn-primary">Mais info</a>
+                            </div> <!-- card-body -->
+
+                        </div> <!-- card -->
+                    </div> <!-- col-md-4 -->
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="#" class="card-img-top" alt="projeto-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Projeto três
+                                </h5>
+                                <p class="card-text">
+                                    Este é o projeto de Final de curso
+                                </p>
+                                <a href="#" class="btn btn-primary">Mais info</a>
+                            </div> <!-- card-body -->
+
+                        </div> <!-- card -->
+                    </div> <!-- col-md-4 -->
+                </div> <!-- row-->
+            </div> <!-- container -->
+        </section>
+
+        <section id="contato" class="py-5">
+            <div class="container">
+                <h2>Entre em contato</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">
+                            Nome
+                        </label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">
+                            Email
+                        </label>
+                        <input type="text" class="form-control" id="email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="message" class="form-label">
+                            Mensagem
+                        </label>
+                        <textarea id="message" class="form-control" rows="3">
+                        </textarea>
+                    </div>
+                    <button class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </section>
+
+
+        <footer class="bg-dark text-white p-4 text-center">
+            <div class="container">
+                <p>Minhas redes sociais</p>
+                <a href="http://www.github.com/kcarww" class="text-white">
+                    <i class="bi bi-github" style="font-size: 24px"></i>
+                </a>
+                
+                <a href="http://www.instagram.com/kcarw" class="text-white">
+                    <i class="bi bi-instagram" style="font-size: 24px"></i>
+                </a>
+                
+                <a href="mailto:carlos.oe.cc@gmail.com" class="text-white">
+                    <i class="bi bi-envelope-fill" style="font-size: 24px"></i>
+                </a>
+            </div>
+        </footer>
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+-----------------css----------------
+styles.css
+body {
+    padding-top: 80px;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+section {
+    margin-top: 20px; 
+    min-height: 100vh;
+}
+
