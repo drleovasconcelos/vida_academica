@@ -1680,4 +1680,1189 @@ public class Main {
 // Exercício 04:
 // Crie um método para visualizar os itens do vetor no código do exercício 02.
 
+
+POO
+
+POO em pyton - java tá mais embaixo
+# # classe e objeto
+
+# matricula = 1
+# nome = "Leo"
+# idade = 38
+# curso = "Dev Fullstack"
+# faltas = 0
+
+# def atribuirFalta():
+#     global faltas
+#     faltas += 1
+
+# definir uma class
+class Aluno:
+    # colocar o método init (Método Construtor - ela que irá criar o objeto)
+    # def __init__(self, aqui é para colocar o que a pessoa irá passar):
+    def __init__(self, matricula, nome, idade, curso):
+        # Aqui ficam os atributos (caracteristicas do objeto)
+        # self.nome_do_atributo = valor_do_atributo / todo aluno criado começará com zero faltas
+        self.matricula = matricula
+        self.nome = nome
+        self.idade = idade
+        self.curso = curso
+        self.faltas = 0 
+
+# criando uma função
+    def exibirDados(self):
+        print('-----DADOS DOS ALUNOS------')
+        print(f'Matricula: {self.matricula}')
+        print(f'Nome: {self.nome}')
+        print(f'Idade: {self.idade}')
+        print(f'Curso: {self.curso}')
+        print(f'Faltas: {self.faltas}')
+
+# # 3. Na classe aluno crie uma nova função chamada atribuir faltas.
+# # Sempre que a função for chamada a falta do aluno deverá aumentar +1
+    def atribuirFaltas(self):
+        self.faltas = self.faltas + 1
+
+# Como criar um objeto
+aluno1 = Aluno(1, "jonas", 21, "Dev Fullstack")
+aluno2 = Aluno(2, "Mariana", 20, "Design Fullstack")
+
+# Como acessar um atributo de um objeto?
+print(f'Nome do aluno1: {aluno1.nome}')
+print(f'Nome do aluno2: {aluno2.nome}')
+
+# alterar um atributo
+aluno1.nome = "Jonas Lopes"
+print(f'Nome do aluno1: {aluno1.nome}')
+
+# Como chamar uma função de um objeto? print já está dentro da função / se fosse retorno teria que colocar o print
+aluno1.exibirDados()
+aluno2.exibirDados()
+
+aluno1.atribuirFaltas()
+aluno1.atribuirFaltas()
+aluno1.atribuirFaltas()
+aluno1.exibirDados()
+aluno2.exibirDados()
+
+# EXERCÍCIOS:
+
+# 1. Crie uma classe para representar uma conta bancária para representar os atributos: Número da Conta , Nome do Cliente, Saldo
+class ContaBancária:
+    def __init__(self, numero_conta, nome_cliente, saldo):
+        self.numero_conta = numero_conta
+        self.nome_cliente = nome_cliente
+        self.saldo = saldo
+
+    def depositar(self, valor):
+        self.saldo = valor + self.saldo
+        print('Depositado com Sucesso')
+        print(f'Saldo Atual: {self.saldo}')
+
+    def sacar(self, valor):
+        if self.saldo >= valor:
+            self.saldo -= valor
+            print(f'Saque realizado com sucesso! Saldo: {self.saldo}')
+        else:
+            print('Saldo insuficiente!')
+
+contaBancaria1 = ContaBancária(151515, "Leonardo", 1000)
+contaBancaria2 = ContaBancária(123456, "Carlos", 5000)
+
+print('-----DADOS BANCÁRIOS------')
+print(f'Conta Bancaria 1: {contaBancaria1.nome_cliente}')
+print(f'Conta Bancaria 2: {contaBancaria2.saldo}')
+contaBancaria1.depositar(1500)
+contaBancaria1.sacar(100)
+contaBancaria1.sacar(1000)
+
+
+--- desafio incompleto ----
+class Elevador:
+    def __init__(self, capacidade, qtd_pessoas, qtd_andares):
+        self.capacidade = capacidade
+        self.qtd_pessoas = qtd_pessoas
+        self.qtd_andares = qtd_andares
+        self.andar_atual = 0
+
+    def subir(self):
+        if (self.andar_atual < self.qtd_andares):
+            self.andar_atual = self.andar_atual + 1
+            print('Subindo mais um andar')
+        else:
+            print('Não foi permitido')
+                    
+    def descer(self):
+        if (self.andar_atual > 0):
+            self.andar_atual = self.andar_atual - 1
+            print('Descendo mais um andar')
+        else:
+            print('Nao foi permitido')
+
+    def lotacao(self, pessoas ):
+        if (self.capacidade < q):
+            self.qtd_pessoas = pessoas + 1
+            entrarPessoas = self.qtd_pessoas - capacidade
+            print('Pode entrar mais {entrarpessoas}')
+        else:
+            print('EStá lotado')
+
+# - entrar(qtd) -> Recebe a quantidade de pessoas que vão entrar no elevador, não pode ultrapassar a capacidade
+# - sair(qtd) -> Recebe o numero de pessoas que vão sair do elevador, não pode ficar negativo
+
+elevador1 = Elevador(10, 2, 10)
+elevador1.subir()
+elevador1.descer()
+elevador1.lotacao()
+
+
+
+
+
+
+
+-------------------------------------
+
+
+
+// dontpad.com/estaciocentrojava
+// import java.util.Scanner;
+// import java.awt.geom.NoninvertibleTransformException;
+
+// public class Main {
+//   public static void main(String[] args) {
+//     System.out.println(10*50);
+//     int n1 = 10;
+//     int n2 = 50;
+//     System.out.println(n1*n2);
+//   }
+// }
+
+// public class Main {
+//   public static void main(String[] args) {
+//     System.out.println((8+9+7)/3);
+//   }
+//}
+
+// public class Main {
+//   public static void main(String[] args) {
+//     int n1 = 8;
+//     int n2 = 9;
+//     int n3 = 7;
+//     System.out.println((n1+n2+n3)/3);
+//   }
+// }
+
+// public class Main {
+//   public static void main(String[] args) {
+//     String nome = "Leonardo";
+//     String sobrenome = "Freire";
+//     System.out.println(nome + " " + sobrenome);
+//   }
+// }
+
+
+// public class Main {
+//   public static void main(String[] args) {
+//     int n1 = 8;
+//     int n2 = 9;
+//     float n3 = 7.0f;
+//     float n4 = 4.5f;
+//     System.out.println((n1+n2+n3+n4)/4);
+//  }
+// }
+
+// para letra maiuscula = .toUpperCase()
+// public class Main {
+//   public static void main(String[] args) {
+//   String txt = "Leonardo";
+//   System.out.println(txt.toUpperCase());
+// }
+// }
+
+// para letra minuscula = .toLowerCase()
+// public class Main {
+//   public static void main(String[] args) {
+//   String txt = "Leonardo";
+//   System.out.println(txt.toLowerCase());
+// }
+// }
+
+// public class Main {
+//   public static void main(String[] args) {
+//     System.out.println("Estou utilizando a linguagem java");
+//   }
+// }
+
+// como entrar dados SCANNER
+// import java.util.Scanner;
+// public class Main {
+//   public static void main(String[] args) {
+//       int numero;
+//       Scanner entrada = new Scanner(System.in);
+//       System.out.print("Digite o numero: ");
+//       numero = entrada.nextInt();
+//       System.out.println("O número informado é: " + numero);
+      
+//   }
+// }
+
+// como entrar dados SCANNER
+// import java.util.Scanner;
+// public class Main {
+//   public static void main(String[] args) {
+//       Scanner entrada = new Scanner(System.in); 
+//       int n1, n2, n3, n4;
+     
+//       System.out.print("Digite a nota 1: ");
+//       n1 = entrada.nextInt();
+      
+//       System.out.print("Digite a nota 2: ");
+//       n2 = entrada.nextInt();
+      
+//       System.out.print("Digite a nota 3: ");
+//       n3 = entrada.nextInt();
+      
+//       System.out.print("Digite a nota 4: ");
+//       n4 = entrada.nextInt();
+      
+//       int soma = n1+n2+n3+n4;
+//       float media = soma / 4;;
+      
+//       System.out.println("A média é: " + media);
+      
+//   }
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//   public static void main(String[] args) {
+//       Scanner entrada = new Scanner(System.in); 
+//       int n1;
+//       System.out.print("Digite a medida em metros: ");
+//       n1 = entrada.nextInt();
+//       float centimetros = n1 * 100;
+//       System.out.printf("%d metros vale %.2f centímetros\n", n1, centimetros);
+//   }
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//   public static void main(String[] args) {
+//       Scanner entrada = new Scanner(System.in); 
+//       int raio;
+//       System.out.print("Digite o raio: ");
+//       raio = entrada.nextInt();
+//       float area = 3.14f * (raio * raio);
+//       System.out.printf("Área do circulo é: %f", area);
+//   }
+// }
+
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int lado;
+//         System.out.println("Digite o lado: ");
+//         lado = entrada.nextInt();
+//         float area = lado * lado;
+//         System.out.printf("Calcule a área do quadrado: %f", area);
+//     }
+// }
+
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int lado;
+//         System.out.println("Digite o lado: ");
+//         lado = entrada.nextInt();
+//         float area = lado * lado;
+//         System.out.printf("Calcule a área do quadrado: %f", area);
+//     }
+// }
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float valorDolar;
+//         System.out.println("Digite o valor em dolar: ");
+//         valorDolar = entrada.nextInt();
+//         float real = valorDolar * 4.97f;
+//         System.out.printf("Valor em real: " + String.format("%.2f", real) + "R$");
+//     }
+// }
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero;
+//         System.out.println("Digite o numero: ");
+//         numero = entrada.nextInt();
+//         if (numero >= 0) {
+//             System.out.printf("Número é Positivo");
+//         } else {
+//             System.out.printf("Número é Negativo");
+//         }
+//     }
+// }
+
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero;
+//         System.out.println("Digite o numero: ");
+//         numero = entrada.nextInt();
+//         if (numero == 0) {
+//             System.out.printf("Número é Zero");
+//         } else {
+//             System.out.printf("Número não é Zero");
+//         }
+//     }
+// }
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero;
+//         System.out.println("Digite o numero: ");
+//         numero = entrada.nextInt();
+//         if (numero == 0) {
+//             System.out.printf("Número é Zero");
+//         } else if (numero > 0) {
+//             System.out.printf("Número é Positivo");
+//         } else {
+//             System.out.printf("Número é Negativo");
+//         }
+//     } 
+// }
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero;
+//         System.out.println("Digite o numero: ");
+//         numero = entrada.nextInt();
+//         if (numero == 0) {
+//             System.out.printf("Número é Zero");
+//         } else if (numero > 0) {
+//             System.out.printf("Número é Positivo");
+//         } else {
+//             System.out.printf("Número é Negativo");
+//         }
+//     } 
+// }
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 0;
+//         while (contador < 101) {
+//             System.out.println("Contador: " + contador);
+//             contador = contador + 1;
+//         }
+//     } 
+// }
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 10;
+//         while (contador >= 0) {
+//             System.out.println("Contador: " + contador);
+//             contador = contador - 1;
+//         }
+//     } 
+// }
+
+// DO - WHILE - realiza antes de verificar
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 0;
+//         do {
+//             System.out.println("Contador: " + contador);
+//             contador = contador + 1;
+//         } while (contador <= 50);
+//     } 
+// }
+
+// Número impar
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 50;
+//         do {
+//             if (contador % 2 != 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= 150);
+//     } 
+// }
+
+// Número par
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 50;
+//         do {
+//             if (contador % 2 == 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= 150);
+//     } 
+// }
+
+// pares de 0 a 50
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 0;
+//         do {
+//             if (contador % 2 == 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= 50);
+//     } 
+// }
+
+// impares -30 a -5
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+        
+//         int contador = -30;
+//         do {
+//             if (contador % 2 != 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= -5);
+//     } 
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero1, numero2;
+//         System.out.println("Digite o primeiro número: ");
+//         numero1 = entrada.nextInt();
+//         System.out.println("Digite o segundo número: ");
+//         numero2 = entrada.nextInt();
+//         int contador = 0;
+//         do {
+//             if (contador % 2 == 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= numero1);
+//         do {
+//             if (contador % 2 != 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= numero2);
+//     } 
+// }
+
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero1, numero2, opcao;
+//         System.out.println("Digite o primeiro número: ");
+//         numero1 = entrada.nextInt();
+//         System.out.println("Digite o segundo número: ");
+//         numero2 = entrada.nextInt();
+//         System.out.println("Digite 1 - Par  ou 2 - Impar: ");
+//         opcao = entrada.nextInt();
+//         int contador = 0;
+//         if (opcao == 1) {
+//             do {
+//                 if (contador % 2 == 0)
+//                     System.out.println("Contador: " + contador);
+//                     contador = contador + 1;
+//             } while (contador <= numero1);
+//         }
+//         else {
+//             do {
+//                 if (contador % 2 != 0)
+//                     System.out.println("Contador: " + contador);
+//                     contador = contador + 1;
+//             } while (contador <= numero2);
+//         }
+//     } 
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         for (int i = 0; i < 5; i++){
+//             System.out.println("Contador: " + i);
+//         }
+//     }
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         for (int i = 0; i < 101; i++){
+//             if (i % 2 != 0)
+//             System.out.println("Contador: " + i);
+//         }
+//     }
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int numero1, numero2,opcao;
+//         System.out.println("Digite o primeiro número: ");
+//         numero1 = entrada.nextInt();
+//         System.out.println("Digite o segundo número: ");
+//         numero2 = entrada.nextInt();
+//         System.out.println("Digite 1 - Par  ou 2 - Impar: ");
+//         opcao = entrada.nextInt();
+//         if (opcao == 1){
+//             for (int i = numero1; i <= numero2; i++){
+//                 if (i % 2 == 0)
+//                 System.out.println("Contador: " + i);
+//             }
+//         }
+//         else{
+//             for (int i = numero1; i <= numero2; i++){
+//                 if (i % 2 != 0)
+//                 System.out.println("Contador: " + i);
+//             }
+//         }
+//     }
+// }
+
+// // digite o numero que começa e termina e some todos os números
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int numero1, numero2,opcao;
+//         System.out.println("Digite o primeiro número: ");
+//         numero1 = entrada.nextInt();
+//         System.out.println("Digite o segundo número: ");
+//         numero2 = entrada.nextInt();
+//         for (int i = numero1; i <= numero2; i++){
+//                 ystem.out.println("Contador: " + i);
+//             }
+//         }
+//         else{
+//             for (int i = numero1; i <= numero2; i++){
+//                 if (i % 2 != 0)
+//                 System.out.println("Contador: " + i);
+//             }
+//         }
+//     }
+// }
+
+// For (foreach) 
+
+// public class Main {
+//     public static void main(String[] args) {
+//         int [] numeros = {5, 7, 8, 9, 0};
+//         for (int numero : numeros) {
+//             System.out.println("Numero: " + numero);
+//         }
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         string [] palavras = {ceara, sera, campeao};
+//         for ( palavra : palavras) {
+//             System.out.println("Numero: " + palavra);
+//         }
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Cachorro cachorro_1 = new Cachorro();
+//         cachorro_1.nome = "Epaminondas";
+//         cachorro_1.raca = "Dogue alemão";
+//         cachorro_1.idade = 7;
+        
+//         System.out.println(cachorro_1.nome);
+//         System.out.println(cachorro_1.raca);
+//         System.out.println(cachorro_1.idade);
+
+
+//     }
+// }
+
+// class Cachorro{
+//     String nome, raca;
+//     int idade; 
+
+// }
+
+
+
+// ATIVIDADE INICIAL:
+// CRIE MAIS UM CACHORRO COM NOME, RAÇA e IDADE DIFERENTES.
+// MOSTREM EM TELA:
+// Informações do primeiro cachorro:
+// NOME, RAÇA E IDADE
+// (Ex: Epaminondas - Dogue Alemão - 7)
+
+// Informações do segundo cachorro:
+// NOME, RAÇA E IDADE
+// (Ex: Tina - Poodle - 9)
+
+
+// RESPOSTA:
+// public class Main {
+//     public static void main(String[] args) {
+//         Cachorro cachorro_1 = new Cachorro();
+//         cachorro_1.nome = "Epaminondas";
+//         cachorro_1.raca = "Dogue alemão";
+//         cachorro_1.idade = 7;
+        
+//         Cachorro cachorro_2 = new Cachorro();
+//         cachorro_2.nome = "Tina";
+//         cachorro_2.raca = "Poodle";
+//         cachorro_2.idade = 9;
+        
+//         System.out.println("Informações do primeiro cachorro:");
+//         System.out.println(cachorro_1.nome +" - " + cachorro_1.raca +" - " + cachorro_1.idade + "\n");
+//         System.out.println("Informações do segundo cachorro:");
+//         System.out.println(cachorro_2.nome +" - " + cachorro_2.raca +" - " + cachorro_2.idade + "\n");
+
+//     }
+// }
+
+// class Cachorro{
+//     String nome, raca;
+//     int idade; 
+
+// }
+
+// OUTPUT:
+// Informações do primeiro cachorro:
+// Epaminondas - Dogue alemão - 7
+
+// Informações do segundo cachorro:
+// Tina - Poodle - 9
+
+// ATIVIDADE 01:
+// Crie uma classe chamada Carro. 
+// Essa classe terá os atributos FIXOS que serão: cor, marca, modelo, ano, número de portas, possui airbag.
+// Instancie dois objetos a partir dessa Classe.
+// Ao final, imprima em tela as características dos dois objetos.
+
+// /******************************************************************************
+
+//                             Online Java Compiler.
+//                 Code, Compile, Run and Debug java program online.
+// Write your code in this editor and press "Run" button to execute it.
+
+// *******************************************************************************/
+// //cor, marca, modelo, ano, número de portas, possui airbag.
+// class Carro{
+//     String cor, marca, modelo;
+//     int ano, numeroPortas;
+//     boolean airbag;
+    
+// }
+
+// 
+
+		
+// 		System.out.println(carro1.cor);
+// 		System.out.println(carro1.marca);
+// 		System.out.println(carro1.modelo);
+// 		System.out.println(carro1.ano);
+// 		System.out.println(carro1.numeroPortas);
+// 		System.out.println(carro1.airbag);
+		
+// 	}
+// }
+
+
+
+// ATIVIDADE FIXAÇÃO:
+// Crie duas classes, uma chamada QUADRADO, outra chamada RETANGULO.
+// Cada uma terá os atributos necessários para calcular suas áreas.
+
+// Ao final, crie dois objetos de cada uma, mostre suas informações e o valor da área.
+
+// class Quadrado{
+//     int lado;
+// }
+
+// class Retangulo{
+//     int base, altura;
+    
+// }
+
+
+// public class Main{
+//     public static void main(String[] args){
+//         Quadrado quadrado_1 = new Quadrado();
+//         quadrado_1.lado = 2;
+//         //int area = quadrado_1.lado * quadrado_1.lado;
+//         //System.out.println(area);
+//         System.out.println(quadrado_1.lado*quadrado_1.lado);
+        
+//         Retangulo retangulo_1 = new Retangulo();
+//         retangulo_1.base = 2;
+//         retangulo_1.altura = 2;
+//         System.out.println(retangulo_1.base*retangulo_1.altura);
+        
+//     }
+// }
+
+// criando uma classe cachorro e um construtor para essa classe
+// import java.util.Scanner;
+// class Cachorro {
+//     String raca;
+//     String cor;
+//     String nome;
+//     int idade;
+//     boolean dono;
+
+
+// public Cachorro (String raca, String cor, String nome, int idade, boolean dono) {
+//     this.raca = raca;
+//     this.cor = cor;
+//     this.nome = nome;
+//     this.idade = idade;
+//     this.dono = dono;
+//     }
+// }        
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         Cachorro cachorro1 = new Cachorro ("Vira-lata", "Caramelo", "Baleia", 10, true);
+//         System.out.println("Raça: " + cachorro1.raca);
+//         System.out.println("Cor: " + cachorro1.cor);
+//         System.out.println("Nome: " + cachorro1.nome);
+//         System.out.println("Idade: " + cachorro1.idade);
+//         System.out.println("Dono: " + cachorro1.dono);
+//     }
+// }        
+
+// SINTAXE METODO CONSTRUTOR:
+// class Carro {
+//     String cor;
+//     String marca;
+//     String modelo;
+//     int ano;
+//     int numeroPortas;
+//     boolean possuiAirbag;
+
+// public Carro(String cor, String marca, String modelo, int ano, int numeroPortas, boolean possuiAirbag) {
+//         this.cor = cor;
+//         this.marca = marca;
+//         this.modelo = modelo;
+//         this.ano = ano;
+//         this.numeroPortas = numeroPortas;
+//         this.possuiAirbag = possuiAirbag;
+//     }
+// }
+// EXEMPLO DE OBJETO COM O CONSTRUTOR:
+// Carro carro1 = new Carro("Preto", "Volkswagen", "Gol", 2022, 4, true);
+
+// ATIVIDADE 01:
+// UTILIZANDO O MÉTODO CONSTRUTOR, CRIE DOIS CACHORROS (Utilizem três atributos)
+
+
+// class Cachorro{
+//     String nome;
+//     String raca;
+//     int idade;
+    
+//     public Cachorro(String nome, String raca, int idade){
+//         this.nome = nome;
+//         this.raca = raca;
+//         this.idade = idade;
+//     }
+// }
+
+// public class Main
+// {
+// 	public static void main(String[] args) {
+
+//       //forma antiga
+//       //Cachorro cachorro_objeto = new Cachorro();
+//       //cachorro_objeto.idade = 10;
+//       //System.out.println(cachorro_objeto.idade);
+       
+//       //utilizando construtor
+//       Cachorro cachorro_construtor = new Cachorro("Estácio", "Fila", 7);
+//       System.out.println(cachorro_construtor.nome);
+//       System.out.println(cachorro_construtor.idade);
+//       System.out.println(cachorro_construtor.raca);
+// 	}
+// }
+
+
+// // EXEMPLO DE METODOS:
+// class Carro {
+//     String cor;
+//     String marca;
+//     String modelo;
+//     int ano;
+//     int numeroPortas;
+//     boolean possuiAirbag;
+//     boolean ligado;
+
+//     public Carro(String cor, String marca, String modelo, int ano, int numeroPortas, boolean possuiAirbag) {
+//         this.cor = cor;
+//         this.marca = marca;
+//         this.modelo = modelo;
+//         this.ano = ano;
+//         this.numeroPortas = numeroPortas;
+//         this.possuiAirbag = possuiAirbag;
+//         this.ligado = false; // o carro inicia desligado
+//     }
+
+//     public void ligarCarro() {
+//         this.ligado = true;
+//         System.out.println("O carro está ligado.");
+//     }
+
+//     public void desligarCarro() {
+//         this.ligado = false;
+//         System.out.println("O carro está desligado.");
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Carro carro1 = new Carro("Preto", "Golf", "GTI", 2010, 2, true);
+//         carro1.ligarCarro();
+//     }
+// }
+
+// criando uma classe cachorro e um construtor para essa classe
+// import java.util.Scanner;
+// class Cachorro {
+//     String raca;
+//     String cor;
+//     String nome;
+//     int idade;
+//     boolean dono;
+//     boolean latir;
+
+// public Cachorro (String raca, String cor, String nome, int idade, boolean dono) {
+//     this.raca = raca;
+//     this.cor = cor;
+//     this.nome = nome;
+//     this.idade = idade;
+//     this.dono = dono;
+//     this.latir = false;
+//     }
+
+//     public void latirCachorro() {
+//         this.latir = true;
+//         System.out.println("Au Au");
+//     }
+//     public void naolatirCachorro() {
+//         this.latir = false;
+//         System.out.println("silêncio");
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         Cachorro cachorro1 = new Cachorro ("Vira-lata", "Caramelo", "Baleia", 10, true);
+//         System.out.print("O cachorro " + cachorro1.nome + " fez ");
+//         cachorro1.latirCachorro();
+//     }
+// }        
+
+// fazer input para cadastro das informações usadas pelo método construtor
+// import java.util.Scanner;
+
+// class Cachorro {
+//     String raca;
+//     String cor;
+//     String nome;
+//     int idade;
+//     boolean dono;
+//     boolean latir;
+
+//     public Cachorro(String raca, String cor, String nome, int idade, boolean dono) {
+//         this.raca = raca;
+//         this.cor = cor;
+//         this.nome = nome;
+//         this.idade = idade;
+//         this.dono = dono;
+//         this.latir = false;
+//     }
+
+//     public void latirCachorro() {
+//         this.latir = true;
+//         System.out.println("Au Au");
+//     }
+
+//     public void naolatirCachorro() {
+//         this.latir = false;
+//         System.out.println("Silêncio");
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         System.out.print("Qual a Raça? ");
+//         String raca = entrada.next();
+//         System.out.print("Qual a Cor? ");
+//         String cor = entrada.next();
+//         System.out.print("Qual o Nome? ");
+//         String nome = entrada.next();
+//         System.out.print("Qual a Idade? ");
+//         int idade = entrada.nextInt();
+//         System.out.print("Ele tem dono? (true/false) ");
+//         boolean dono = entrada.nextBoolean();
+
+//         Cachorro cachorro1 = new Cachorro(raca, cor, nome, idade, dono);
+//         System.out.println("Informações do cachorro:");
+//         System.out.println("Nome: " + cachorro1.nome);
+//         System.out.println("Idade: " + cachorro1.idade);
+//         System.out.println("Raça: " + cachorro1.raca);
+//     }
+// }
+ 
+// Crie uma classe conta. Comece 30 reais de saldo. Sacar / Depositar/ Verificar Saldo.
+// import java.util.Scanner;
+// class Conta {
+//     int valor;
+//     int valor_saque;
+//     int valor_deposito;
+//     int verificacao_saldo;
+// }
+// public Conta (int valor, int valor_saque, int valor_deposito, int verificacao_saldo);
+//     this.valor;
+//     this.valor_saque;
+//     this.valor_deposito;
+//     this.verificacao_saldo;
+    
+//     public void valor_saque.Conta) {
+//         this.valor_saque = valor;
+//         System.out.println("Saque realizado com sucesso");
+//     }    
+    
+//     public void valor_deposito.Conta) {
+//         this.valor_deposito = valor;
+//         System.out.println("Deposito realizado com sucesso");
+//     } 
+    
+//     public void  verificacao_saldo.Conta) {
+//         this.verificacao_saldo = valor_deposito - valor_saque;
+//         System.out.println("Saldo Verificado");
+//     } 
+    
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         System.out.print("Qual a Raça? ");
+//         String raca = entrada.next();
+
+// Exercício 01:
+// Utilizar o switch case para quando o usuário digitar o número do mês, imprimir em tela o nome do mês.
+// public class SwitchDemo {
+//   public static void main(String[] args) {
+  
+//       int mes = 10;
+      
+//       switch (mes) {
+//           case 1:  
+//               System.out.println("Janeiro");
+//               break;
+//           case 2:
+//               System.out.println("Fevereiro");
+//               break;
+//           case 3:  
+//                 System.out.println("Março");
+//               break;
+//           case 4:  
+//               System.out.println("Abril");
+//               break;
+//           case 5:  
+//               System.out.println("Maio");
+//               break;
+//           case 6:  
+//               System.out.println("Junho");
+//               break;
+//           case 7:
+//               System.out.println("Julho");  
+//               break;
+//           case 8:  
+//               System.out.println("Agosto");
+//               break;
+//           case 9:  
+//               System.out.println("Setembro");
+//               break;
+//           case 10: 
+//               System.out.println("Outubro");
+//               break;
+//           case 11: 
+//               System.out.println("Novembro");
+//               break;
+//           case 12: 
+//               System.out.println("Dezembro");
+//               break;
+//           default: 
+//               System.out.println("Mês inválido");
+//               break;
+//       }
+//   }
+// }
+
+// Exercício 02:
+// Utilizar o switch case, laços de repetição e Scanner para criar um menu com os comandos de um CRUD. 
+// O usuário que irá escolher a navegação.
+// Adicionar também a opção de encerrar o programa.
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean sair = false;
+        String[] listaDeProdutos = new String[4]; // Tamanho inicial da lista
+
+        while (!sair) {
+            System.out.println("\nEscolha uma opção:");
+            System.out.println("1. Criar");
+            System.out.println("2. Ler");
+            System.out.println("3. Atualizar");
+            System.out.println("4. Deletar");
+            System.out.println("5. Sair");
+            System.out.print("Digite sua opção: ");
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar o buffer
+
+            switch (opcao) {
+                case 1:
+                    // Criar
+                    System.out.print("Digite o produto a ser adicionado: ");
+                    String novoProduto = scanner.nextLine();
+                    adicionarProduto(listaDeProdutos, novoProduto);
+                    break;
+                case 2:
+                    // Ler
+                    System.out.println("Lista de Produtos:");
+                    listarProdutos(listaDeProdutos);
+                    break;
+                case 3:
+                    // Atualizar
+                    System.out.print("Digite o índice do produto a ser atualizado: ");
+                    int indiceAtualizar = scanner.nextInt();
+                    scanner.nextLine(); // Limpar o buffer
+                    System.out.print("Digite o novo nome do produto: ");
+                    String novoNome = scanner.nextLine();
+                    atualizarProduto(listaDeProdutos, indiceAtualizar, novoNome);
+                    break;
+                case 4:
+                    // Deletar
+                    System.out.print("Digite o índice do produto a ser deletado: ");
+                    int indiceDeletar = scanner.nextInt();
+                    scanner.nextLine(); // Limpar o buffer
+                    deletarProduto(listaDeProdutos, indiceDeletar);
+                    break;
+                case 5:
+                    // Sair
+                    sair = true;
+                    System.out.println("Encerrando o programa");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+            }
+        }
+
+        scanner.close();
+    }
+
+    public static void adicionarProduto(String[] lista, String produto) {
+        for (int i = 0; i < lista.length; i++) {
+            if (lista[i] == null) {
+                lista[i] = produto;
+                System.out.println("Produto adicionado com sucesso!");
+                return;
+            }
+        }
+        System.out.println("Não foi possível adicionar o produto. Lista cheia.");
+    }
+
+    public static void listarProdutos(String[] lista) {
+        for (String produto : lista) {
+            if (produto != null) {
+                System.out.println(produto);
+            }
+        }
+    }
+
+    public static void atualizarProduto(String[] lista, int indice, String novoNome) {
+        if (indice >= 0 && indice < lista.length) {
+            lista[indice] = novoNome;
+            System.out.println("Produto atualizado com sucesso!");
+        } else {
+            System.out.println("Índice inválido!");
+        }
+    }
+
+    public static void deletarProduto(String[] lista, int indice) {
+        if (indice >= 0 && indice < lista.length && lista[indice] != null) {
+            lista[indice] = null;
+            System.out.println("Produto deletado com sucesso!");
+        } else {
+            System.out.println("Índice inválido ou produto inexistente!");
+        }
+    }
+}
+
+
+
+// Exercício 03:
+// Criar um vetor para armazenar 5 nomes.
+// Crie um algoritmo para adicionar os nomes ao vetor.
+
+// Exercício 04:
+// Crie um método para visualizar os itens do vetor no código do exercício 02.
+
     
