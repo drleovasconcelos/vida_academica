@@ -1,0 +1,59 @@
+# Atalhos Visual Studio Code
+
+- Alt + Shift + Setas (Cima e baixo) - Copiar e colar na direção da seta
+- Alt + Setas (Cima ou baixo) - Mover a linha inteira onde o cursor está / caso queira mover mais de uma linha selecione a quantidade de linha que quiser e mova com o atalho
+- Shift + setas (Cima e baixo) - Seleciona a linha de onde o cursor está
+- Ctrl + Shitf + K - Apagar uma linha
+- Ctrl + D - Procurar a próxima ocorrência no seu código
+- Alt + Click - Você multiplica o cursor e edita, ao mesmo tempo, no local onde você selecionou com o click
+- Ctrl + Espaço -  Intellisense, autopreenchimento
+
+
+## Extensões
+
+- Code snap - Tirar foto do código onde você selecionar (clica com o botão direito procura a extensão /  tira a foto somente do que você selecionar)
+- Prettier - Ajuda formatar o código com a identação
+- VS Code icons - Deixa uns ícones bonitinhos com a logo em sí
+- Snippet - Uma extensão que escreve a estrutura de alguma biblioteca ou Framework
+- Sujeito programador -  Uma extensão que escreve a estrutura de alguma biblioteca ou Framework'
+- VSCode-icons
+- Gitlens - mostra o caminho do arquivo
+Material Icon Theme
+### Tema
+
+Dracula - Muda a cor do código
+
+Ctr + K e Ctrl + S - Abri todos os atalhos do VS Code
+
+## Atalhos dentro do código
+
+- .algumaCoisa - Cria uma div com a classe que você colocou depois do ponto
+- #algumaCoisa - Cria uma div com id que você colocou depois da hastag
+- tag:atr - Cria a tag junto com o atributo que você selecionar
+- tag*num - Cria a tag e repete ela quantas vezes que você colocou
+- ! ou html:5 - Cria a estrutura inicial do html
+- lorem - Cria um texto em latim para preencher algo, podemos colocar também lorem*numero que ela escreve x quantidade de palavras que você definiu.
+
+    <!-- para ir para o final da linha End no teclado e para  o inicio Home no teclado -->
+    <!-- Para comentar e descomentar uma linha Ctrl + ; -->
+    <!-- Tab para identar para frente e Shift + Tab para identar para trás -->
+    <!-- Para criar varias tags ao mesmo tempo nomeDaTag*NumeroDeRepetição -->
+    <!-- .nomeDaClasse para criar uma div com o nome da classe que você escolher -->
+    <!-- tag.nomeDaClasse para criar a tag que você escolheu mais a classe -->
+    <!-- #nomeDoId para criar uma div com o nome do Id -->
+    <!-- Alt + Seta - movimenta a linha para cima ou para baixo -->
+    <!-- Shift + Alt + seta - Copia a linha para cima ou para baixo -->
+    <!-- Apagar uma linha inteira - CTRL + SHIFT + K -->
+    <!-- Formatar o código CTRL + SHIFT + F -->
+    <!-- CTRL + Space - Itellisense - Auto completa -->
+    <!-- CTRL + tab - mudar de arquivo -->
+    <!-- CTRL + F - procura ocorrencia dentro  do arquivo que estou -->
+    <!-- CTRL + SHIFT + F - Procura na pasta que está meu projeto todas as ocorrencias -->
+
+
+Python
+control + D --> seleciona a próxima ocorrência, mudando todas as variáveis/funções (basta selecionar o primeiro, apertar control D que ele vai selecionando, aí ele muda tudo quando digitar na primeira)
+ALT + Click - Seleciona várias ocorrências e pode mudar 
+# CTRL + D - Seleciona a proxima ocorrencia
+# ALT + Click coloca o curso onde você clicou
+# CTRL + F2 seleciona todas as ocorrencias
