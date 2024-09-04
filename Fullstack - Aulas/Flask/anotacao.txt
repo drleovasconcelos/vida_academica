@@ -1,0 +1,113 @@
+https://www.invertexto.com/workshopflask
+
+
+
+
+*PS C:\Users\Londres31\flask> python -m venv venv
+*PS C:\Users\Londres31\flask> venv\Scripts\activate 
+Deseja executar o software deste fornecedor não confiável?
+O arquivo C:\Users\Londres31\flask\venv\Scripts\Activate.ps1 é publicado por CN=Python Software Foundation, O=Python Software   
+Foundation, L=Beaverton, S=Oregon, C=US e não é confiável para o seu sistema. Execute apenas scripts de fornecedores confiáveis.
+[X] Nunca executar  [N] Não executar  [R] Executar uma vez  [A] Sempre executar  [?] Ajuda (o padrão é "N"): A
+(venv) PS C:\Users\Londres31\flask> set-ExecutionPolicy (quando não der certo)
+
+*pip install flask
+
+*(venv) PS C:\Users\Londres31\flask> python app.py
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000 ---------------------> aqui clica control e click
+Press CTRL+C to quit
+127.0.0.1 - - [23/Jul/2024 17:42:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jul/2024 17:42:57] "GET /favicon.ico HTTP/1.1" 404 -
+
+----------------------------------index
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem Vindo!</title>
+</head>
+<body>
+    <h1>Bem vindo, {{ name }}</h1> <!-- com isso consigo usar python no html -->
+    
+
+</body>
+</html>
+
+---------------------------------cadastro
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Tardefas</h1>
+    <form action="/lista" method="POST">
+      <input type="text" name="nome" placeholder="Nome da tarefa" /> <!-- nome da tarefa -->
+      <input type="submit" value="ENVIAR" />
+    </form>
+  </body>
+</html>
+
+------------------------------------lista
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suas tarefas</title>
+</head>
+<body>
+    <h1>Suas tarefas</h1>
+    <ul>
+        
+        {% for task in tarefas %}
+
+        <li>{{ task }}</li>
+
+        {% endfor %}
+
+    </ul>
+	<a href="/cadastro">Voltar</a>
+</body>
+</html>
+
+
+-------------------------------------flask dentro da maquina virtual - app.py
+from flask import Flask, render_template, request
+#  REQUEST = USADO PARA PEGAR VALORES DO FORMULÁRIO / RENDER = PARA LINKAR COM OUTROS ARQUIVOS
+
+tasks = []
+
+app = Flask(__name__) #nome do arquivo que terá todas as rotas do sistema
+
+# @app.route('/') #aqui voce informa a rota ou URL para acessar o sistema
+# def  helloWorld():
+#     return 'Olá Mundo!'
+
+@app.route('/cadastro')
+def cadastrar():
+    return render_template('cadastro.html')
+
+@app.route('/bemvindo/<nome>')
+def bemVindo(nome):
+    return render_template('index.html', name=nome)   # ele muda no próprio html 
+
+@app.route('/lista', methods=['POST'])
+def listar():
+    nome = request.form['nome']
+    tasks.append(nome)
+    return render_template('lista.html', tarefas=tasks)
+# Renderização é o processo pelo qual se obtém o produto final de um processamento digital qualquer
+
+if  __name__ == '__main__': # se o arquivo name  for o principal ele executa.
+    app.run(debug=True)
+
+
