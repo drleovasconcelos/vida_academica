@@ -1,0 +1,1683 @@
+
+- Link com todas as respostas:
+https://1.bp.blogspot.com/_G3ticjVfde4/SVeDAGnbRwI/AAAAAAAAAak/4RWNFwGDnCk/s400/BODE+copy.png
+
+BEECROWD - TREINAR LÓGICA
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Favor não alterar
+public class DNode {
+        private Object element;
+        public DNode next;
+        private DNode prev;
+
+        public DNode(Object element, DNode prev, DNode next) {
+            this.element = element;
+            this.next = next;
+            this.prev = prev;
+        }
+
+        public Object getElement() {
+            return element;
+        }
+        public void setElement(Object element) {
+            this.element = element;
+        }
+        public DNode getNext() {
+            return next;
+        }
+        public void setNext(DNode next) {
+            this.next = next;
+        }
+        public DNode getPrev() {
+            return prev;
+        }
+        public void setPrev(DNode prev) {
+            this.prev = prev;
+        }
+
+
+    }
+/* public static void main(String[] args) {
+      LDE lista = new LDE();
+
+        lista.inserirUltimo(1);
+        lista.inserirUltimo(2);
+        lista.inserirUltimo(3);
+        lista.inserirUltimo(4);
+        lista.inserirUltimo(5);
+        lista.inserirUltimo(6);
+        lista.inserirUltimo(7);
+        lista.inserirUltimo(8);
+
+        LDE lista2 = new LDE();
+
+        LDE lista3 = new LDE();
+
+        DNode aux = lista.inicio;
+        int cont = 0;
+        while(aux != null){
+          if(cont == 0 || cont % 2 == 0){
+            lista2.inserirUltimo(aux.getElement());
+          }
+          else{
+            lista3.inserirUltimo(aux.getElement());
+          }
+          aux = aux.getNext();
+          cont++;
+        }
+      System.out.println("Lista 2 ficou assim: " );
+        lista2.imprimir();
+      System.out.println("Lista 3 ficou assim: ");
+        lista3.imprimir();
+
+
+    }*/
+
+public class LDE {
+
+    public DNode inicio;
+    public DNode fim;
+    public int tamanho;
+
+    public LDE() {
+        inicio = fim = null;
+        tamanho = 0;
+    }
+
+    public int size() {
+
+        return tamanho;
+    }
+
+    public boolean isEmpty() {
+
+        return tamanho == 0;
+
+    }
+
+    public void inserir_pos(int pos, Object v) {
+        if (pos < 0 || pos > tamanho) {
+            System.out.println("POSICAO INVALIDA!!!!");
+            return;
+        }
+        if (pos == 0) {
+            inserirPrimeiro(v);
+        } else if (pos == tamanho) {
+            inserirUltimo(v);
+        } else {
+            DNode aux = inicio;
+            for (int cont = 0; cont < pos - 1; cont++) {
+                aux = aux.getNext();
+            }
+            DNode novoNo = new DNode(v, aux, aux.getNext());
+            aux.getNext().setPrev(novoNo);
+            aux.setNext(novoNo);
+            tamanho++;
+        }
+
+    }
+
+    public Object removerPrimeiro() {
+        if (!isEmpty()) {
+            Object retorno = inicio.getElement();
+            inicio = inicio.getNext();
+            tamanho--;
+            if (isEmpty()) {
+                fim = null;
+            } else {
+                inicio.setPrev(null);
+            }
+            return retorno;
+        } else {
+            return null;
+        }
+    }
+
+
+    public void inserirPrimeiro(Object v) {
+        DNode novoNo = new DNode(v, null, inicio);
+        if (inicio != null) {
+            inicio.setPrev(novoNo);
+        } else {
+            fim = novoNo;
+        }
+        inicio = novoNo;
+        tamanho++;
+    }
+
+    // remover ultimo
+    public Object removerUltimo() {
+        if (!isEmpty()) {
+            Object retorno = fim.getElement();
+            fim = fim.getPrev();
+            tamanho--;
+            if (isEmpty()) {
+                inicio = null;
+            } else {
+                fim.setNext(null);
+            }
+            return retorno;
+        } else {
+            return null;
+        }
+    }
+
+    // inserir ultimo
+    public void inserirUltimo(Object v) {
+        DNode novoNo = new DNode(v, fim, null);
+        if (isEmpty()) {
+            inicio = novoNo;
+        } else {
+            fim.setNext(novoNo);
+        }
+        fim = novoNo;
+        tamanho++;
+    }
+
+    public void imprimir() {
+        if (isEmpty()) {
+            System.out.println("Esta vazia");
+        } else {
+            DNode aux = inicio;
+            while (aux != null) {
+                System.out.print(aux.getElement() + " ");
+                aux = aux.getNext();
+            }
+        }
+
+        System.out.println();
+    }
+/* 1) Remover Elemento do Meio - Adaptar o código para quando tiver apenas 1 elemento . Remover o elemento do
+        meio da lista, supondo uma lista com número de elementos ímpares.*/
+             public DNode removerMeio() {
+        if (isEmpty()) {
+            return null;
+        } else if (size() == 1) {
+            return inicio;
+        } else {
+            int meio = size() / 2;
+            int cont = 0;
+            DNode aux = inicio;
+            while (aux != null) {
+
+                if (cont == meio) {
+                    DNode ant = aux.getPrev();
+                    DNode prox = aux.getNext();
+                    ant.setNext(prox);
+                    aux.setNext(null);
+                    prox.setPrev(ant);
+                    aux.setPrev(null);
+                    return aux;
+                }
+                aux = aux.getNext();
+                cont++;
+            }
+            return null;
+        }
+    }
+/* 2) Buscar elemento - Implementar o método de busca retornar -1 caso não encontre ou posição se encontrar o elemento. */
+    public int buscar(Integer no) {
+        if (isEmpty()) {
+            return -1;
+        } else {
+            int cont = 0;
+            DNode aux = inicio;
+            while (aux != null) {
+                if (aux.getElement() == no) {
+                    return cont;
+                }
+                aux = aux.getNext();
+                cont++;
+            }
+            return -1;
+        }
+    }
+//    3) Verificar se existe um elemento na lista
+
+    public boolean verificar(Integer no) {
+        if (isEmpty()) {
+            return false;
+        } else {
+            int cont = 0;
+            DNode aux = inicio;
+            while (aux != null) {
+                if (aux.getElement() == no) {
+                    return true;
+                }
+                aux = aux.getNext();
+                cont++;
+            }
+            return false;
+        }
+    }
+
+    //    4) Inserir no meio; (4 elementos - inserir depois do segundo)
+    public void inserirNoMeio(Integer valor) {
+
+        if (isEmpty()) {
+            inserirPrimeiro(valor);
+        } else {
+            int meio = size() / 2;
+            DNode aux = inicio;
+            int cont = 0;
+            while (aux != null) {
+                if (cont == meio) {
+                    DNode ant = aux.getPrev();
+                    DNode novo = new DNode(valor, ant, aux);
+                    ant.setNext(novo);
+                    novo.setNext(aux);
+                    novo.setPrev(novo);
+                    aux.setPrev(novo);
+                    novo.setPrev(ant);
+
+                }
+                aux = aux.getNext();
+                cont++;
+            }
+        }
+    }
+
+
+//    5) Verificar se a LDE tem elementos repetidos
+
+    public boolean temRepetido() {
+        DNode aux1 = inicio;
+        while (aux1 != null) {
+            DNode aux2 = inicio;
+            while (aux2 != aux1) {
+                if (aux2.getElement() == aux1.getElement()) {
+                    return true;
+                }
+                aux2 = aux2.getNext();
+            }
+            aux1 = aux1.getNext();
+        }
+        return false;
+    }
+
+
+            //    6) Remover elementos repetidos da LDE
+    public void removerRepetidos() {
+         if (inicio == null) {
+        return;
+    }
+         DNode aux = inicio;
+
+         while (aux != null) {
+        Object valorAtual = aux.getElement();
+
+
+             DNode aux2 = aux.getNext();
+             while (aux2 != null) {
+            if (aux2.getElement() == valorAtual) {
+
+                DNode anterior = aux2.getPrev();
+                DNode proximo = aux2.getNext();
+                anterior.setNext(proximo);
+
+                if (proximo != null) {
+                    proximo.setPrev(anterior);
+                }
+            }
+
+            aux2 = aux2.getNext();
+        }
+
+        aux = aux.getNext();
+    }
+}
+
+//    7) Supondo que a LDE tem elementos repetidos verificar qual é o elemento que mais se repete
+    // questao dificil da porra
+
+    public Object elementoQueMaisRepete() {
+    if (inicio == null) {
+        System.out.println("Lista ta vazia, chefe");
+        return 0;
+    }
+
+    Object elementoMaisFrequente = 0;
+    int frequenciaMaxima = 0;
+
+    DNode aux1 = inicio;
+
+    while (aux1 != null) {
+        Object valor = aux1.getElement();
+        int frequencia = 0;
+
+        DNode aux2 = inicio;
+
+        while (aux2 != null) {
+            if (aux2.getElement() == valor) {
+                frequencia++;
+            }
+            aux2 = aux2.getNext();
+        }
+        if (frequencia > frequenciaMaxima) {
+            frequenciaMaxima = frequencia;
+            elementoMaisFrequente = valor;
+        }
+        aux1 = aux1.getNext();
+    }
+    return elementoMaisFrequente;
+}
+
+
+    // METODOS QUE FIZ , SEGUINDO A PLAYLIST DO INDIANO DO YOUTUBe
+    // playlist -> https://www.youtube.com/watch?v=vtxCkhe7l0U&list=PLt4nG7RVVk1gIcVQAo8laecQWkzOdYe6i&index=4
+    // inserir numa posicao dada
+    public void adicionarNaPosicao(int pos, DNode no) {
+        if (isEmpty()) {
+            System.out.println("Esta vazia, vou inserir na primeira posicao");
+
+            inserirUltimo(no);
+        }
+        if (pos < 0 || pos > size()) {
+            System.out.println("Posicao invalida, meu fi, tem isso tudo de nó nao");
+        } else {
+            DNode aux = inicio;
+            int cont = 0;
+            while (aux != null) {
+                if (cont == pos) {
+                    DNode ant = aux.getPrev();
+                    no.setPrev(ant);
+                    no.setNext(aux);
+                    ant.setNext(no);
+                    aux.setPrev(aux);
+                }
+                aux = aux.getNext();
+                cont++;
+            }
+        }
+    }
+
+
+    // remover o primeiro no da lista de outro jeito
+    public DNode removeFirst() {
+        if (isEmpty()) {
+            System.out.println("Esta vazia, nao tem o que remover");
+            return null;
+        } else if (inicio.getNext() != null) {
+
+            inicio.getNext().setPrev(null);
+        }
+        return inicio;
+    }
+        // remover um No em uma posicao dada
+    public DNode removerNaPosicao(int pos) {
+        if (isEmpty()) {
+            System.out.println("Esta vazia, nao tem o que remover");
+        }
+        if( pos == tamanho-1){
+            return fim;
+        }
+        if( pos == 0){
+            return inicio;
+        }
+        if (pos < 0 || pos > tamanho) {
+            System.out.println("Posicao invalida, meu fi,");
+        } else {
+            DNode aux = inicio;
+            int cont = 0;
+            while (aux != null) {
+                if (cont == pos) {
+                    aux.getPrev().setNext(aux.getNext());
+                    aux.getNext().setPrev(aux.getPrev());
+//                    DNode ant = aux.getPrev();
+//                    DNode post = aux.getNext();
+//                    ant.setNext(post);
+//                    post.setPrev(ant);
+                    return aux;
+                }
+                aux = aux.getNext();
+                cont++;
+            }
+        }
+        return null;
+    }
+}
+
+public void elementosDistintos(LDE lista1, LDE lista2){
+        LDE lista3 = new LDE();
+
+        DNode aux1 = lista1.inicio;
+        DNode aux2 = lista2.inicio;
+
+
+        while (aux1 != null && aux2 != null){
+            if (aux1.getElement().equals(aux2.getElement())){
+                lista3.inserirUltimo(aux1.getElement());
+            } else{
+                lista3.inserirUltimo(aux1.getElement());
+                lista3.inserirUltimo(aux2.getElement());
+            }
+            aux1 = aux1.getNext();
+            aux2 = aux2.getNext();
+        }
+
+        // caso queira adicionar elementos restantes na lista se houver
+        while (aux1 != null){
+            lista3.inserirUltimo(aux1.getElement());
+            aux1 = aux1.getNext();
+
+        }
+        while (aux2 != null){
+            lista3.inserirUltimo(aux2.getElement());
+            aux2 = aux2.getNext();
+        }
+        System.out.println("lista 3:" + lista3);
+        lista3.imprimir();
+
+    }
+
+
+public void elementoRepetidosPosicao(LDE lista1, LDE lista2){
+
+
+        DNode aux1 = lista1.inicio;
+        DNode aux2 = lista2.inicio;
+        int contador = 0;
+
+
+        while (aux1 != null && aux2 != null){
+            if (aux1.getElement().equals(aux2.getElement())){
+                contador ++;
+            }
+            aux1 = aux1.getNext();
+            aux2 = aux2.getNext();
+        }
+
+        System.out.println("qtd repetida por posicao:" + contador);
+
+    }
+------------------------------------------------------------------------------------
+
+
+
+/*	Lista Encadeada:
+
+				Vantagens:
+
+----Inserção e remoção eficientes: A lista encadeada permite a inserção e remoção de elementos de forma eficiente, uma vez que apenas os ponteiros precisam ser ajustados, sem a necessidade de reorganizar a estrutura de dados como um todo.
+----Uso eficiente de memória: A lista encadeada utiliza a memória de forma flexível, alocando apenas o espaço necessário para cada elemento e seus respectivos ponteiros.
+----Flexibilidade: É possível adicionar e remover elementos em qualquer posição da lista, tornando-a adequada para cenários onde ocorrem frequentes operações de inserção e remoção em diferentes posições.
+
+				Desvantagens:
+----Acesso sequencial: A lista encadeada não permite o acesso direto a elementos em posições específicas. É necessário percorrer a lista a partir do início até o elemento desejado, o que pode resultar em uma busca linear e, portanto, um tempo de acesso mais longo.
+----Uso de memória adicional: Cada elemento da lista encadeada requer um ponteiro adicional, o que pode aumentar o uso total de memória em comparação com outras estruturas de dados.
+
+	Lista Duplamente Encadeada:
+
+				Vantagens:
+
+----Acesso bidirecional: A lista duplamente encadeada permite o acesso direto tanto ao elemento anterior quanto ao próximo, o que facilita operações como percorrer a lista em ambas as direções.
+----Inserção e remoção eficientes: Assim como na lista encadeada, a lista duplamente encadeada permite a inserção e remoção eficientes, ajustando apenas os ponteiros relacionados aos elementos envolvidos.
+
+				Desvantagens:
+----Uso de memória adicional: A lista duplamente encadeada requer mais espaço de memória em comparação com a lista encadeada, uma vez que cada elemento possui dois ponteiros adicionais.
+----Complexidade: A implementação da lista duplamente encadeada é mais complexa do que a da lista encadeada, pois requer a manipulação de dois ponteiros em cada elemento, o que pode aumentar a possibilidade de erros de programação.
+
+Listas estáticas(VETOR):
+
+				Vantagens: 
+
+----Acesso direto aos elementos: Os elementos em uma lista estática implementada com vetores podem ser acessados diretamente usando índices. Isso permite um acesso rápido e eficiente aos elementos, sem a necessidade de percorrer a estrutura de dados.
+----Uso eficiente de memória: As listas estáticas usam uma quantidade predefinida de memória para armazenar os elementos. Ao usar um vetor, é possível alocar uma quantidade fixa de memória, o que pode ser mais eficiente em termos de uso de espaço de memória.
+----Implementação simples: A implementação de listas estáticas com vetores é relativamente simples e direta, pois envolve apenas a criação de um vetor e o uso de índices para acessar os elementos.
+
+				Desvantagens:
+
+----Tamanho fixo: As listas estáticas têm um tamanho fixo determinado durante a sua criação. Isso significa que o número máximo de elementos que a lista pode conter é definido antecipadamente. Se a lista estiver cheia, não será possível adicionar mais elementos, a menos que se crie uma nova lista com um tamanho maior e copie todos os elementos.
+----Ineficiente para inserção e remoção: Inserir ou remover elementos no meio da lista estática requer deslocamento de elementos subsequentes, o que pode ser ineficiente e exigir um tempo proporcional ao tamanho da lista. Isso ocorre porque é necessário realocar todos os elementos a partir da posição de inserção ou remoção.
+----Desperdício de memória: Se o tamanho da lista estática for definido como maior do que o número real de elementos, pode ocorrer desperdício de memória, pois espaço será alocado para elementos que não estão sendo utilizados. */
+
+
+
+
+public static void main(String[] args) {
+ while (aux1 != null) {
+                        boolean temRepetido = false;
+                        DNode aux3 = lista3.inicio;
+                        while (aux3 != null) {
+                                if (aux3.getElement() == aux1.getElement()) {
+                                        temRepetido = true;
+
+                                }
+                                aux3 = aux3.getNext();
+                        }
+                        if (!temRepetido) {
+                                lista3.inserirUltimo(aux1.getElement());
+                        }
+                        aux1 = aux1.getNext();
+                }
+
+                DNode aux2 = lista2.inicio;
+
+                while (aux2 != null) {
+                        boolean temRepetido = false;
+                        DNode aux3 = lista3.inicio;
+                        while (aux3 != null) {
+                                if (aux3.getElement() == aux2.getElement()) {
+                                        temRepetido = true;
+                                        
+                                }
+                                aux3 = aux3.getNext();
+                        }
+                        if (!temRepetido) {
+                                lista3.inserirUltimo(aux2.getElement());
+                        }
+                        aux2 = aux2.getNext();
+                }
+		lista3.imprimir();
+}
+
+}
+
+
+       public static void main(String[] args) {
+                LDE lista1 = new LDE();
+                lista1.inserirUltimo(1);
+                lista1.inserirUltimo(2);
+                lista1.inserirUltimo(3);
+                lista1.inserirUltimo(4);
+                lista1.inserirUltimo(5);
+
+                LDE lista2 = new LDE();
+                lista2.inserirUltimo(1);
+                lista2.inserirUltimo(2);
+                lista2.inserirUltimo(3);
+                lista2.inserirUltimo(4);
+                lista2.inserirUltimo(5);
+
+                DNode aux1 = lista1.inicio;
+                DNode aux2 = lista2.inicio;
+                int contador = 0;
+                while(aux1 != null) {
+                        while (aux2!= null) {
+                                if(aux1.getElement() == aux2.getElement()) {
+                                        contador++;
+                                }
+                                aux1 = aux1.getNext();
+                                aux2 = aux2.getNext();
+
+                        }
+                }
+                System.out.println(contador);
+        }
+}
+
+projeto em HTML
+Dica para pegar fontes - https://fonts.google.com/specimen/Emilys+Candy
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            height: 100vh; 
+            text-align: center;
+            background-image: url(https://i.ibb.co/3rvDw4L/background-image.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        h3 {
+            color: white;
+            font-size: 16px;
+        }
+
+        h1 {
+            color: rgb(228, 188, 13);
+            font-size: 64px;
+            font-family: 'Emilys Candy', cursive;
+        }
+
+        p {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 70px;
+        }
+        a {
+            color: white;
+            font-size: 20px;
+        }
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <h3>The horror game of the year</h3>
+
+    <h1>ENDLESS NIGHTMARE</h1>
+
+    <p> You need to find the way out or your night will never end</p>
+    
+    <a>Read More</a>
+    <a>Play Now</a>
+
+
+
+</body>
+</html>
+
+
+
+POO - JAVA - Estácio
+
+
+// dontpad.com/estaciocentrojava
+// import java.util.Scanner;
+// import java.awt.geom.NoninvertibleTransformException;
+
+// public class Main {
+//   public static void main(String[] args) {
+//     System.out.println(10*50);
+//     int n1 = 10;
+//     int n2 = 50;
+//     System.out.println(n1*n2);
+//   }
+// }
+
+// public class Main {
+//   public static void main(String[] args) {
+//     System.out.println((8+9+7)/3);
+//   }
+//}
+
+// public class Main {
+//   public static void main(String[] args) {
+//     int n1 = 8;
+//     int n2 = 9;
+//     int n3 = 7;
+//     System.out.println((n1+n2+n3)/3);
+//   }
+// }
+
+// public class Main {
+//   public static void main(String[] args) {
+//     String nome = "Leonardo";
+//     String sobrenome = "Freire";
+//     System.out.println(nome + " " + sobrenome);
+//   }
+// }
+
+
+// public class Main {
+//   public static void main(String[] args) {
+//     int n1 = 8;
+//     int n2 = 9;
+//     float n3 = 7.0f;
+//     float n4 = 4.5f;
+//     System.out.println((n1+n2+n3+n4)/4);
+//  }
+// }
+
+// para letra maiuscula = .toUpperCase()
+// public class Main {
+//   public static void main(String[] args) {
+//   String txt = "Leonardo";
+//   System.out.println(txt.toUpperCase());
+// }
+// }
+
+// para letra minuscula = .toLowerCase()
+// public class Main {
+//   public static void main(String[] args) {
+//   String txt = "Leonardo";
+//   System.out.println(txt.toLowerCase());
+// }
+// }
+
+// public class Main {
+//   public static void main(String[] args) {
+//     System.out.println("Estou utilizando a linguagem java");
+//   }
+// }
+
+// como entrar dados SCANNER
+// import java.util.Scanner;
+// public class Main {
+//   public static void main(String[] args) {
+//       int numero;
+//       Scanner entrada = new Scanner(System.in);
+//       System.out.print("Digite o numero: ");
+//       numero = entrada.nextInt();
+//       System.out.println("O número informado é: " + numero);
+      
+//   }
+// }
+
+// como entrar dados SCANNER
+// import java.util.Scanner;
+// public class Main {
+//   public static void main(String[] args) {
+//       Scanner entrada = new Scanner(System.in); 
+//       int n1, n2, n3, n4;
+     
+//       System.out.print("Digite a nota 1: ");
+//       n1 = entrada.nextInt();
+      
+//       System.out.print("Digite a nota 2: ");
+//       n2 = entrada.nextInt();
+      
+//       System.out.print("Digite a nota 3: ");
+//       n3 = entrada.nextInt();
+      
+//       System.out.print("Digite a nota 4: ");
+//       n4 = entrada.nextInt();
+      
+//       int soma = n1+n2+n3+n4;
+//       float media = soma / 4;;
+      
+//       System.out.println("A média é: " + media);
+      
+//   }
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//   public static void main(String[] args) {
+//       Scanner entrada = new Scanner(System.in); 
+//       int n1;
+//       System.out.print("Digite a medida em metros: ");
+//       n1 = entrada.nextInt();
+//       float centimetros = n1 * 100;
+//       System.out.printf("%d metros vale %.2f centímetros\n", n1, centimetros);
+//   }
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//   public static void main(String[] args) {
+//       Scanner entrada = new Scanner(System.in); 
+//       int raio;
+//       System.out.print("Digite o raio: ");
+//       raio = entrada.nextInt();
+//       float area = 3.14f * (raio * raio);
+//       System.out.printf("Área do circulo é: %f", area);
+//   }
+// }
+
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int lado;
+//         System.out.println("Digite o lado: ");
+//         lado = entrada.nextInt();
+//         float area = lado * lado;
+//         System.out.printf("Calcule a área do quadrado: %f", area);
+//     }
+// }
+
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int lado;
+//         System.out.println("Digite o lado: ");
+//         lado = entrada.nextInt();
+//         float area = lado * lado;
+//         System.out.printf("Calcule a área do quadrado: %f", area);
+//     }
+// }
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float valorDolar;
+//         System.out.println("Digite o valor em dolar: ");
+//         valorDolar = entrada.nextInt();
+//         float real = valorDolar * 4.97f;
+//         System.out.printf("Valor em real: " + String.format("%.2f", real) + "R$");
+//     }
+// }
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero;
+//         System.out.println("Digite o numero: ");
+//         numero = entrada.nextInt();
+//         if (numero >= 0) {
+//             System.out.printf("Número é Positivo");
+//         } else {
+//             System.out.printf("Número é Negativo");
+//         }
+//     }
+// }
+
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero;
+//         System.out.println("Digite o numero: ");
+//         numero = entrada.nextInt();
+//         if (numero == 0) {
+//             System.out.printf("Número é Zero");
+//         } else {
+//             System.out.printf("Número não é Zero");
+//         }
+//     }
+// }
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero;
+//         System.out.println("Digite o numero: ");
+//         numero = entrada.nextInt();
+//         if (numero == 0) {
+//             System.out.printf("Número é Zero");
+//         } else if (numero > 0) {
+//             System.out.printf("Número é Positivo");
+//         } else {
+//             System.out.printf("Número é Negativo");
+//         }
+//     } 
+// }
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero;
+//         System.out.println("Digite o numero: ");
+//         numero = entrada.nextInt();
+//         if (numero == 0) {
+//             System.out.printf("Número é Zero");
+//         } else if (numero > 0) {
+//             System.out.printf("Número é Positivo");
+//         } else {
+//             System.out.printf("Número é Negativo");
+//         }
+//     } 
+// }
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 0;
+//         while (contador < 101) {
+//             System.out.println("Contador: " + contador);
+//             contador = contador + 1;
+//         }
+//     } 
+// }
+
+
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 10;
+//         while (contador >= 0) {
+//             System.out.println("Contador: " + contador);
+//             contador = contador - 1;
+//         }
+//     } 
+// }
+
+// DO - WHILE - realiza antes de verificar
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 0;
+//         do {
+//             System.out.println("Contador: " + contador);
+//             contador = contador + 1;
+//         } while (contador <= 50);
+//     } 
+// }
+
+// Número impar
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 50;
+//         do {
+//             if (contador % 2 != 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= 150);
+//     } 
+// }
+
+// Número par
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 50;
+//         do {
+//             if (contador % 2 == 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= 150);
+//     } 
+// }
+
+// pares de 0 a 50
+// import java.util.Scanner;
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int contador = 0;
+//         do {
+//             if (contador % 2 == 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= 50);
+//     } 
+// }
+
+// impares -30 a -5
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+        
+//         int contador = -30;
+//         do {
+//             if (contador % 2 != 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= -5);
+//     } 
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero1, numero2;
+//         System.out.println("Digite o primeiro número: ");
+//         numero1 = entrada.nextInt();
+//         System.out.println("Digite o segundo número: ");
+//         numero2 = entrada.nextInt();
+//         int contador = 0;
+//         do {
+//             if (contador % 2 == 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= numero1);
+//         do {
+//             if (contador % 2 != 0)
+//                 System.out.println("Contador: " + contador);
+//                 contador = contador + 1;
+//         } while (contador <= numero2);
+//     } 
+// }
+
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         float numero1, numero2, opcao;
+//         System.out.println("Digite o primeiro número: ");
+//         numero1 = entrada.nextInt();
+//         System.out.println("Digite o segundo número: ");
+//         numero2 = entrada.nextInt();
+//         System.out.println("Digite 1 - Par  ou 2 - Impar: ");
+//         opcao = entrada.nextInt();
+//         int contador = 0;
+//         if (opcao == 1) {
+//             do {
+//                 if (contador % 2 == 0)
+//                     System.out.println("Contador: " + contador);
+//                     contador = contador + 1;
+//             } while (contador <= numero1);
+//         }
+//         else {
+//             do {
+//                 if (contador % 2 != 0)
+//                     System.out.println("Contador: " + contador);
+//                     contador = contador + 1;
+//             } while (contador <= numero2);
+//         }
+//     } 
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         for (int i = 0; i < 5; i++){
+//             System.out.println("Contador: " + i);
+//         }
+//     }
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         for (int i = 0; i < 101; i++){
+//             if (i % 2 != 0)
+//             System.out.println("Contador: " + i);
+//         }
+//     }
+// }
+
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int numero1, numero2,opcao;
+//         System.out.println("Digite o primeiro número: ");
+//         numero1 = entrada.nextInt();
+//         System.out.println("Digite o segundo número: ");
+//         numero2 = entrada.nextInt();
+//         System.out.println("Digite 1 - Par  ou 2 - Impar: ");
+//         opcao = entrada.nextInt();
+//         if (opcao == 1){
+//             for (int i = numero1; i <= numero2; i++){
+//                 if (i % 2 == 0)
+//                 System.out.println("Contador: " + i);
+//             }
+//         }
+//         else{
+//             for (int i = numero1; i <= numero2; i++){
+//                 if (i % 2 != 0)
+//                 System.out.println("Contador: " + i);
+//             }
+//         }
+//     }
+// }
+
+// // digite o numero que começa e termina e some todos os números
+// import java.util.Scanner;
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         int numero1, numero2,opcao;
+//         System.out.println("Digite o primeiro número: ");
+//         numero1 = entrada.nextInt();
+//         System.out.println("Digite o segundo número: ");
+//         numero2 = entrada.nextInt();
+//         for (int i = numero1; i <= numero2; i++){
+//                 ystem.out.println("Contador: " + i);
+//             }
+//         }
+//         else{
+//             for (int i = numero1; i <= numero2; i++){
+//                 if (i % 2 != 0)
+//                 System.out.println("Contador: " + i);
+//             }
+//         }
+//     }
+// }
+
+// For (foreach) 
+
+// public class Main {
+//     public static void main(String[] args) {
+//         int [] numeros = {5, 7, 8, 9, 0};
+//         for (int numero : numeros) {
+//             System.out.println("Numero: " + numero);
+//         }
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         string [] palavras = {ceara, sera, campeao};
+//         for ( palavra : palavras) {
+//             System.out.println("Numero: " + palavra);
+//         }
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Cachorro cachorro_1 = new Cachorro();
+//         cachorro_1.nome = "Epaminondas";
+//         cachorro_1.raca = "Dogue alemão";
+//         cachorro_1.idade = 7;
+        
+//         System.out.println(cachorro_1.nome);
+//         System.out.println(cachorro_1.raca);
+//         System.out.println(cachorro_1.idade);
+
+
+//     }
+// }
+
+// class Cachorro{
+//     String nome, raca;
+//     int idade; 
+
+// }
+
+
+
+// ATIVIDADE INICIAL:
+// CRIE MAIS UM CACHORRO COM NOME, RAÇA e IDADE DIFERENTES.
+// MOSTREM EM TELA:
+// Informações do primeiro cachorro:
+// NOME, RAÇA E IDADE
+// (Ex: Epaminondas - Dogue Alemão - 7)
+
+// Informações do segundo cachorro:
+// NOME, RAÇA E IDADE
+// (Ex: Tina - Poodle - 9)
+
+
+// RESPOSTA:
+// public class Main {
+//     public static void main(String[] args) {
+//         Cachorro cachorro_1 = new Cachorro();
+//         cachorro_1.nome = "Epaminondas";
+//         cachorro_1.raca = "Dogue alemão";
+//         cachorro_1.idade = 7;
+        
+//         Cachorro cachorro_2 = new Cachorro();
+//         cachorro_2.nome = "Tina";
+//         cachorro_2.raca = "Poodle";
+//         cachorro_2.idade = 9;
+        
+//         System.out.println("Informações do primeiro cachorro:");
+//         System.out.println(cachorro_1.nome +" - " + cachorro_1.raca +" - " + cachorro_1.idade + "\n");
+//         System.out.println("Informações do segundo cachorro:");
+//         System.out.println(cachorro_2.nome +" - " + cachorro_2.raca +" - " + cachorro_2.idade + "\n");
+
+//     }
+// }
+
+// class Cachorro{
+//     String nome, raca;
+//     int idade; 
+
+// }
+
+// OUTPUT:
+// Informações do primeiro cachorro:
+// Epaminondas - Dogue alemão - 7
+
+// Informações do segundo cachorro:
+// Tina - Poodle - 9
+
+// ATIVIDADE 01:
+// Crie uma classe chamada Carro. 
+// Essa classe terá os atributos FIXOS que serão: cor, marca, modelo, ano, número de portas, possui airbag.
+// Instancie dois objetos a partir dessa Classe.
+// Ao final, imprima em tela as características dos dois objetos.
+
+// /******************************************************************************
+
+//                             Online Java Compiler.
+//                 Code, Compile, Run and Debug java program online.
+// Write your code in this editor and press "Run" button to execute it.
+
+// *******************************************************************************/
+// //cor, marca, modelo, ano, número de portas, possui airbag.
+// class Carro{
+//     String cor, marca, modelo;
+//     int ano, numeroPortas;
+//     boolean airbag;
+    
+// }
+
+// 
+
+		
+// 		System.out.println(carro1.cor);
+// 		System.out.println(carro1.marca);
+// 		System.out.println(carro1.modelo);
+// 		System.out.println(carro1.ano);
+// 		System.out.println(carro1.numeroPortas);
+// 		System.out.println(carro1.airbag);
+		
+// 	}
+// }
+
+
+
+// ATIVIDADE FIXAÇÃO:
+// Crie duas classes, uma chamada QUADRADO, outra chamada RETANGULO.
+// Cada uma terá os atributos necessários para calcular suas áreas.
+
+// Ao final, crie dois objetos de cada uma, mostre suas informações e o valor da área.
+
+// class Quadrado{
+//     int lado;
+// }
+
+// class Retangulo{
+//     int base, altura;
+    
+// }
+
+
+// public class Main{
+//     public static void main(String[] args){
+//         Quadrado quadrado_1 = new Quadrado();
+//         quadrado_1.lado = 2;
+//         //int area = quadrado_1.lado * quadrado_1.lado;
+//         //System.out.println(area);
+//         System.out.println(quadrado_1.lado*quadrado_1.lado);
+        
+//         Retangulo retangulo_1 = new Retangulo();
+//         retangulo_1.base = 2;
+//         retangulo_1.altura = 2;
+//         System.out.println(retangulo_1.base*retangulo_1.altura);
+        
+//     }
+// }
+
+// criando uma classe cachorro e um construtor para essa classe
+// import java.util.Scanner;
+// class Cachorro {
+//     String raca;
+//     String cor;
+//     String nome;
+//     int idade;
+//     boolean dono;
+
+
+// public Cachorro (String raca, String cor, String nome, int idade, boolean dono) {
+//     this.raca = raca;
+//     this.cor = cor;
+//     this.nome = nome;
+//     this.idade = idade;
+//     this.dono = dono;
+//     }
+// }        
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         Cachorro cachorro1 = new Cachorro ("Vira-lata", "Caramelo", "Baleia", 10, true);
+//         System.out.println("Raça: " + cachorro1.raca);
+//         System.out.println("Cor: " + cachorro1.cor);
+//         System.out.println("Nome: " + cachorro1.nome);
+//         System.out.println("Idade: " + cachorro1.idade);
+//         System.out.println("Dono: " + cachorro1.dono);
+//     }
+// }        
+
+// SINTAXE METODO CONSTRUTOR:
+// class Carro {
+//     String cor;
+//     String marca;
+//     String modelo;
+//     int ano;
+//     int numeroPortas;
+//     boolean possuiAirbag;
+
+// public Carro(String cor, String marca, String modelo, int ano, int numeroPortas, boolean possuiAirbag) {
+//         this.cor = cor;
+//         this.marca = marca;
+//         this.modelo = modelo;
+//         this.ano = ano;
+//         this.numeroPortas = numeroPortas;
+//         this.possuiAirbag = possuiAirbag;
+//     }
+// }
+// EXEMPLO DE OBJETO COM O CONSTRUTOR:
+// Carro carro1 = new Carro("Preto", "Volkswagen", "Gol", 2022, 4, true);
+
+// ATIVIDADE 01:
+// UTILIZANDO O MÉTODO CONSTRUTOR, CRIE DOIS CACHORROS (Utilizem três atributos)
+
+
+// class Cachorro{
+//     String nome;
+//     String raca;
+//     int idade;
+    
+//     public Cachorro(String nome, String raca, int idade){
+//         this.nome = nome;
+//         this.raca = raca;
+//         this.idade = idade;
+//     }
+// }
+
+// public class Main
+// {
+// 	public static void main(String[] args) {
+
+//       //forma antiga
+//       //Cachorro cachorro_objeto = new Cachorro();
+//       //cachorro_objeto.idade = 10;
+//       //System.out.println(cachorro_objeto.idade);
+       
+//       //utilizando construtor
+//       Cachorro cachorro_construtor = new Cachorro("Estácio", "Fila", 7);
+//       System.out.println(cachorro_construtor.nome);
+//       System.out.println(cachorro_construtor.idade);
+//       System.out.println(cachorro_construtor.raca);
+// 	}
+// }
+
+
+// // EXEMPLO DE METODOS:
+// class Carro {
+//     String cor;
+//     String marca;
+//     String modelo;
+//     int ano;
+//     int numeroPortas;
+//     boolean possuiAirbag;
+//     boolean ligado;
+
+//     public Carro(String cor, String marca, String modelo, int ano, int numeroPortas, boolean possuiAirbag) {
+//         this.cor = cor;
+//         this.marca = marca;
+//         this.modelo = modelo;
+//         this.ano = ano;
+//         this.numeroPortas = numeroPortas;
+//         this.possuiAirbag = possuiAirbag;
+//         this.ligado = false; // o carro inicia desligado
+//     }
+
+//     public void ligarCarro() {
+//         this.ligado = true;
+//         System.out.println("O carro está ligado.");
+//     }
+
+//     public void desligarCarro() {
+//         this.ligado = false;
+//         System.out.println("O carro está desligado.");
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Carro carro1 = new Carro("Preto", "Golf", "GTI", 2010, 2, true);
+//         carro1.ligarCarro();
+//     }
+// }
+
+// criando uma classe cachorro e um construtor para essa classe
+// import java.util.Scanner;
+// class Cachorro {
+//     String raca;
+//     String cor;
+//     String nome;
+//     int idade;
+//     boolean dono;
+//     boolean latir;
+
+// public Cachorro (String raca, String cor, String nome, int idade, boolean dono) {
+//     this.raca = raca;
+//     this.cor = cor;
+//     this.nome = nome;
+//     this.idade = idade;
+//     this.dono = dono;
+//     this.latir = false;
+//     }
+
+//     public void latirCachorro() {
+//         this.latir = true;
+//         System.out.println("Au Au");
+//     }
+//     public void naolatirCachorro() {
+//         this.latir = false;
+//         System.out.println("silêncio");
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         Cachorro cachorro1 = new Cachorro ("Vira-lata", "Caramelo", "Baleia", 10, true);
+//         System.out.print("O cachorro " + cachorro1.nome + " fez ");
+//         cachorro1.latirCachorro();
+//     }
+// }        
+
+// fazer input para cadastro das informações usadas pelo método construtor
+// import java.util.Scanner;
+
+// class Cachorro {
+//     String raca;
+//     String cor;
+//     String nome;
+//     int idade;
+//     boolean dono;
+//     boolean latir;
+
+//     public Cachorro(String raca, String cor, String nome, int idade, boolean dono) {
+//         this.raca = raca;
+//         this.cor = cor;
+//         this.nome = nome;
+//         this.idade = idade;
+//         this.dono = dono;
+//         this.latir = false;
+//     }
+
+//     public void latirCachorro() {
+//         this.latir = true;
+//         System.out.println("Au Au");
+//     }
+
+//     public void naolatirCachorro() {
+//         this.latir = false;
+//         System.out.println("Silêncio");
+//     }
+// }
+
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         System.out.print("Qual a Raça? ");
+//         String raca = entrada.next();
+//         System.out.print("Qual a Cor? ");
+//         String cor = entrada.next();
+//         System.out.print("Qual o Nome? ");
+//         String nome = entrada.next();
+//         System.out.print("Qual a Idade? ");
+//         int idade = entrada.nextInt();
+//         System.out.print("Ele tem dono? (true/false) ");
+//         boolean dono = entrada.nextBoolean();
+
+//         Cachorro cachorro1 = new Cachorro(raca, cor, nome, idade, dono);
+//         System.out.println("Informações do cachorro:");
+//         System.out.println("Nome: " + cachorro1.nome);
+//         System.out.println("Idade: " + cachorro1.idade);
+//         System.out.println("Raça: " + cachorro1.raca);
+//     }
+// }
+ 
+// Crie uma classe conta. Comece 30 reais de saldo. Sacar / Depositar/ Verificar Saldo.
+// import java.util.Scanner;
+// class Conta {
+//     int valor;
+//     int valor_saque;
+//     int valor_deposito;
+//     int verificacao_saldo;
+// }
+// public Conta (int valor, int valor_saque, int valor_deposito, int verificacao_saldo);
+//     this.valor;
+//     this.valor_saque;
+//     this.valor_deposito;
+//     this.verificacao_saldo;
+    
+//     public void valor_saque.Conta) {
+//         this.valor_saque = valor;
+//         System.out.println("Saque realizado com sucesso");
+//     }    
+    
+//     public void valor_deposito.Conta) {
+//         this.valor_deposito = valor;
+//         System.out.println("Deposito realizado com sucesso");
+//     } 
+    
+//     public void  verificacao_saldo.Conta) {
+//         this.verificacao_saldo = valor_deposito - valor_saque;
+//         System.out.println("Saldo Verificado");
+//     } 
+    
+// public class Main {
+//     public static void main(String[] args) {
+//         Scanner entrada = new Scanner(System.in);
+//         System.out.print("Qual a Raça? ");
+//         String raca = entrada.next();
+
+// Exercício 01:
+// Utilizar o switch case para quando o usuário digitar o número do mês, imprimir em tela o nome do mês.
+// public class SwitchDemo {
+//   public static void main(String[] args) {
+  
+//       int mes = 10;
+      
+//       switch (mes) {
+//           case 1:  
+//               System.out.println("Janeiro");
+//               break;
+//           case 2:
+//               System.out.println("Fevereiro");
+//               break;
+//           case 3:  
+//                 System.out.println("Março");
+//               break;
+//           case 4:  
+//               System.out.println("Abril");
+//               break;
+//           case 5:  
+//               System.out.println("Maio");
+//               break;
+//           case 6:  
+//               System.out.println("Junho");
+//               break;
+//           case 7:
+//               System.out.println("Julho");  
+//               break;
+//           case 8:  
+//               System.out.println("Agosto");
+//               break;
+//           case 9:  
+//               System.out.println("Setembro");
+//               break;
+//           case 10: 
+//               System.out.println("Outubro");
+//               break;
+//           case 11: 
+//               System.out.println("Novembro");
+//               break;
+//           case 12: 
+//               System.out.println("Dezembro");
+//               break;
+//           default: 
+//               System.out.println("Mês inválido");
+//               break;
+//       }
+//   }
+// }
+
+// Exercício 02:
+// Utilizar o switch case, laços de repetição e Scanner para criar um menu com os comandos de um CRUD. 
+// O usuário que irá escolher a navegação.
+// Adicionar também a opção de encerrar o programa.
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean sair = false;
+        int opcao;
+        String listadeProdutos[] = new String[3];
+        
+        while (!sair) {
+            System.out.println("Escolha uma opção:");
+            System.out.println("1. Criar");
+            System.out.println("2. Ler");
+            System.out.println("3. Atualizar");
+            System.out.println("4. Deletar");
+            System.out.println("5. Sair");
+            System.out.print("Digite sua opção: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcao) {
+                case 1:
+                    // Código para criar
+                    for (int i=0; i < 3; i++) {
+                        System.out.println("Digite o produto: ");
+                        String produto = scanner.nextLine();
+                        listadeProdutos[i] = produto;
+                    }
+                    break;
+                case 2:
+                    // Código para ler
+                    System.out.println("Lista de Produtos:");
+                    for (int i = 0; i < listadeProdutos.length; i++) {
+                        System.out.println(listadeProdutos[i]);
+                    }
+                    break;
+                case 3:
+                    // Código para atualizar
+                    System.out.println("Atualizar algo...");
+                    break;
+                case 4:
+                    // Código para deletar
+                    System.out.println("Deletar algo...");
+                    break;
+                case 5:
+                    sair = true;
+                    System.out.println("Encerrando o programa");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+
+// Exercício 03:
+// Criar um vetor para armazenar 5 nomes.
+// Crie um algoritmo para adicionar os nomes ao vetor.
+
+// Exercício 04:
+// Crie um método para visualizar os itens do vetor no código do exercício 02.
+
+    
