@@ -8,4 +8,4 @@ async def getSession():
     try:
         yield session
     finally:
-        session.close()
+        await session.close()

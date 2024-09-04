@@ -1,15 +1,39 @@
 # @name post_alunos
-POST http://localhost:8000/alunos
+POST http://localhost:8000/api/v1/alunos
 Content-Type: application/json
 
 {
     "nome": "Marcos",
     "idade": 22,
-    "nota": 9.5
-}
+    "curso": "Python",
+    "nota": 9.5    
+}    
 
 ### 
 
 # @name get_alunos
-GET http://localhost:8000/alunos
+GET http://localhost:8000/api/v1/alunos
+
+###
+
+# @name get_alunos_by_matricula
+GET http://localhost:8000/api/v1/alunos/2
+
+###
+
+# @name put_alunos
+PUT http://localhost:8000/api/v1/alunos/2
+Content-Type: application/json
+
+{
+    "nome": "Marcos Silva V",
+    "idade": 23,
+    "curso": "Python",
+    "nota": 10    
+}
+
+### 
+
+# @name DELETE_alunos_by_matricula
+DELETE http://localhost:8000/api/v1/alunos/2
 
