@@ -1,0 +1,13 @@
+Metodologias - Corrigir erro de forma rápida através de ferramentas
+
+Antigamente - Modelos de Cascata (definir: custo - prazo - escopo) --> Será específico
+--> Sindrome do presente imaginario (frustração)
+
+Hoje - Especifico - constroi - apresenta ao cliente  - pega feedback - corrige (definir: custo - prazo - satisfação)
+Flixibilidade - eficiente - redução do desperdicio - melhoria contínua - foco no cliente
+
+INICIO DO PROJETO - INTERAÇÃO 1 - INTERAÇÃO 2 - INTERAÇÃO 3 - FINAL DO PROJETO
+Tal interação facilita para melhorar a visão do cliente na produção do PROJETO
+
+Manifesto Ágil: PILARES (individuos e interação = Software em funcionamento = Responde as mudanças = Colaboração com o cliente)
+
