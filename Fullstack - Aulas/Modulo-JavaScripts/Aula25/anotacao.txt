@@ -1,0 +1,17 @@
+https://drive.google.com/file/d/15KTa2ey6d3Y7sDkDcP2awSCRKa1E-hqx/view
+
+
+https://raw.githubusercontent.com/kcarww/js-projects/main/weather/img/sky.jpg
+
+apikey = "16f00dd6edca31d9934c7fd9cdfba77c"
+
+documentação de API:
+https://openweathermap.org/api/one-call-3 
+
+query paramiter - parametros após a interrogação (q após a interrogação)
+appid = chave da API
+https://openweathermap.org/data/2.5/weather?/q=fortaleza&appid=d6edca31d9934c7fd9cdfba77c
+
+API de temperatura de fortaleza:
+https://api.openweathermap.org/data/2.5/weather?q=fortaleza&units=metric&appid=16f00dd6edca31d9934c7fd9cdfba77c
+
