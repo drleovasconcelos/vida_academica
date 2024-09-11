@@ -20,6 +20,7 @@ core - todo mundo pode usar
 schemas - api
 models - sqlalquemy
 api
+.gitignore -> venv e __pycahe__
 
 1ª pasta CORE
 primeiro criamos as configurações para o banco de dados -->>
