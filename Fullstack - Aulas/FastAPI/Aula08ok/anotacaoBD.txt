@@ -1,0 +1,20 @@
+DROP DATABASE IF EXISTS loja;
+CREATE DATABASE loja;
+
+--->>> fazer isso depois do MODEL... <<<---
+
+sequencia:
+1 - faz com que seja criado as tabelas no banco de dados mysql
+python create_tables.py
+
+- roda a main
+python main.py  (para sair da main é Ctr+C)
+
+- vai em client.http
+roda em Send Request
+
+- limpar toda a tabela:
+truncate escola
+
+-abrir no navegador
+http://localhost:8000/docs#/default/createAluno_alunos_post

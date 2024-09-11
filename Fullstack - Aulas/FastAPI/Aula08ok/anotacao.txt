@@ -1,0 +1,14 @@
+https://www.invertexto.com/fastapiaula08
+
+instalador assincmy
+https://pypi.org/project/asyncmy/
+
+pacotes que serão utilizados:
+pip install fastapi uvicorn sqlalchemy mysql asyncmy c jinja2 aiofiles
+
+tipagem - from pydantic_settings import BaseSettings
+modelo de class de configurações - from sqlalchemy.ext.decclarative import declarative_sabe
+from typing import Type
+
+quandomimportação não estiver funcionando 
+vai na lupa em cima e digita Reload Windons
