@@ -292,4 +292,52 @@ exemplo:
         <p>Uma nota pessoal sua sobre essa linguagem</p>
       </div>
 
+Resposta:
 
+import minha_imagem from "./assets/Eiffel-Tower-PNG-Pic.png"
+import "./App.css"
+import { useState } from "react"
+
+function App() {
+  const  [linguagem, setLinguagem] = useState({})
+  const lista = [
+    {
+      nome: "Javascript",
+      descricao: "Javascript é masssa ó",
+      nota: "10 pq é massa"
+    },
+    {
+      nome: "Python",
+      descricao: "Python é masssa também ó",
+      nota: "8 pq eu sou mais javascript"
+    },
+    {
+      nome: "HTML",
+      descricao: "HTML é mó da hora",
+      nota: "7 pq acho entediante"
+    },
+    {
+      nome: "CSS",
+      descricao: "CSS é a mais paia",
+      nota: "5 pq não gosto de corzinha"
+    },
+  ]
+    return (
+    <>
+    <button onClick={()=> setLinguagem(lista[0])}>Javascript</button>
+    <button onClick={()=> setLinguagem(lista[1])}>Python</button>
+    <button onClick={()=> setLinguagem(lista[2])}>HTML</button>
+    <button onClick={()=> setLinguagem(lista[3])}>CSS</button>
+    {linguagem && 
+    <div>
+      <h2>{linguagem.nome}</h2>
+      <p>{linguagem.descricao}</p>
+      <p>{linguagem.nota}</p>
+    </div> 
+  }
+      
+    </>
+  )
+}
+
+export default App
