@@ -237,4 +237,59 @@ function App() {
 
 export default App
 
+----------------------------------------
+
+import { useState } from "react"
+
+function App() {
+
+  const [animal, setAnimal] = useState("")
+    return (
+    <>
+    <button onClick={()=> setAnimal("Gatim")}>Gato</button>
+    <button onClick={()=> setAnimal("Au au")}>Cachorro</button>
+    <button onClick={()=> setAnimal("Baby")}>Porco</button>
+    <p>Você selecionou o: {animal} </p>
+    </>
+  )
+}
+
+export default App
+
+--------------------------------------------
+
+import minha_imagem from "./assets/Eiffel-Tower-PNG-Pic.png"
+import "./App.css"
+
+function App() {
+
+    return (
+    <>
+    <h1>Colocando imagens</h1>
+    <img className="fotinha" src={minha_imagem} alt="" />
+    </>
+  )
+}
+
+export default App
+
+
+
+=================================================
+
+
+
+
+FAÇA UM PROGRAMA QUE TENHA 4 BOTÕES NA TELA
+ESCRITOS:
+JAVASCRIPT , PYTHON, HTML, CSS
+AO CLICAR NO BOTÃO FAÇA APARECER NA TELA UMA DIV COM INFORMAÇÕES SOBRE AQUELA LINGUAGEM.
+
+exemplo:
+      <div>
+        <h2>Nome da linguagem</h2>
+        <p>Um texto sobre essa linguagem</p>
+        <p>Uma nota pessoal sua sobre essa linguagem</p>
+      </div>
+
 
