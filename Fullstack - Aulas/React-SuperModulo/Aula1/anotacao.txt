@@ -1,0 +1,65 @@
+nodemodels - precisa disso para abrir a página
+
+invertexto.com/612aula1react
+
+creat react app - site para baixar o react mais fácil, mas não é original e parou de atualizar
+vitejs.dev - baixar por esse
+nextjs.org - domina o mercado
+
+npm create vite@latest --> y --> nome do arquivo
+
+cd Aula1
+npm install - instala o react / node_modules precisa ser ignorado antes de ir para o github
+code . --> abre o VScode na aula 1  
+npm run dev - equivalente ao Go Live
+
+após o comando
+londres14@londres14-desktop:~/Documentos/React-SuperModulo/Aula1$ npm run dev
+> aula1@0.0.0 dev
+> vite
+  VITE v5.4.5  ready in 228 ms
+  ➜  Local:   http://localhost:5173/  <-- segura o ctrl e clica aqui
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+
+pastas que não mudamos:
+package.json - dependências e instalados
+vite.config.js
+README.md
+package-log.json
+no index -->  não mexer em id="root" 
+
+
+------------------------
+PASSO A PASSO
+------------------------
+npm create vite@latest
+y
+coloca o nome do projeto
+seleciona o React
+seleciona o Javascript
+cd nome do projeto
+npm install
+code .
+abre o terminal de novo
+npm run dev
+
+=======================
+LIMPEZA
+
+-apaga o arquivo index.css
+-limpa tudo de dentro do App.css (deixa vazio)
+-transforma o App.jsx nisso:
+function App() {
+  return (
+    <h1>Aula 1</h1>
+  )
+}
+
+export default App
+
+-e no main.jsx apaga apenas a linha 4 que é a importação do index.css que apagamos
+
+-dentro da pasta public apaga o aquivo vite.svg
+-dentro da pasta assets apaga o arquivo react.svg
