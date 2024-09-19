@@ -2,9 +2,75 @@ https://github.com/in100tiva/Workshop
 
 toools.design
 
-
 https://readme.so/editor
 
+RESUMO DE COMANDOS: Configurar o Git
+No Cloud Shell, para verificar se o Git está instalado, digite:
+* git --version
+
+Você deve ver uma saída parecida com este exemplo:
+* git version 2.7.4
+Para configurar o Git, você deve definir algumas variáveis globais: e . Ambos são necessários para que você faça commits.user.nameuser.email
+
+Defina seu nome no Cloud Shell com o comando a seguir. Substitua pelo nome de usuário que deseja usar.<USER_NAME>
+* git config --global user.name "<USER_NAME>"
+
+Agora, use este comando para criar uma variável de configuração, substituindo pelo seu endereço de e-mail:user.email<USER_EMAIL>
+* git config --global user.email "<USER_EMAIL>"
+
+Execute o seguinte comando para verificar se as alterações funcionaram:
+* git config --list
+
+Confirme se a saída inclui duas linhas semelhantes ao exemplo a seguir. Seu nome e endereço de email serão diferentes do que é mostrado no exemplo.
+* user.name=User Name
+* user.email=user-name@contoso.com
+
+Configurar seu repositório Git:
+O Git funciona verificando se há alterações nos arquivos dentro de uma determinada pasta. Criaremos uma pasta para servir como nossa árvore de trabalho (diretório do projeto) e informaremos o Git sobre isso, para que ele possa começar a rastrear as alterações. Dizemos ao Git para começar a rastrear as alterações inicializando um repositório Git nessa pasta.
+
+Comece criando uma pasta vazia para seu projeto e, em seguida, inicialize um repositório Git dentro dela.
+
+Crie uma pasta chamada Cats. Essa pasta será o diretório do projeto, também chamado de árvore de trabalho. O diretório do projeto é onde todos os arquivos relacionados ao seu projeto são armazenados. Neste exercício, é onde seu site e os arquivos que criam o site e seu conteúdo são armazenados.
+* mkdir Cats
+
+Altere para o diretório do projeto usando o comando:cd
+* cd Cats
+
+Agora, inicialize seu novo repositório e defina o nome do branch padrão como:main. Se você estiver executando o Git versão 2.28.0 ou posterior, use o seguinte comando:
+* git init --initial-branch=main
+Ou use o seguinte comando:
+* git init -b main
+
+Para versões anteriores do Git, use estes comandos:
+* git init
+* git checkout -b main
+
+Depois de executar o comando initialize, você deverá ver uma saída semelhante a este exemplo:
+* Initialized empty Git repository in /home/<user>/Cats/.git/
+* Switched to a new branch 'main'
+
+Agora, use um comando para mostrar o status da árvore de trabalho:git status
+* git status
+
+O Git responde com essa saída, o que indica que é o branch atual. (É também o único ramo.) Até aqui, tudo bem.main
+* On branch main
+* No commits yet
+* nothing to commit (create/copy files and use "git add" to track)        
+
+Confirme se o diretório contém um subdiretório chamado .git. (Usar a opção com é importante porque o Linux normalmente oculta nomes de arquivos e diretórios que começam com um ponto.) Essa pasta é o repositório Git, o diretório no qual o Git armazena metadados e histórico para a árvore de trabalho.-als
+
+Normalmente, você não faz nada diretamente com o diretório .git. O Git atualiza os metadados à medida que o status da árvore de trabalho muda para acompanhar o que mudou em seus arquivos. Este diretório é prático para você, mas é incrivelmente importante para o Git.
+
+Obter ajuda do Git
+O Git, como a maioria das ferramentas de linha de comando, tem uma função de ajuda integrada que você pode usar para pesquisar comandos e palavras-chave.
+Digite o seguinte comando para obter ajuda com o que você pode fazer com o Git:
+* git --help
+
+* COMANDOS IMPORTANTES
+
+git add
+git commit
+git log
 
 https://chromewebstore.google.com/detail/leads-extractor-social-me/nljnogdbefgdiejolejlajbghojopcpb?hl=pt-BR
 **************************************************************************************************************************************************************************************
