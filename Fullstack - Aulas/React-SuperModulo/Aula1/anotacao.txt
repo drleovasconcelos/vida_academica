@@ -6,6 +6,8 @@ creat react app - site para baixar o react mais fácil, mas não é original e p
 vitejs.dev - baixar por esse
 nextjs.org - domina o mercado
 
+pode ser que o node não esteja instalado -> entra no site node e instala
+
 npm create vite@latest --> y --> nome do arquivo
 
 cd Aula1
@@ -41,8 +43,7 @@ seleciona o React
 seleciona o Javascript
 cd nome do projeto
 npm install
-code .
-abre o terminal de novo
+code . (abre o terminal de novo)
 npm run dev
 
 =======================
