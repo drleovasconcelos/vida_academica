@@ -1,0 +1,52 @@
+import { useState } from "react"
+
+function App() {
+
+
+  
+  // const [contador, setContador] = useState(0)
+  //   return (
+  //     <>
+  //       <button onClick={() =>{contador === 10 ? alert("Não pode passar de 10") : setContador(contador + 1)}}>+</button>
+  //       <p>{contador}</p>
+  //       <button onClick={() =>{contador === 0 ? alert("Não pode ficar negativo") : setContador(contador - 1)}}>-</button>
+  //     </>
+  //   )
+
+    // (? = se) (: = else) - outra forma de fazer
+  
+  // const [contador, mudarContador] = useState(0)
+  // function aumentar (){
+  //   mudarContador(contador + 1)
+  //   if (contador === 10){
+  //     alert("Não pode passar do limite de 10")
+  //   }else{
+  //     mudarContador(contador + 1)
+  //   }
+  // } 
+  
+  // function diminuir (){
+  //   mudarContador(contador - 1)
+  //   if (contador === 0){
+  //     alert("Não pode passar do limite 0")
+  //   }else{
+  //     mudarContador(contador - 1)
+  //   }
+  // }
+
+  // return (
+    
+  //   <>
+  //   <button onClick={aumentar}>+</button>    
+  //   <p>{contador}</p>
+  //   <button onClick={diminuir}>-</button>   
+
+  //   </>
+  // )
+
+
+}
+
+export default App
+
+
