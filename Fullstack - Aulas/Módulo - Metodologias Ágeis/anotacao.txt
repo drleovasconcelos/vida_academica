@@ -6,4 +6,12 @@ korkana
 VirtualBox
 Kali linux
 
-- 
+Drive do material da auloa:
+- https://drive.google.com/drive/folders/1mlbOqcBQE7rKn5keLkybjBFzJzPSk4sW?usp=sharing
+
+CRIAR UM SLIDE PARA APRESENTAR O INÍCIO DO PROGRAMA:
+* MOSTRANDO E USANDO TODAS AS FERRAMENTAS
+
+
+DEFINIDO A SPRINT - DEVE SER DEFINIDO O QUE DEVE SER FEITO ATÉ O FINAL DO DIA (DAILY MEETING).
+
