@@ -8,4 +8,38 @@ INDUSTRIAS WAYNE
 CONTROLE DE ACESSO - PERMIÇÃO APENAS DE PESSOAS AUTORIZADAS AO ACESSO EM ÁREAS RESTRITAS
 IMPLANTAR AUTENTICAÇÃO E AUTORIZAÇÃO PARA DIFERENTES TIPOS DE USUÁRIOS (FUNCIONÁRIOS, GERENTES E ADMINISTRADORES)
 
-2.2 CRIAR inteface quem leva para 
+1. Planejamento e Estruturação do Projeto
+  Defina as Páginas Necessárias:
+    Página de Login (com autenticação)
+    Página de Cadastro de Usuários (diferenciando funcionários, gerentes e administradores)
+    Dashboard Principal (exibe informações de segurança e recursos)
+    Página de Gestão de Recursos (criar, atualizar e remover recursos)
+    Página de Gerenciamento de Segurança (controle de acesso)
+2. Criação do Banco de Dados MySQL
+  Estrutura Básica:
+  Tabela usuarios: com campos para id, nome, email, senha, tipo_usuario.
+  Tabela recursos: com campos para id, nome, descricao, quantidade, tipo_recurso.
+  Tabela acessos: para registrar tentativas de acesso com campos para id_usuario, data_hora, area_restrita.
+3. Desenvolvimento do Backend (Node.js/Express)
+  Autenticação e Autorização:
+  Crie rotas para login e logout.
+  Implemente middleware de verificação de sessão e permissões com base no tipo_usuario.
+  Gestão de Recursos:
+  Rotas CRUD para recursos (Create, Read, Update, Delete).
+  Controle de Acesso:
+  Rotas para registrar e consultar acessos a áreas restritas.
+4. Frontend (HTML, CSS, JavaScript)
+  Login e Autenticação:
+  Crie um formulário de login com JavaScript para enviar dados ao backend.
+  Dashboard:
+  Utilize gráficos e tabelas (bibliotecas como Chart.js) para exibir dados do banco.
+  Gestão de Recursos:
+  Formulários para cadastro e edição de recursos.
+  Design Responsivo:
+  Use CSS e frameworks como Bootstrap para criar uma interface amigável.
+5. Integração do Frontend com o Backend
+  Use fetch ou axios para realizar chamadas ao backend e atualizar o frontend de acordo com as respostas do servidor.
+6. Testes e Ajustes Finais
+  Teste cada funcionalidade com diferentes tipos de usuários.
+  Corrija possíveis erros e adicione melhorias com base no feedback.
+  Se precisar de código ou ajuda com qualquer uma dessas etapas, é só avisar!
