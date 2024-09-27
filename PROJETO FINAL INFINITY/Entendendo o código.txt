@@ -337,5 +337,274 @@ IMPLANTAR AUTENTICAÇÃO E AUTORIZAÇÃO PARA DIFERENTES TIPOS DE USUÁRIOS (FUN
     </script>
 </body>
 </html>
+--------------backend
+# main.py
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from sqlalchemy import create_engine, Column, Integer, String, Boolean, DateTime, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session, relationship
+from pydantic import BaseModel
+from datetime import datetime, timedelta
+from typing import List, Optional
+import jwt
+from passlib.context import CryptContext
 
+# Configuração do FastAPI
+app = FastAPI(title="Indústrias Wayne - Sistema de Gerenciamento")
+
+# Configuração do banco de dados
+SQLALCHEMY_DATABASE_URL = "mysql://user:password@localhost/wayne_industries"
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# Configuração de segurança
+SECRET_KEY = "sua_chave_secreta_muito_segura"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+# Modelos do banco de dados
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String(50), unique=True, index=True)
+    hashed_password = Column(String(100))
+    role = Column(String(20))
+    is_active = Column(Boolean, default=True)
+
+class Resource(Base):
+    __tablename__ = "resources"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(100))
+    type = Column(String(50))
+    quantity = Column(Integer)
+    last_updated = Column(DateTime, default=datetime.utcnow)
+
+class Area(Base):
+    __tablename__ = "areas"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(100), unique=True)
+
+class AccessLog(Base):
+    __tablename__ = "access_logs"
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    area_id = Column(Integer, ForeignKey("areas.id"))
+    timestamp = Column(DateTime, default=datetime.utcnow)
+    user = relationship("User")
+    area = relationship("Area")
+
+# Criar as tabelas
+Base.metadata.create_all(bind=engine)
+
+# Modelos Pydantic para validação de dados
+class UserCreate(BaseModel):
+    username: str
+    password: str
+    role: str
+
+class UserOut(BaseModel):
+    id: int
+    username: str
+    role: str
+    is_active: bool
+
+class ResourceCreate(BaseModel):
+    name: str
+    type: str
+    quantity: int
+
+class ResourceOut(BaseModel):
+    id: int
+    name: str
+    type: str
+    quantity: int
+    last_updated: datetime
+
+class AreaCreate(BaseModel):
+    name: str
+
+class AreaOut(BaseModel):
+    id: int
+    name: str
+
+class AccessLogCreate(BaseModel):
+    user_id: int
+    area_id: int
+
+class AccessLogOut(BaseModel):
+    id: int
+    user_id: int
+    area_id: int
+    timestamp: datetime
+
+# Funções auxiliares
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+def verify_password(plain_password, hashed_password):
+    return pwd_context.verify(plain_password, hashed_password)
+
+def get_password_hash(password):
+    return pwd_context.hash(password)
+
+def authenticate_user(db: Session, username: str, password: str):
+    user = db.query(User).filter(User.username == username).first()
+    if not user or not verify_password(password, user.hashed_password):
+        return False
+    return user
+
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=15)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt
+
+async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+    except jwt.PyJWTError:
+        raise credentials_exception
+    user = db.query(User).filter(User.username == username).first()
+    if user is None:
+        raise credentials_exception
+    return user
+
+# Rotas da API
+@app.post("/token")
+async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    user = authenticate_user(db, form_data.username, form_data.password)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": user.username}, expires_delta=access_token_expires
+    )
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@app.post("/users/", response_model=UserOut)
+async def create_user(user: UserCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Not authorized to create users")
+    db_user = User(username=user.username, hashed_password=get_password_hash(user.password), role=user.role)
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+
+@app.get("/users/me", response_model=UserOut)
+async def read_users_me(current_user: User = Depends(get_current_user)):
+    return current_user
+
+@app.post("/resources/", response_model=ResourceOut)
+async def create_resource(resource: ResourceCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if current_user.role not in ["admin", "manager"]:
+        raise HTTPException(status_code=403, detail="Not authorized to create resources")
+    db_resource = Resource(**resource.dict())
+    db.add(db_resource)
+    db.commit()
+    db.refresh(db_resource)
+    return db_resource
+
+@app.get("/resources/", response_model=List[ResourceOut])
+async def get_resources(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    resources = db.query(Resource).offset(skip).limit(limit).all()
+    return resources
+
+@app.put("/resources/{resource_id}", response_model=ResourceOut)
+async def update_resource(resource_id: int, resource: ResourceCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if current_user.role not in ["admin", "manager"]:
+        raise HTTPException(status_code=403, detail="Not authorized to update resources")
+    db_resource = db.query(Resource).filter(Resource.id == resource_id).first()
+    if db_resource is None:
+        raise HTTPException(status_code=404, detail="Resource not found")
+    for key, value in resource.dict().items():
+        setattr(db_resource, key, value)
+    db_resource.last_updated = datetime.utcnow()
+    db.commit()
+    db.refresh(db_resource)
+    return db_resource
+
+@app.delete("/resources/{resource_id}")
+async def delete_resource(resource_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Not authorized to delete resources")
+    db_resource = db.query(Resource).filter(Resource.id == resource_id).first()
+    if db_resource is None:
+        raise HTTPException(status_code=404, detail="Resource not found")
+    db.delete(db_resource)
+    db.commit()
+    return {"message": "Resource deleted successfully"}
+
+@app.post("/areas/", response_model=AreaOut)
+async def create_area(area: AreaCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Not authorized to create areas")
+    db_area = Area(**area.dict())
+    db.add(db_area)
+    db.commit()
+    db.refresh(db_area)
+    return db_area
+
+@app.get("/areas/", response_model=List[AreaOut])
+async def get_areas(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    areas = db.query(Area).offset(skip).limit(limit).all()
+    return areas
+
+@app.post("/access-logs/", response_model=AccessLogOut)
+async def create_access_log(access_log: AccessLogCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    db_access_log = AccessLog(**access_log.dict())
+    db.add(db_access_log)
+    db.commit()
+    db.refresh(db_access_log)
+    return db_access_log
+
+@app.get("/access-logs/", response_model=List[AccessLogOut])
+async def get_access_logs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if current_user.role not in ["admin", "manager"]:
+        raise HTTPException(status_code=403, detail="Not authorized to view access logs")
+    access_logs = db.query(AccessLog).offset(skip).limit(limit).all()
+    return access_logs
+
+@app.get("/dashboard/")
+async def get_dashboard_data(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    total_resources = db.query(Resource).count()
+    low_stock_resources = db.query(Resource).filter(Resource.quantity < 10).all()
+    recent_accesses = db.query(AccessLog).order_by(AccessLog.timestamp.desc()).limit(5).all()
+    resource_distribution = db.query(Resource.type, func.sum(Resource.quantity)).group_by(Resource.type).all()
+
+    return {
+        "total_resources": total_resources,
+        "low_stock_resources": [{"name": r.name, "quantity": r.quantity} for r in low_stock_resources],
+        "recent_accesses": [{"user": a.user.username, "area": a.area.name, "timestamp": a.timestamp} for a in recent_accesses],
+        "resource_distribution": dict(resource_distribution)
+    }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
