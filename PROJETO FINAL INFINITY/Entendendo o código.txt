@@ -43,3 +43,299 @@ IMPLANTAR AUTENTICAÇÃO E AUTORIZAÇÃO PARA DIFERENTES TIPOS DE USUÁRIOS (FUN
   Teste cada funcionalidade com diferentes tipos de usuários.
   Corrija possíveis erros e adicione melhorias com base no feedback.
   Se precisar de código ou ajuda com qualquer uma dessas etapas, é só avisar!
+
+
+---------------------
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indústrias Wayne - Sistema de Gerenciamento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Indústrias Wayne</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" id="loginLink" class="hover:text-gray-300">Login</a></li>
+                    <li><a href="#" id="dashboardLink" class="hover:text-gray-300 hidden">Dashboard</a></li>
+                    <li><a href="#" id="resourcesLink" class="hover:text-gray-300 hidden">Recursos</a></li>
+                    <li><a href="#" id="securityLink" class="hover:text-gray-300 hidden">Segurança</a></li>
+                    <li><a href="#" id="logoutLink" class="hover:text-gray-300 hidden">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8">
+        <div id="loginForm">
+            <h2 class="text-2xl font-bold mb-4">Login</h2>
+            <form id="loginFormElement" class="space-y-4">
+                <input type="text" id="username" placeholder="Nome de usuário" required class="w-full p-2 border rounded">
+                <input type="password" id="password" placeholder="Senha" required class="w-full p-2 border rounded">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Entrar</button>
+            </form>
+        </div>
+
+        <div id="dashboard" class="hidden">
+            <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-semibold mb-2">Total de Recursos</h3>
+                    <p id="totalResources" class="text-3xl font-bold">150</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-semibold mb-2">Recursos com Baixo Estoque</h3>
+                    <ul id="lowStockResources" class="list-disc pl-5">
+                        <li>Batarangues - 5 unidades</li>
+                        <li>Capa - 2 unidades</li>
+                        <li>Batmóvel - 1 unidade</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 rounded shadow col-span-2">
+                    <h3 class="text-lg font-semibold mb-2">Acessos Recentes</h3>
+                    <ul id="recentAccesses" class="space-y-2">
+                        <li>Alfred Pennyworth - Batcaverna - 10:30</li>
+                        <li>Lucius Fox - Laboratório - 09:45</li>
+                        <li>Bruce Wayne - Sala de Reuniões - 08:15</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 rounded shadow col-span-2">
+                    <h3 class="text-lg font-semibold mb-2">Distribuição de Recursos</h3>
+                    <canvas id="resourceDistributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div id="resources" class="hidden">
+            <h2 class="text-2xl font-bold mb-4">Gerenciamento de Recursos</h2>
+            <form id="resourceForm" class="space-y-4 mb-8">
+                <input type="text" id="resourceName" placeholder="Nome do recurso" required class="w-full p-2 border rounded">
+                <input type="text" id="resourceType" placeholder="Tipo do recurso" required class="w-full p-2 border rounded">
+                <input type="number" id="resourceQuantity" placeholder="Quantidade" required class="w-full p-2 border rounded">
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Adicionar Recurso</button>
+            </form>
+            <div id="resourceList" class="space-y-4">
+                <!-- Recursos serão adicionados aqui dinamicamente -->
+            </div>
+        </div>
+
+        <div id="security" class="hidden">
+            <h2 class="text-2xl font-bold mb-4">Controle de Segurança</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-semibold mb-2">Áreas Restritas</h3>
+                    <ul id="restrictedAreas" class="list-disc pl-5">
+                        <li>Batcaverna</li>
+                        <li>Laboratório Secreto</li>
+                        <li>Arsenal</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-semibold mb-2">Gerenciar Acesso</h3>
+                    <form id="accessForm" class="space-y-4">
+                        <select id="userSelect" class="w-full p-2 border rounded">
+                            <option value="">Selecione um usuário</option>
+                            <option value="1">Bruce Wayne</option>
+                            <option value="2">Alfred Pennyworth</option>
+                            <option value="3">Lucius Fox</option>
+                        </select>
+                        <select id="areaSelect" class="w-full p-2 border rounded">
+                            <option value="">Selecione uma área</option>
+                            <option value="1">Batcaverna</option>
+                            <option value="2">Laboratório Secreto</option>
+                            <option value="3">Arsenal</option>
+                        </select>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Conceder Acesso</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simulated user roles and authentication
+        const users = {
+            'bruce': { password: 'wayne', role: 'admin' },
+            'alfred': { password: 'pennyworth', role: 'manager' },
+            'lucius': { password: 'fox', role: 'employee' }
+        };
+
+        let currentUser = null;
+
+        // DOM elements
+        const loginForm = document.getElementById('loginForm');
+        const dashboard = document.getElementById('dashboard');
+        const resources = document.getElementById('resources');
+        const security = document.getElementById('security');
+        const loginLink = document.getElementById('loginLink');
+        const dashboardLink = document.getElementById('dashboardLink');
+        const resourcesLink = document.getElementById('resourcesLink');
+        const securityLink = document.getElementById('securityLink');
+        const logoutLink = document.getElementById('logoutLink');
+
+        // Event listeners
+        document.getElementById('loginFormElement').addEventListener('submit', handleLogin);
+        loginLink.addEventListener('click', showLoginForm);
+        dashboardLink.addEventListener('click', showDashboard);
+        resourcesLink.addEventListener('click', showResources);
+        securityLink.addEventListener('click', showSecurity);
+        logoutLink.addEventListener('click', handleLogout);
+        document.getElementById('resourceForm').addEventListener('submit', handleAddResource);
+        document.getElementById('accessForm').addEventListener('submit', handleGrantAccess);
+
+        // Functions
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (users[username] && users[username].password === password) {
+                currentUser = { username, role: users[username].role };
+                updateNavigation();
+                showDashboard();
+            } else {
+                alert('Credenciais inválidas. Tente novamente.');
+            }
+        }
+
+        function updateNavigation() {
+            loginLink.classList.add('hidden');
+            dashboardLink.classList.remove('hidden');
+            resourcesLink.classList.remove('hidden');
+            logoutLink.classList.remove('hidden');
+
+            if (currentUser.role === 'admin' || currentUser.role === 'manager') {
+                securityLink.classList.remove('hidden');
+            } else {
+                securityLink.classList.add('hidden');
+            }
+        }
+
+        function showLoginForm() {
+            hideAllSections();
+            loginForm.classList.remove('hidden');
+        }
+
+        function showDashboard() {
+            hideAllSections();
+            dashboard.classList.remove('hidden');
+            updateDashboard();
+        }
+
+        function showResources() {
+            hideAllSections();
+            resources.classList.remove('hidden');
+            updateResourceList();
+        }
+
+        function showSecurity() {
+            if (currentUser.role !== 'admin' && currentUser.role !== 'manager') {
+                alert('Acesso não autorizado.');
+                return;
+            }
+            hideAllSections();
+            security.classList.remove('hidden');
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            hideAllSections();
+            loginForm.classList.remove('hidden');
+            loginLink.classList.remove('hidden');
+            dashboardLink.classList.add('hidden');
+            resourcesLink.classList.add('hidden');
+            securityLink.classList.add('hidden');
+            logoutLink.classList.add('hidden');
+        }
+
+        function hideAllSections() {
+            loginForm.classList.add('hidden');
+            dashboard.classList.add('hidden');
+            resources.classList.add('hidden');
+            security.classList.add('hidden');
+        }
+
+        function updateDashboard() {
+            // Update chart
+            const ctx = document.getElementById('resourceDistributionChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Equipamentos', 'Veículos', 'Dispositivos de Segurança'],
+                    datasets: [{
+                        data: [65, 20, 15],
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                    }]
+                }
+            });
+        }
+
+        function handleAddResource(e) {
+            e.preventDefault();
+            const name = document.getElementById('resourceName').value;
+            const type = document.getElementById('resourceType').value;
+            const quantity = document.getElementById('resourceQuantity').value;
+
+            // In a real application, you would send this data to the server
+            // For now, we'll just update the list locally
+            const resourceItem = document.createElement('div');
+            resourceItem.className = 'bg-white p-4 rounded shadow';
+            resourceItem.innerHTML = `
+                <h3 class="text-lg font-semibold">${name}</h3>
+                <p>Tipo: ${type}</p>
+                <p>Quantidade: ${quantity}</p>
+            `;
+            document.getElementById('resourceList').appendChild(resourceItem);
+
+            // Clear form
+            e.target.reset();
+        }
+
+        function updateResourceList() {
+            // In a real application, you would fetch this data from the server
+            const resourceList = document.getElementById('resourceList');
+            resourceList.innerHTML = `
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-semibold">Batarangues</h3>
+                    <p>Tipo: Equipamento</p>
+                    <p>Quantidade: 50</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-semibold">Batmóvel</h3>
+                    <p>Tipo: Veículo</p>
+                    <p>Quantidade: 1</p>
+                </div>
+            `;
+        }
+
+        function handleGrantAccess(e) {
+            e.preventDefault();
+            const user = document.getElementById('userSelect').value;
+            const area = document.getElementById('areaSelect').value;
+
+            if (user && area) {
+                alert(`Acesso concedido para o usuário ID ${user} à área ID ${area}`);
+                e.target.reset();
+            } else {
+                alert('Por favor, selecione um usuário e uma área.');
+            }
+        }
+
+        // Initialize the application
+        showLoginForm();
+    </script>
+</body>
+</html>
+
+
