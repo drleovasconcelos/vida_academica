@@ -12,3 +12,206 @@ from typing import Type
 
 quandomimportação não estiver funcionando 
 vai na lupa em cima e digita Reload Windons
+
+
+--------------------------
+
+----------------------------------------> 
+https://www.youtube.com/watch?v=e-ff52oMY8M&list=PLJHVw_wMqnI-eX95g9U_W941l_yWsIDIL
+
+
+---- configs.py 
+
+from pydantic_settings import BaseSettings
+from sqlalchemy.ext.declarative import declarative_base
+from typing import Type
+
+
+class Settings(BaseSettings):
+    API_V1_STR: str = "api/v1"
+    DB_URL: str = "mysql+asyncmy://root:@localhost:3306/loja"
+    DBBaseModel: Type = declarative_base()
+
+    class Config:
+        case_sensitive = True
+
+
+settings = Settings()
+
+
+--------------- database.py
+
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.ext.asyncio import AsyncEngine
+from sqlalchemy.ext.asyncio import AsyncSession
+from core.configs import settings
+
+engine: AsyncEngine = create_async_engine(settings.DB_URL)
+
+Session: AsyncSession = sessionmaker(
+    autoflush=False,
+    autocommit=False,
+    expire_on_commit=False,
+    class_=AsyncSession,
+    bind=engine
+)
+
+
+------------- deps.py
+
+from sqlalchemy.ext.asyncio import AsyncSession
+from core.database import Session
+
+
+async def getSession():
+    session: AsyncSession = Session()
+    try:
+        yield session
+    finally:
+        await session.close()
+
+
+----- produto_model.py
+
+from core.configs import settings
+from sqlalchemy import Column, Integer, String, Float, Boolean
+
+
+class ProdutoModel(settings.DBBaseModel):
+    __tablename__ = "produtos"
+    codigo: int = Column(Integer, primary_key=True,
+                         autoincrement=True)
+    nome: str = Column(String(150), nullable=False)
+    preco: float = Column(Float)
+    categoria: str = Column(String(100))
+    disponivel: bool = Column(Boolean, default=False)
+
+
+-------------- __all_models.py
+
+from models.produto_model import ProdutoModel
+
+
+------------ create_tables.py
+
+from core.configs import settings
+from core.database import engine
+
+
+async def createTables() -> None:
+    import models.__all_models
+    async with engine.begin() as conn:
+        await conn.run_sync(settings.DBBaseModel.metadata.drop_all)
+        await conn.run_sync(settings.DBBaseModel.metadata.create_all)
+    print('tabelas criadas com sucesso...')
+
+if __name__ == '__main__':
+    import asyncio
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(createTables())
+
+
+--------------- produto_schema.py 
+from typing import Optional
+from pydantic import BaseModel as SCBaseModel
+
+
+class ProdutoSchema(SCBaseModel):
+    codigo: Optional[int] = None
+    nome: str
+    preco: float
+    categoria: str
+    disponivel: Optional[bool] = False
+
+    class Config:
+        orm_mode = True
+
+
+class ProdutoSchemaUpdate(ProdutoSchema):
+    codigo: Optional[int] = None
+    nome: Optional[str] = None
+    preco: Optional[float] = None
+    categoria: Optional[str] = None
+    disponivel: Optional[bool] = None
+
+------------------ produto.py 
+
+from fastapi import APIRouter, Depends, Response, status
+from fastapi import HTTPException
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from models.produto_model import ProdutoModel
+from schemas.produto_schema import ProdutoSchema, ProdutoSchemaUpdate
+from core.deps import getSession
+from typing import List
+
+router = APIRouter()
+
+
+@router.post('/', status_code=status.HTTP_201_CREATED,
+             response_model=ProdutoSchema)
+async def createProduct(produto: ProdutoSchema,
+                        db: AsyncSession = Depends(getSession)):
+    novoProduto = ProdutoModel(nome=produto.nome,
+                               preco=produto.preco,
+                               categoria=produto.categoria)
+    db.add(novoProduto)
+    await db.commit()
+    return novoProduto
+
+
+@router.get('/', status_code=status.HTTP_200_OK,
+            response_model=List[ProdutoSchema])
+async def getProducts(db: AsyncSession = Depends(getSession)):
+    async with db as session:
+        query = select(ProdutoModel)
+        result = await session.execute(query)
+        produtos: List = result.scalars().all()
+        return produtos
+
+
+@router.put('/{cod_produto}', response_model=ProdutoSchema,
+            status_code=status.HTTP_202_ACCEPTED)
+async def editProduct(cod_produto: int,
+                      produto: ProdutoSchemaUpdate,
+                      db: AsyncSession = Depends(getSession)):
+    async with db as session:
+        query = select(ProdutoModel).filter(ProdutoModel.codigo == cod_produto)
+        result = await session.execute(query)
+        produto_up: ProdutoSchema = result.scalars().unique().one_or_none()
+
+        if produto_up:
+            if produto.nome:
+                produto_up.nome = produto.nome
+            if produto.preco:
+                produto_up.preco = produto.preco
+            if produto.categoria:
+                produto_up.categoria = produto.categoria
+            await session.commit()
+            return produto_up
+
+------------------------------ api.py
+
+from fastapi import APIRouter
+from api.v1.endpoints import produto
+
+apiRouter = APIRouter()
+apiRouter.include_router(produto.router, prefix='/produtos')
+
+
+--------------------------------- main.py
+
+from fastapi import FastAPI
+from core.configs import settings
+from api.v1.api import apiRouter
+
+app = FastAPI()
+app.include_router(apiRouter,
+                   prefix=settings.API_V1_STR)
+
+
+if __name__ == '__main__':
+    import uvicorn
+    uvicorn.run('main:app', host='0.0.0.0', port=8000,
+                reload=True)
