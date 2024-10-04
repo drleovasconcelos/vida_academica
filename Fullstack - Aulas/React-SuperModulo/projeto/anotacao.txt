@@ -1,0 +1,212 @@
+npm create vite@latest
+y
+coloca o nome do projeto
+seleciona o React
+seleciona o Javascript
+cd nome do projeto
+npm install
+code .
+abre o terminal de novo
+npm run dev
+
+=======================
+LIMPEZA
+
+apaga o arquivo index.css
+limpa tudo de dentro do App.css (deixa vazio)
+transforma o App.jsx nisso:
+import "./App.css"
+function App() {
+  return (
+    <h1>Aula 1</h1>
+  )
+}
+
+export default App
+
+e no main.jsx apaga apenas a linha 4 que é a importação do index.css que apagamos
+
+dentro da pasta public apaga o aquivo vite.svg
+dentro da pasta assets apaga o arquivo react.svg
+
+
+Dracula
+Material Icon
+Image Preview
+Color Highligth
+Prettier
+
+
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 1.75,
+  "editor.tabSize": 2,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.wordWrap": "on",
+  "editor.minimap.renderCharacters": false,
+  "telemetry.telemetryLevel": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "breadcrumbs.filePath": "off",
+  "outline.icons": false,
+  "editor.formatOnSave": true,
+  "html.format.wrapAttributes": "auto",
+  "html.format.wrapLineLength": 0,
+  "html.autoClosingTags": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.bracketPairColorization.enabled": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.compactFolders": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 1,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.colorTheme": "Dracula",
+  "files.autoSave": "afterDelay"
+}
+
+
+
+https://api.thecatapi.com/v1/images/search?limit=2
+
+CONSUMA ESSA API, BUSQUE A IMAGEM DOS GATINHOS E EXIBA ELA EM UM GRID NA SUA PÁGINA
+USANDO AXIOS
+
+import axios from "axios";
+import "./App.css";
+import { useEffect, useState } from "react";
+
+function App() {
+  const [cats, setCats] = useState([]);
+  async function getCats() {
+    try {
+      const { data } = await axios.get(
+        "https://api.thecatapi.com/v1/images/search?limit=2"
+      );
+      setCats(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getCats();
+  }, []);
+
+  return (
+    <>
+      <h1>Projeto dos Gatos</h1>
+
+      <section>
+        {cats && cats.map((element) => <img src={element.url} />)}
+      </section>
+    </>
+  );
+}
+
+export default App;
+
+---------css------------
+
+img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+
+
+-------------------EXERC 2----------------fazer o nome aparecer na tela
+import { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [name, setName] = useState("");
+
+  function enviarAlgo(e){
+    e.preventDefault()
+    console.log(`Você enviou o nome ${name}`)
+  }
+
+  return (
+    <>
+      <h1>Trabalhando com Formulários</h1>  
+      <form onSubmit={enviarAlgo}>
+        <label htmlFor="nome">Nome</label>
+        <input
+          type="text"
+          id="nome"
+          name="nome"
+          placeholder="Digite seu nome"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <button>Enviar</button>
+      </form>
+    </>
+  );
+}
+
+export default App;
+
+
+------------------------ CONSUMIR API DE VIA CEP ========
+
+import { useState } from "react";
+import "./App.css";
+import axios from "axios";
+
+function App() {
+  const [cep, setCep] = useState("");
+  const [resultado, setResultado] = useState();
+
+  async function consultarCEP(e) {
+    e.preventDefault();
+    try {
+      const { data } = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+      setResultado(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  return (
+    <>
+      <h1>Consultando CEP</h1>
+
+      <form onSubmit={consultarCEP}>
+        <label htmlFor="cep">CEP</label>
+        <input
+          type="text"
+          id="cep"
+          name="cep"
+          placeholder="Digite seu CEP"
+          onChange={(e) => setCep(e.target.value)}
+        />
+        <button>Buscar</button>
+      </form>
+
+      {resultado && (
+        <div>
+          <h2>Endereço: {resultado.logradouro}</h2>
+          <p>Complemento: {resultado.complemento}</p>
+          <p>Bairro: {resultado.bairro}</p>
+          <p>Cidade: {resultado.localidade}</p>
+          <p>Estado: {resultado.estado}</p>
+          <p>Região: {resultado.regiao}</p>
+          <p>DDD: {resultado.ddd}</p>
+        </div>
+      )}
+    </>
+  );
+}
+
+export default App;
