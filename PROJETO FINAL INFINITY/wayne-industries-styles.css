@@ -1,0 +1,42 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.bg-dark {
+    background-color: #1a1a1a !important;
+}
+
+.bg-secondary {
+    background-color: #2a2a2a !important;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.display-4 {
+    font-size: 2.5rem;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+/* Acessibilidade */
+.btn:focus, .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+}
