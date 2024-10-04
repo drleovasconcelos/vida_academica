@@ -4,7 +4,9 @@ invertexto.com/612aula1react
 -----------------------------------------------
 ajustes para ficar mais bonito
 
-no vscode control+shift+p
+no vscode control+shift+p (seleciona open user json)
+apaga tudo e coloca o que tem abaixo.
+
 {
   "workbench.iconTheme": "material-icon-theme",
   "editor.fontSize": 16,
@@ -35,13 +37,14 @@ no vscode control+shift+p
   "files.autoSave": "afterDelay"
 }
 
-Extensões
+depois instalas as Extensões abaixo
 Dracula
 Image preview
 Color Highlight
 Prettier - Code formatter
 ctrol+S -ajusta a formatação automáticamente11
 
+______________________________________instalação do react-------------
 creat react app - site para baixar o react mais fácil, mas não é original e parou de atualizar
 vitejs.dev - baixar por esse
 nextjs.org - domina o mercado
