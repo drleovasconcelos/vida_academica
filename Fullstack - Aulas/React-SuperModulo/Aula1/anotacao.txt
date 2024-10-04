@@ -87,8 +87,8 @@ seleciona o Javascript
 cd nome do projeto
 npm install
 code . (abre o terminal de novo)
+abre o terminal de novo
 npm run dev
-
 =======================
 LIMPEZA
 
@@ -108,7 +108,7 @@ export default App
 -dentro da pasta public apaga o aquivo vite.svg
 -dentro da pasta assets apaga o arquivo react.svg
 
--------------------------base inicial----------------------------
+-------------------------base inicial- APP.jsx---------------------------
 function App() {
 
   return (
