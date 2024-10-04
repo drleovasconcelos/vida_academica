@@ -1,6 +1,46 @@
 nodemodels - precisa disso para abrir a página
 
 invertexto.com/612aula1react
+-----------------------------------------------
+ajustes para ficar mais bonito
+
+no vscode control+shift+p
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 1.75,
+  "editor.tabSize": 2,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.wordWrap": "on",
+  "editor.minimap.renderCharacters": false,
+  "telemetry.telemetryLevel": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "breadcrumbs.filePath": "off",
+  "outline.icons": false,
+  "editor.formatOnSave": true,
+  "html.format.wrapAttributes": "auto",
+  "html.format.wrapLineLength": 0,
+  "html.autoClosingTags": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.bracketPairColorization.enabled": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.compactFolders": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 1,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.colorTheme": "Dracula",
+  "files.autoSave": "afterDelay"
+}
+
+Extensões
+Dracula
+Image preview
+Color Highlight
+Prettier - Code formatter
+ctrol+S -ajusta a formatação automáticamente11
 
 creat react app - site para baixar o react mais fácil, mas não é original e parou de atualizar
 vitejs.dev - baixar por esse
@@ -78,6 +118,9 @@ function App() {
 
 export default App
 
+______________________________________
+instalar axios (consumir api)
+npm run dev
 -------------------------------------------------------------
 
 
