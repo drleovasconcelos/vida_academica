@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayne Industries - Dashboard Gerente</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        nav {
+            background-color: #2a2a2a;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        .logo {
+            width: 100px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logout {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .dashboard-item {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .chart-container {
+            height: 300px;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        tbody tr:hover {
+            background-color: #555;
+        }
+        .employee-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .access-control {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .access-card {
+            background-color: #2a2a2a;
+            padding: 10px;
+            border-radius: 5px;
+            flex: 1 1 200px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><img src="IMAGENS/image.png" alt="Wayne Industries Logo" class="logo"></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#employee-management">Gestão de Funcionários</a></li>
+            <li><a href="#access-control">Controle de Acesso</a></li>
+            <li><a href="#performance">Desempenho da Equipe</a></li>
+            <li><a href="#" id="logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Dashboard Gerente</h1>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-item">
+                <h2>Total de Funcionários</h2>
+                <p id="totalEmployees">Carregando...</p>
+            </div>
+            <div class="dashboard-item">
+                <h2>Projetos Ativos</h2>
+                <p id="activeProjects">Carregando...</p>
+            </div>
+            <div class="dashboard-item">
+                <h2>Desempenho da Equipe</h2>
+                <div class="chart-container">
+                    <canvas id="teamPerformanceChart"></canvas>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <h2>Incidentes Recentes</h2>
+                <ul id="recentIncidents">
+                    <li>Carregando...</li>
+                </ul>
+            </div>
+        </div>
+
+        <section id="employee-management">
+            <h2>Gestão de Funcionários</h2>
+            <div class="employee-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Departamento</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeList">
+                        <!-- Lista de funcionários será preenchida dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="access-control">
+            <h2>Controle de Acesso</h2>
+            <div class="access-control">
+                <div class="access-card">
+                    <h3>Laboratório Principal</h3>
+                    <p>Nível de Acesso: Alto</p>
+                    <h4>Pessoal Autorizado:</h4>
+                    <ul id="lab-authorized"></ul>
+                </div>
+                <div class="access-card">
+                    <h3>Sala de Servidores</h3>
+                    <p>Nível de Acesso: Restrito</p>
+                    <h4>Pessoal Autorizado:</h4>
+                    <ul id="server-authorized"></ul>
+                </div>
+                <div class="access-card">
+                    <h3>Área de Desenvolvimento</h3>
+                    <p>Nível de Acesso: Médio</p>
+                    <h4>Pessoal Autorizado:</h4>
+                    <ul id="dev-authorized"></ul>
+                </div>
+                <div class="access-card">
+                    <h3>Arquivos Confidenciais</h3>
+                    <p>Nível de Acesso: Máximo</p>
+                    <h4>Pessoal Autorizado:</h4>
+                    <ul id="confidential-authorized"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance">
+            <h2>Desempenho da Equipe</h2>
+            <div class="chart-container">
+                <canvas id="teamProductivityChart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function loadEmployees() {
+                const employeeList = document.getElementById('employeeList');
+                const employees = JSON.parse(localStorage.getItem('employees')) || [];
+                
+                employeeList.innerHTML = ''; // Limpar a lista existente
+                
+                employees.forEach(emp => {
+                    const row = employeeList.insertRow();
+                    row.insertCell(0).textContent = emp.name;
+                    row.insertCell(1).textContent = emp.position;
+                    row.insertCell(2).textContent = emp.department;
+                    row.insertCell(3).textContent = 'Ativo'; // Assumindo que todos estão ativos
+                });
+
+                // Atualizar o total de funcionários
+                document.getElementById('totalEmployees').textContent = employees.length;
+            }
+
+            function loadDashboardData() {
+                document.getElementById('activeProjects').textContent = '7';
+                
+                const incidentsList = document.getElementById('recentIncidents');
+                incidentsList.innerHTML = `
+                    <li>Tentativa de acesso não autorizado - 05/10</li>
+                    <li>Falha no sistema de refrigeração - 02/10</li>
+                `;
+            }
+
+            function createTeamPerformanceChart() {
+                const ctx = document.getElementById('teamPerformanceChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['TI', 'Segurança', 'Desenvolvimento', 'Pesquisa'],
+                        datasets: [{
+                            label: 'Desempenho por Departamento',
+                            data: [85, 90, 78, 88],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+
+            function createTeamProductivityChart() {
+                const ctxProductivity = document.getElementById('teamProductivityChart').getContext('2d');
+                new Chart(ctxProductivity, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+                        datasets: [{
+                            label: 'Produtividade da Equipe',
+                            data: [65, 70, 75, 72, 80, 85],
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Inicialização
+            loadEmployees();
+            loadDashboardData();
+            createTeamPerformanceChart();
+            createTeamProductivityChart();
+
+            // Atualizar a lista de funcionários a cada 5 segundos
+            setInterval(loadEmployees, 5000);
+
+            // Adicionar evento de logout
+            document.getElementById('logout').addEventListener('click', function() {
+                window.location.href = 'inicial-index.html';
+            });
+        });
+
+        function manageAccess(area) {
+            alert(`Gerenciando acesso para: ${area}`);
+        }
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // ... (mantenha as funções existentes)
+
+        function loadAccessControl() {
+            const accessControl = JSON.parse(localStorage.getItem('accessControl')) || {
+                lab: [],
+                server: [],
+                dev: [],
+                confidential: []
+            };
+
+            const areas = ['lab', 'server', 'dev', 'confidential'];
+            areas.forEach(area => {
+                const authorizedList = document.getElementById(`${area}-authorized`);
+                authorizedList.innerHTML = '';
+                accessControl[area].forEach(name => {
+                    const li = document.createElement('li');
+                    li.textContent = name;
+                    authorizedList.appendChild(li);
+                });
+            });
+        }
+
+        // Inicialização
+        loadEmployees();
+        loadDashboardData();
+        createTeamPerformanceChart();
+        createTeamProductivityChart();
+        loadAccessControl(); // Adicione esta linha
+
+        // Atualizar dados periodicamente
+        setInterval(() => {
+            loadEmployees();
+            loadAccessControl();
+        }, 5000);
+
+        // Adicionar evento de logout
+        document.getElementById('logout').addEventListener('click', function() {
+            window.location.href = 'inicial-index.html';
+        });
+    });
+
+    function manageAccess(area) {
+        alert(`Gerenciando acesso para: ${area}`);
+    }
+</script>
+</body>
+</html>

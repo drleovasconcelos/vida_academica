@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayne Industries - Dashboard Funcionário</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        nav {
+            background-color: #2a2a2a;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        .logo {
+            width: 100px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logout {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .dashboard-item {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .chart-container {
+            height: 300px;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        /* CSS para a agenda */
+        #agenda {
+            margin: 20px 0;
+        }
+        #agenda h2 {
+            color: #ffffff;
+        }
+        #agenda p {
+            color: #ccc;
+            font-size: 1.1em;
+        }
+        #agenda table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        #agenda th, #agenda td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: left;
+        }
+        #agenda th {
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        #agenda tbody tr:hover {
+            background-color: #555;
+        }
+        .incident-form, .incident-list {
+            background-color: #2a2a2a;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        #incident-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #incident-form select, #incident-form textarea, #incident-form input {
+            padding: 8px;
+            background-color: #3a3a3a;
+            border: 1px solid #4a4a4a;
+            color: #ffffff;
+        }
+
+        #incident-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #recent-incidents li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3a3a3a;
+        }
+
+        /* Estilos para a seção de notificações */
+        .notification-center {
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        #notification-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #notification-list li {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            border-bottom: 1px solid #3a3a3a;
+        }
+
+        .notification-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .notification-content {
+            flex-grow: 1;
+        }
+
+        .notification-content small {
+            color: #aaa;
+        }
+
+        .urgent {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <img src="IMAGENS/image.png" alt="Wayne Industries Logo" class="logo">
+            </li>
+            <li><a href="#perfil">Perfil</a></li>
+            <li><a href="#agenda">Agenda de Trabalho</a></li>
+            <li><a href="#incidentes">Relatórios de Incidentes</a></li>
+            <li><a href="#notificacoes">Notificações</a></li>
+            <li><a href="#" id="logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Dashboard Funcionário</h1>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-item">
+                <h2>Tarefas Pendentes</h2>
+                <p id="pendingTasks">Carregando...</p>
+            </div>
+            <div class="dashboard-item">
+                <h2>Projetos Ativos</h2>
+                <p id="activeProjects">Carregando...</p>
+            </div>
+            <div class="dashboard-item">
+                <h2>Desempenho Semanal</h2>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <h2>Próximos Treinamentos</h2>
+                <ul id="upcomingTrainings">
+                    <li>Carregando...</li>
+                </ul>
+            </div>
+        </div>
+
+        <main>    
+            <section id="agenda">
+                <h2>Agenda de Trabalho</h2>
+                <p>Horários de trabalho e tarefas atribuídas.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Segunda-feira</th>
+                            <th>Terça-feira</th>
+                            <th>Quarta-feira</th>
+                            <th>Quinta-feira</th>
+                            <th>Sexta-feira</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>08:00 - 09:00</td>
+                            <td>Reunião de equipe</td>
+                            <td>Planejamento de projetos</td>
+                            <td>Revisão de propostas</td>
+                            <td>Desenvolvimento</td>
+                            <td>Feedback de clientes</td>
+                            <td>Folga</td>
+                            <td>Folga</td>
+                        </tr>
+                        <tr>
+                            <td>09:00 - 10:00</td>
+                            <td>Desenvolvimento</td>
+                            <td>Reunião de marketing</td>
+                            <td>Atendimento ao cliente</td>
+                            <td>Desenvolvimento</td>
+                            <td>Reunião de equipe</td>
+                            <td>Folga</td>
+                            <td>Folga</td>
+                        </tr>
+                        <tr>
+                            <td>10:00 - 11:00</td>
+                            <td>Pesquisa de mercado</td>
+                            <td>Desenvolvimento</td>
+                            <td>Revisão de propostas</td>
+                            <td>Treinamento</td>
+                            <td>Desenvolvimento</td>
+                            <td>Folga</td>
+                            <td>Folga</td>
+                        </tr>
+                        <tr>
+                            <td>11:00 - 12:00</td>
+                            <td>Atendimento ao cliente</td>
+                            <td>Desenvolvimento</td>
+                            <td>Reunião de equipe</td>
+                            <td>Desenvolvimento</td>
+                            <td>Planejamento de projetos</td>
+                            <td>Folga</td>
+                            <td>Folga</td>
+                        </tr>
+                        <tr>
+                            <td>12:00 - 13:00</td>
+                            <td>Almoço</td>
+                            <td>Almoço</td>
+                            <td>Almoço</td>
+                            <td>Almoço</td>
+                            <td>Almoço</td>
+                            <td>Folga</td>
+                            <td>Folga</td>
+                        </tr>
+                        <tr>
+                            <td>13:00 - 14:00</td>
+                            <td>Desenvolvimento</td>
+                            <td>Treinamento</td>
+                            <td>Desenvolvimento</td>
+                            <td>Revisão de propostas</td>
+                            <td>Reunião de equipe</td>
+                            <td>Folga</td>
+                            <td>Folga</td>
+                        </tr>
+                        <tr>
+                            <td>14:00 - 15:00</td>
+                            <td>Feedback de clientes</td>
+                            <td>Desenvolvimento</td>
+                            <td>Reunião de marketing</td>
+                            <td>Desenvolvimento</td>
+                            <td>Planejamento de projetos</td>
+                            <td>Folga</td>
+                            <td>Folga</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="incidentes">
+                <h2>Relatórios de Incidentes</h2>
+                <p>Registrar e visualizar incidentes de segurança.</p>
+                <div class="incident-form">
+                    <h3>Registrar Novo Incidente</h3>
+                    <form id="incident-form">
+                        <select id="incident-type" required>
+                            <option value="">Selecione o tipo de incidente</option>
+                            <option value="security_breach">Violação de Segurança</option>
+                            <option value="equipment_failure">Falha de Equipamento</option>
+                            <option value="unauthorized_access">Acesso Não Autorizado</option>
+                            <option value="data_leak">Vazamento de Dados</option>
+                        </select>
+                        <textarea id="incident-description" placeholder="Descreva o incidente" required></textarea>
+                        <input type="date" id="incident-date" required>
+                        <button type="submit">Registrar Incidente</button>
+                    </form>
+                </div>
+                <div class="incident-list">
+                    <h3>Incidentes Recentes</h3>
+                    <ul id="recent-incidents">
+                        <li>
+                            <strong>Violação de Segurança</strong> - 05/10/2023<br>
+                            Tentativa de acesso não autorizado ao servidor principal. Bloqueado pelo firewall.
+                        </li>
+                        <li>
+                            <strong>Falha de Equipamento</strong> - 02/10/2023<br>
+                            Falha no sistema de refrigeração do laboratório 3. Manutenção agendada.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section id="notificacoes">
+                <h2>Notificações</h2>
+                <p>Alertas e notificações importantes.</p>
+                <div class="notification-center">
+                    <ul id="notification-list">
+                        <li class="urgent">
+                            <span class="notification-icon">🚨</span>
+                            <div class="notification-content">
+                                <strong>Atualização de Segurança Urgente</strong>
+                                <p>Atualize seu software de segurança imediatamente. Nova vulnerabilidade detectada.</p>
+                                <small>Há 1 hora</small>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="notification-icon">📅</span>
+                            <div class="notification-content">
+                                <strong>Reunião de Equipe</strong>
+                                <p>Reunião trimestral agendada para amanhã às 10h na Sala de Conferências A.</p>
+                                <small>Há 3 horas</small>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="notification-icon">🎓</span>
+                            <div class="notification-content">
+                                <strong>Novo Treinamento Disponível</strong>
+                                <p>Curso online "Inovações em Tecnologia Wayne" disponível na plataforma de e-learning.</p>
+                                <small>Há 1 dia</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function logout() {
+            // Implementar lógica de logout
+            window.location.href = 'inicial-index.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simular carregamento de dados
+            document.getElementById('pendingTasks').textContent = '5';
+            document.getElementById('activeProjects').textContent = '2';
+            
+            const trainingsList = document.getElementById('upcomingTrainings');
+            trainingsList.innerHTML = `
+                <li>Segurança Cibernética - 15/10</li>
+                <li>Inovação Tecnológica - 22/10</li>
+            `;
+
+            // Criar gráfico de desempenho
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex'],
+                    datasets: [{
+                        label: 'Produtividade',
+                        data: [70, 68, 78, 75, 82],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
+            // Adicionar evento de logout
+            document.getElementById('logout').addEventListener('click', logout);
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+    // ... (seu código existente)
+
+    // Manipulador de eventos para o formulário de incidentes
+    document.getElementById('incident-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const type = document.getElementById('incident-type').value;
+        const description = document.getElementById('incident-description').value;
+        const date = document.getElementById('incident-date').value;
+        
+        // Aqui você normalmente enviaria estes dados para um servidor
+        // Por enquanto, vamos apenas adicionar à lista de incidentes recentes
+        const incidentsList = document.getElementById('recent-incidents');
+        const newIncident = document.createElement('li');
+        newIncident.innerHTML = `
+            <strong>${type}</strong> - ${date}<br>
+            ${description}
+        `;
+        incidentsList.insertBefore(newIncident, incidentsList.firstChild);
+
+        // Limpar o formulário
+        e.target.reset();
+    });
+
+    // Simulação de novas notificações
+    setInterval(() => {
+        const notificationList = document.getElementById('notification-list');
+        const newNotification = document.createElement('li');
+        newNotification.innerHTML = `
+            <span class="notification-icon">📢</span>
+            <div class="notification-content">
+                <strong>Nova Atualização</strong>
+                <p>Sistema atualizado com sucesso. Reinicie seu computador.</p>
+                <small>Agora</small>
+            </div>
+        `;
+        notificationList.insertBefore(newNotification, notificationList.firstChild);
+        
+        // Remover a notificação mais antiga se houver mais de 5
+        if (notificationList.children.length > 5) {
+            notificationList.removeChild(notificationList.lastChild);
+        }
+    }, 30000); // Adiciona uma nova notificação a cada 30 segundos
+});
+    </script>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
