@@ -1,0 +1,29 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import "./App.css"
+import { Sobre } from "./pages/Sobre"
+import { Inicio } from "./pages/Inicio"
+import { Contato } from "./pages/Contato"
+import { Layout } from "./components/Layout"
+import { Page404 } from "./pages/Page404"
+import { Resultado } from "./pages/Resultado"
+
+function App() {
+
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Inicio />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/contato" element={<Contato />} />
+            <Route path="/resultado" element={<Resultado />} />
+            <Route path="*" element={<Page404 />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>  
+    </>
+  )
+}
+
+export default App
