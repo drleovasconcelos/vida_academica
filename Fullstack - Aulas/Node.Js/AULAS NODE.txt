@@ -1,0 +1,688 @@
+https://www.invertexto.com/615aula1node
+
+AULA 1
+
+CREATE DATABASE aula1;
+
+USE aula1;
+
+CREATE TABLE alunos(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50), 
+    cpf CHAR(14),
+    data_nasc DATE,
+    endereco TEXT
+);
+
+INSERT INTO alunos
+	(nome, cpf, data_nasc, endereco)
+		VALUES
+			("João", "045.856.859-66", "1995-08-10","rua logo ali, 25"),
+            ("Maria", "045.856.859-67", "1995-08-12","rua logo ali, 26"),
+            ("José", "045.856.859-68", "1995-08-13","rua logo ali, 27"),
+            ("Ana", "045.856.859-69", "1995-08-14","rua logo ali, 28");
+            
+SELECT * FROM alunos;
+TRUNCATE alunos; # isso aqui limpa a tabela
+DELETE FROM alunos WHERE id = 3;
+
+
+
+npm init -y
+npm install express mysql2
+npm install cors
+
+db.js
+
+const mysql = require('mysql2/promise')
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'Mysql102030',
+  database: 'aula1',
+  waitForConnections: true,
+})
+
+module.exports = pool
+
+
+index.js
+
+const express = require('express')
+const pool = require('./db')
+const app = express()
+const cors = require("cors")
+const PORT = 3000
+i
+app.use(cors())
+
+app.use(express.json())
+
+app.get("/buscar", async (req,res)=>{
+    try{
+        const [rows] = await pool.query("SELECT * FROM alunos")
+        res.json(rows)
+    }catch(error){
+        res.status(500).json({message: "deu ruim", error})
+    }
+})
+
+app.listen(PORT, ()=>{
+    console.log("deu bom")
+})
+
+
+
+
+
+FRONT-END PRA TESTAR
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Consumindo a MINHAAAA api</h1>
+
+    <section id="resultado"></section>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+
+
+
+
+const resultado = document.querySelector('#resultado')
+
+async function buscarAlunos() {
+  const resposta = await fetch('http://localhost:3000/buscar')
+  const dados = await resposta.json()
+
+  dados.forEach((element) => {
+    const card = document.createElement('div')
+
+    card.innerHTML = `
+        <h1>Nome: ${element.nome}</h1>
+        <p>CPF: ${element.cpf}</p>
+        <p>Data de Nascimento: ${element.data_nasc}</p>
+        <p>Endereço: ${element.endereco}</p>
+        `
+    resultado.append(card)
+  })
+}
+
+buscarAlunos()
+
+  
+
+
+AULA 2
+
+ CRIE UM BANCO DE DADOS CHAMADO sistema E UMA TABELA CHAMADA usuarios COM OS CAMPOS: id, email, senha
+INSIRA PELO MENOS 5 USUÁRIOS
+CRIE UMA APLICAÇÃO NODE/EXPRESS QUE SE CONECTA A ESSE BANCO
+E CRIA UMA ROTA CHAMADA buscarUsuarios QUE FAZ UM SELECT * NA TABELA E EXIBE NO JSON TODOS OS USUÁRIOS CRIADOS NA TABELA.
+
+
+
+FLUSH PRIVILEGES;  -- Para garantir que as permissões sejam recarregadas
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('Mysql102030');
+
+
+
+
+npm init -y
+npm install express mysql2 cors
+node index.js
+
+
+const mysql = require('mysql2/promise')
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'Mysql102030',
+  database: 'sistema',
+})
+
+module.exports = pool
+
+
+
+
+
+
+
+
+const express = require('express')
+const pool = require('./db')
+const app = express()
+const cors = require('cors')
+const PORT = 3000
+
+app.use(cors())
+app.use(express.json())
+
+app.get('/users', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM usuarios')
+    res.json(rows)
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao conectar com o banco', error })
+  }
+})
+
+app.listen(PORT, () => {
+  console.log('Aplicação está rodando')
+})
+
+
+
+
+*********************************************************************************************************************************
+FRONT END
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Usuário</title>
+  </head>
+  <body>
+    <h1>Cadastro de Usuário</h1>
+    <form id="registrationForm">
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <br /><br />
+      <label for="password">Senha:</label>
+      <input type="password" id="password" required />
+      <br /><br />
+      <button type="submit">Cadastrar</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+document.getElementById('registrationForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+
+    try {
+        const response = await fetch('http://localhost:3000/cadastrar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            document.getElementById('message').innerText = data.message;
+        } else {
+            document.getElementById('message').innerText = `Erro: ${data.message}`;
+        }
+
+    } catch (error) {
+        document.getElementById('message').innerText = 'Erro na comunicação com a API.';
+    }
+
+    // Limpar os campos do formulário
+    this.reset();
+});
+
+
+**********************************************************************************************************************
+
+
+
+
+
+
+FAÇA UMA PÁGINA COM LOGIN E CADASTRO, NO CADASTRO VAI TER UM FORMULÁRIO COM:
+EMAIL, SENHA, CONFIRMAR SENHA
+E VOCÊ VAI VALIDAR SE:
+O EMAIL JÁ ESTA CADASTRADO
+A SENHA ESTÁ FORTE
+AS DUAS SENHAS SÃO IGUAIS
+
+NO FLUXO DE LOGIN VAI TER UM FORMULÁRIO COM:
+EMAIL E SENHA
+E VAI VALIDAR SE O EMAIL E A SENHA ESTÃO CORRETAS NO BANCO DE DADOS E MOSTRA UMA MENSAGEM RESPECTIVA.
+
+
+
+
+**********************************************************************************************************************
+
+
+// backend aula 2
+const express = require('express');
+const cors = require('cors');
+const pool = require('./db.js');
+const PORT = 3000;
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.get('/users', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM usuarios');
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao conectar no banco', error });
+  }
+});
+
+app.post('/users', async(req,res) =>{ 
+  const {email, password} = req.body;
+
+  
+
+  try{
+    const consulta = 'INSERT INTO usuarios (email,senha) VALUES ( ? , ? )' ;
+
+    await pool.query(consulta,[email,password]);
+
+    res.status(201).json({message:"Usuario adicionado"})
+
+    
+  }catch(error){
+    res.status(500).json({ message: 'falha ao adicionar usuario', error });
+  }
+} )
+
+app.listen(PORT, () => {
+  console.log('DEU BOM');
+});                  
+
+AULA 3
+
+ FAÇA UM BANCO DE DADOS PARA UMA LOCADORA DE FILMES, COM UMA TABELA DE filmes COM OS CAMPOS:
+id, titulo, genero, preco, faixa_etaria
+E UMA TABELA DE clientes COM OS CAMPOS: id, nome, cpf, telefone, idade
+E UMA TABELA DE ALUGUEIS COM OS CAMPOS: id, data_aluguel, id_filme, id_cliente
+DEPOIS FAÇA UM BACKEND COM NODEJS/EXPRESS CONECTE AO BANCO E CRIE 5 ROTAS:
+verTodosFilmes
+verTodosClientes
+cadastrarFilme
+cadastrarCliente
+alugarFilme
+
+
+=============================BANCO DE DADOS===================
+
+ CREATE DATABASE locadora;
+ 
+ USE locadora;
+ 
+ CREATE TABLE filmes(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(100),
+    genero VARCHAR(20),
+    preco FLOAT,
+    faixa_etaria VARCHAR(10),
+    status_aluguel BOOL
+ );
+ 
+ 
+ CREATE TABLE clientes(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    cpf CHAR(14),
+    telefone VARCHAR(20),
+    idade YEAR
+ );
+ 
+ 
+  CREATE TABLE alugueis(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    data_aluguel DATE,
+	id_filme INT,
+    FOREIGN KEY (id_filme) REFERENCES filmes(id),
+	id_cliente INT,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id)
+ );
+ 
+ 
+INSERT INTO filmes (titulo, genero, preco, faixa_etaria, status_aluguel) VALUES
+('Os Vingadores', 'Ação', 9.99, '12+', 0),
+('O Senhor dos Anéis', 'Fantasia', 12.99, '14+', 0),
+('A Era do Gelo', 'Animação', 7.99, 'L', 0),
+('Matrix', 'Ficção Científica', 10.99, '16+', 0),
+('Jurassic Park', 'Aventura', 8.99, '10+', 0),
+('Toy Story', 'Animação', 6.99, 'L', 0),
+('O Lobo de Wall Street', 'Comédia', 14.99, '18+', 0),
+('Coringa', 'Drama', 11.99, '16+', 0),
+('Frozen', 'Animação', 8.49, 'L', 0),
+('Star Wars: Episódio IV', 'Ficção Científica', 9.49, '12+', 0);
+
+INSERT INTO clientes (nome, cpf, telefone, idade) VALUES
+('João Silva', '123.456.789-00', '(11) 98765-4321', 25),
+('Maria Oliveira', '987.654.321-00', '(21) 99876-5432', 30),
+('Carlos Santos', '456.123.789-00', '(31) 91919-1919', 22),
+('Ana Lima', '321.654.987-00', '(41) 91234-5678', 27),
+('Fernanda Costa', '654.321.987-00', '(51) 93210-1234', 34),
+('Lucas Pereira', '147.258.369-00', '(61) 94567-8901', 29),
+('Juliana Martins', '258.369.147-00', '(71) 98654-3210', 31),
+('Roberto Almeida', '369.258.147-00', '(81) 91234-0987', 40);
+
+INSERT INTO alugueis (data_aluguel, id_filme, id_cliente) VALUES
+('2024-10-01', 1, 2),  
+('2024-10-02', 5, 3), 
+('2024-10-03', 8, 4);  
+
+
+
+=============================BACKEND=========================
+
+==========db.js============
+
+const mysql = require('mysql2/promise')
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'Mysql102030',
+  database: 'locadora',
+})
+
+module.exports = pool
+
+
+
+============index.js========
+
+const express = require('express')
+const cors = require('cors')
+const pool = require('./db.js')
+const PORT = 3000
+
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+
+app.get('/filmes', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM filmes')
+    res.json(rows)
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao conectar no banco', error })
+  }
+})
+
+app.post('/filmes', async (req, res) => {
+  const { titulo, genero, preco, faixa_etaria, status_aluguel } = req.body
+
+  try {
+    const consulta =
+      'INSERT INTO filmes (titulo,genero, preco, faixa_etaria, status_aluguel) VALUES ( ? , ?, ? , ?, ? )'
+
+    await pool.query(consulta, [
+      titulo,
+      genero,
+      preco,
+      faixa_etaria,
+      status_aluguel,
+    ])
+
+    res.status(201).json({ message: 'Filme cadastrado com sucesso' })
+  } catch (error) {
+    res.status(500).json({ message: 'falha ao cadastrar filme', error })
+  }
+})
+
+app.get('/clientes', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM clientes')
+    res.json(rows)
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao conectar no banco', error })
+  }
+})
+
+app.post('/clientes', async (req, res) => {
+  const { nome, cpf, telefone, idade } = req.body
+
+  try {
+    const consulta =
+      'INSERT INTO clientes (nome,cpf, telefone, idade) VALUES ( ? , ?, ? , ? )'
+
+    await pool.query(consulta, [nome, cpf, telefone, idade])
+
+    res.status(201).json({ message: 'Cliente cadastrado com sucesso' })
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao cadastrar cliente', error })
+  }
+})
+
+app.post('/alugueis', async (req, res) => {
+  const { data_aluguel, id_filme, id_cliente } = req.body
+
+  try {
+    const consulta =
+      'INSERT INTO alugueis (data_aluguel,id_filme, id_cliente) VALUES ( ? , ?, ? )'
+
+    await pool.query(consulta, [data_aluguel, id_filme, id_cliente])
+
+    res.status(201).json({ message: 'Cliente cadastrado com sucesso' })
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao cadastrar cliente', error })
+  }
+})
+
+app.listen(PORT, () => {
+  console.log('DEU BOM')
+})
+
+ 
+
+
+POST DO POSTMAN
+
+{
+  "titulo": "O Rei Leão",
+  "genero": "Animação",
+  "preco": 9.99,
+  "faixa_etaria": "L",
+  "status_aluguel": false
+}
+
+
+AULA 4
+
+const mysql = require('mysql2/promise')
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'Mysql102030',
+  database: 'mercado',
+})
+
+module.exports = pool
+
+
+const mysql = require('mysql2/promise')
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'Mysql102030',
+  database: 'locadora',
+})
+
+module.exports = pool
+
+
+
+
+
+
+
+const express = require('express')
+const cors = require('cors')
+const pool = require('./db.js')
+const PORT = 3000
+
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+
+app.get('/filmes', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM filmes')
+    res.json(rows)
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao conectar no banco', error })
+  }
+})
+
+app.post('/filmes', async (req, res) => {
+  const { titulo, genero, preco, faixa_etaria, status_aluguel } = req.body
+
+  try {
+    const consulta =
+      'INSERT INTO filmes (titulo,genero, preco, faixa_etaria, status_aluguel) VALUES ( ? , ?, ? , ?, ? )'
+
+    await pool.query(consulta, [
+      titulo,
+      genero,
+      preco,
+      faixa_etaria,
+      status_aluguel,
+    ])
+
+    res.status(201).json({ message: 'Filme cadastrado com sucesso' })
+  } catch (error) {
+    res.status(500).json({ message: 'falha ao cadastrar filme', error })
+  }
+})
+
+app.put('/filmes/:id', async (req, res) => {
+  const { id } = req.params
+  const { titulo, genero, preco, faixa_etaria, status_aluguel } = req.body
+
+  try {
+    const consulta =
+      'UPDATE filmes SET titulo = ?, genero = ?, preco = ?, faixa_etaria = ?, status_aluguel= ? WHERE id = ?'
+
+    await pool.query(consulta, [
+      titulo,
+      genero,
+      preco,
+      faixa_etaria,
+      status_aluguel,
+      id,
+    ])
+    res.status(201).json({ message: 'Filme atualizado com sucesso' })
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao atualizar filme', error })
+  }
+})
+
+app.delete('/filmes/:id', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const consulta = 'DELETE FROM filmes WHERE id = ?'
+
+    await pool.query(consulta, [id])
+    res.status(201).json({ message: 'Filme deletado com sucesso' })
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao deletar filme', error })
+  }
+})
+
+
+
+
+app.get('/clientes', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM clientes')
+    res.json(rows)
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao conectar no banco', error })
+  }
+})
+
+app.post('/clientes', async (req, res) => {
+  const { nome, cpf, telefone, idade } = req.body
+
+  try {
+    const consulta =
+      'INSERT INTO clientes (nome,cpf, telefone, idade) VALUES ( ? , ?, ? , ? )'
+
+    await pool.query(consulta, [nome, cpf, telefone, idade])
+
+    res.status(201).json({ message: 'Cliente cadastrado com sucesso' })
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao cadastrar cliente', error })
+  }
+})
+
+app.post('/alugueis', async (req, res) => {
+  const { data_aluguel, id_filme, id_cliente } = req.body
+
+  try {
+    const consulta =
+      'INSERT INTO alugueis (data_aluguel,id_filme, id_cliente) VALUES ( ? , ?, ? )'
+
+    await pool.query(consulta, [data_aluguel, id_filme, id_cliente])
+
+    res.status(201).json({ message: 'Cliente cadastrado com sucesso' })
+  } catch (error) {
+    res.status(500).json({ message: 'Falha ao cadastrar cliente', error })
+  }
+})
+
+app.listen(PORT, () => {
+  console.log('DEU BOM')
+})
+
+
+
+
+
+
+
+FAÇA UM SISTEMA DE CONTROLE DE ESTOQUE.
+CRIE UM BANCO COM AS TABELAS:
+PRODUTO: id, nome, preco, qtde.
+CLIENTE: id, nome, cpf.
+NOTA_FISCAL: id, data_venda, id_produto, id_cliente
+
+CRIE UM BACK PARA SE ENTREGAR NO BANCO
+CRIE O FLUXO DE BACKEND COM AS ROTAS QUE PERMITA FAZER UM CRUD COMPLETO EM produtos e clientes
+E TAMBÉM PERMITA EMITIR (POST) UMA NOTA FISCAL.
+
+
+AULA 5
+
+
+
+
+
+
