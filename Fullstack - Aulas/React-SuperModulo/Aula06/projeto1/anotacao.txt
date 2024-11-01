@@ -27,7 +27,8 @@ function App() {
 
 export default App
 
-e no main.jsx apaga apenas a linha 4 que é a importação do index.css que apagamos
+e no main.jsx apaga apenas a linha que tive import ('./index.css') que é a importação do index.css que apagamos
+
 
 dentro da pasta public apaga o aquivo vite.svg
 dentro da pasta assets apaga o arquivo react.svg
