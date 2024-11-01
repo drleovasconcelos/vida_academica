@@ -1,0 +1,126 @@
+para instalar
+npm i axios react-router-dom
+
+CRIE UM PROJETO REACT
+PARA CONSUMIR A API DO TMDB
+REQUISITOS:
+UMA HOME COM A LISTA DE FILMES POPULARES, EM CARTAZ, EM BREVE, TOP RATED
+UMA BARRA DE PESQUISA PARA BUSCAR PELO NOME
+AO CLICAR EM UM TITULO MOSTRAR O DETALHES DELE.
+
+tmbd
+
+SITE REC DESENVOLVIDO PELO ABEL
+https://rec-eight.vercel.app/
+
+
+CHAVE DA API
+77c4e2b070a2e1396500d0b42ebf7cec
+
+GUIA DA DOCUMENTAÇÃO
+https://developer.themoviedb.org/reference/intro/getting-started
+
+CONSULTA GERAL DE FILMES POPULARES SEM PAGINA
+https://api.themoviedb.org/3/movie/popular?api_key=77c4e2b070a2e1396500d0b42ebf7cec&language=pt-BR
+
+
+PARA USAR IMAGENS
+https://image.tmdb.org/t/p/w500
+
+
+
+https://github.com/abelardojr0/REC
+
+ <img src="https://cdn.pixabay.com/photo/2016/12/27/13/10/logo-1933884_960_720.png 1x, https://cdn.pixabay.com/photo/2016/12/27/13/10/logo-1933884_1280.png 2x" alt="" />
+
+ INÍCIO DE SEMPRE - https://www.invertexto.com/612aula6react
+
+npm create vite@latest
+y
+coloca o nome do projeto
+seleciona o React
+seleciona o Javascript
+cd nome do projeto
+npm install
+code .
+abre o terminal de novo
+npm run dev
+
+=======================
+LIMPEZA
+
+apaga o arquivo index.css
+limpa tudo de dentro do App.css (deixa vazio)
+
+transforma o App.jsx nisso:
+import "./App.css"
+function App() {
+  return (
+    <h1>Aula 1</h1>
+  )
+}
+
+export default App
+
+e no main.jsx apaga apenas a linha que tive import ('./index.css') que é a importação do index.css que apagamos
+
+
+dentro da pasta public apaga o aquivo vite.svg
+dentro da pasta assets apaga o arquivo react.svg
+
+
+Dracula
+Material Icon
+Image Preview
+Color Highligth
+Prettier
+indent-rainbow
+
+
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 1.75,
+  "editor.tabSize": 2,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.wordWrap": "on",
+  "editor.minimap.renderCharacters": false,
+  "telemetry.telemetryLevel": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "breadcrumbs.filePath": "off",
+  "outline.icons": false,
+  "editor.formatOnSave": true,
+  "html.format.wrapAttributes": "auto",
+  "html.format.wrapLineLength": 0,
+  "html.autoClosingTags": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.bracketPairColorization.enabled": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.compactFolders": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 1,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.colorTheme": "Dracula",
+  "files.autoSave": "afterDelay"
+}
+
+--------------------------------------------------------------
+
+bibliotecas (pode ser feito no início): 
+npm install axios react-router-dom
+
+
+obs: sempre apertar enter nas rotas se não aparece o erro, não definido
+
+*******************************************************************
+
+------- GIT PARA INICIAR O PROJETO (basta ):
+
+https://github.com/abelardojr0/Receita_de_bolo_react
+
+na hora de fazer um gitclone, instala node_modules (instalação)
+
+*******************************************************************
