@@ -1,0 +1,18 @@
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+section div{
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+

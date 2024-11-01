@@ -1,0 +1,97 @@
+npm i = quando faz o clone basta fazer isso
+
+customização : npm install styled-components
+
+extensão de estilização: 
+vscode-styled-components
+
+
+
+**************************************
+https://www.invertexto.com/612aula7react
+
+**************************************
+clonar nas aulas:
+
+https://github.com/abelardojr0/react_aula6
+
+git clone https://github.com/abelardojr0/react_aula6.git
+
+******************************************
+obs: o map faz com que ao percorre a lista, sai outras informações / reduce = sai apenas 1 coisa / 
+filter = sai igual
+
+(html em js deve ser entre parenteses)
+
+**********************************************
+criado no chatgpt
+
+
+**********************************************
+https://www.youtube.com/watch?v=9tZ9HNEK Cem
+**********************************************
+prettier = ctrl+sft+p = setting = copia o que tem embaixo e cola = depois baixa o prettier
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 1.75,
+  "editor.tabSize": 2,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.wordWrap": "on",
+  "editor.minimap.renderCharacters": false,
+  "telemetry.telemetryLevel": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "breadcrumbs.filePath": "off",
+  "outline.icons": false,
+  "editor.formatOnSave": true,
+  "html.format.wrapAttributes": "auto",
+  "html.format.wrapLineLength": 0,
+  "html.autoClosingTags": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.bracketPairColorization.enabled": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.compactFolders": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 1,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.colorTheme": "Dracula",
+  "files.autoSave": "afterDelay"
+}
+
+***************************************
+
+export const cursos = [
+    {
+        nome: "Design Gráfico",
+        turno: "Manhã",
+        duracao: "6 meses",
+        data_inicio: "15/01/2024"
+    },
+    {
+        nome: "Programação em Python",
+        turno: "Tarde",
+        duracao: "4 meses",
+        data_inicio: "01/02/2024"
+    },
+    {
+        nome: "Marketing Digital",
+        turno: "Noite",
+        duracao: "5 meses",
+        data_inicio: "10/03/2024"
+    },
+    {
+        nome: "Fotografia Profissional",
+        turno: "Sábado",
+        duracao: "3 meses",
+        data_inicio: "20/01/2024"
+    },
+    {
+        nome: "Gestão de Projetos",
+        turno: "Manhã",
+        duracao: "6 meses",
+        data_inicio: "05/04/2024"
+    }
+];
