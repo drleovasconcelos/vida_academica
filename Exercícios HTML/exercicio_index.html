@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="exercicio_style.css">
+    <title>Exercicio CSS</title>
+    <style>
+        .menu-horizontal {
+            display: flex;               /* Torna horizontal */
+            list-style-type: none;       /* Remove marcadores */
+            margin: 0;
+            padding: 0;
+            background-color: #333;      /* Cor de fundo */
+            font-family: Arial, sans-serif;
+            border-radius: 5px;          /* Cantos arredondados */
+            overflow: hidden;            /* Para bordas arredondadas funcionarem */
+        }
+        
+        .menu-horizontal li {
+            padding: 15px 25px;          /* Espaçamento interno */
+            transition: background 0.3s; /* Efeito suave ao passar o mouse */
+        }
+        
+        .menu-horizontal li a {
+            color: white;                /* Cor do texto */
+            text-decoration: none;       /* Remove sublinhado */
+            font-weight: bold;
+        }
+        
+        .menu-horizontal li:hover {
+            background-color: #555;      /* Cor ao passar o mouse */
+        }
+        .links-container { 
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .links-container a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .link-1 {
+            color: #3498db;
+            background-color: #eaf2f8;
+        }
+        
+        .link-1:hover {
+            color: white;
+            background-color: #3498db;
+        }
+        
+        .link-2 {
+            color: #2ecc71;
+            background-color: #e8f8f0;
+        }
+        
+        .link-2:hover {
+            color: white;
+            background-color: #2ecc71;
+        }
+        
+        .link-3 {
+            color: #e74c3c;
+            background-color: #fdedec;
+        }
+        
+        .link-3:hover {
+            color: white;
+            background-color: #e74c3c;
+        }
+
+        .tabela-estilizada {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .tabela-estilizada th {
+            background-color: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .tabela-estilizada td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tabela-estilizada tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .tabela-estilizada tr:hover {
+            background-color: #e3e3e3;
+        }
+
+        .tema-escuro {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+        
+        .tema-escuro h2 {
+            color: #f39c12;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tema-escuro img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 15px;
+
+            .flex-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                padding: 30px;
+                background-color: #ecf0f1;
+            }
+            
+            .item {
+                padding: 20px;
+                background-color: #9b59b6;
+                color: white;
+                border-radius: 5px;
+                min-width: 100px;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h2>1. Colorindo um parágrafo HTML: Um parágrafo simples com texto. 
+        CSS objetivo: Definir cor da fonte, cor de fundo e alinhamento de texto. </h2>
+        
+    <h2>2. Estilizando títulos HTML: h1, h2, h3 com textos variados. 
+    CSS objetivo: Mudar cores, fonte e espaçamento de cada nível de título.</h2>
+
+    <h2> 3. Trabalhando com classes 
+    HTML: Três caixas div com classe caixa. 
+    CSS objetivo: Aplicar bordas, tamanho fixo, cor de fundo e margem. </h2>
+    <h2> 4. Estilo em botões 
+    HTML: Três botões <button>. 
+    CSS objetivo: Estilizar com cores, bordas arredondadas, efeito hover e padding. </h2>
+
+    <h2> 5. Menu horizontal HTML: Uma lista <ul> com itens de menu. 
+    CSS objetivo: Estilizar como menu horizontal com espaçamento e cor de fundo. </h2>    
+    
+    html
+<ul class="menu-horizontal">
+    <li><a href="#">Casa</a></li>
+    <li><a href="#">Apartamento</a></li>
+    <li><a href="#">Sítio</a></li>
+</ul>
+
+    <h2>6. Estilizando links HTML: Três links <a> para sites diferentes. 
+    CSS objetivo: Alterar cor padrão, cor ao passar o mouse (hover) e retirar sublinhado. </h2>
+    <div class="links-container">
+        <a href="/Estilos.css" class="link-1">Site 1</a>
+        <a href="/exercicio_index.html" class="link-2">Site 2</a>
+        <a href="/MouraBranch/" class="link-3">Site 3</a>
+    </div>
+
+    <h2>7. Layout com grid 
+HTML: Uma div com seis caixas internas. 
+CSS objetivo: Usar display: grid para criar um layout 2x3 com espaçamento. </h2>
+<div class="grid-container">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+</div>
+<h2>8. Layout com flexbox 
+HTML: Uma div com quatro itens internos. 
+CSS objetivo: Usar display: flex, centralizar os itens e dar espaçamento entre eles. </h2>
+<div class="flex-container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+</div>
+
+<h2>9. Estilizando uma tabela HTML: Uma tabela com cabeçalho e três linhas de conteúdo. 
+CSS objetivo: Bordas, cor alternada nas linhas, cabeçalho com destaque. </h2>
+<table class="tabela-estilizada">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Estoque</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Capacete</td>
+            <td>R$ 299,90</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>Luvas</td>
+            <td>R$ 149,90</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>Jaqueta</td>
+            <td>R$ 399,90</td>
+            <td>8</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>10. Tema escuro para uma página HTML: Título, parágrafo e imagem. 
+CSS objetivo: Aplicar tema escuro com cores claras para o texto, fundo escuro e sombra. </h2>
+<section class="tema-escuro">
+    <h2>Motos Esportivas</h2>
+    <p>As melhores motos para quem busca performance e estilo.</p>
+    <img src="moto-esportiva.jpg" alt="Moto Esportiva">
+</section>
+
+</body>
+</html>
