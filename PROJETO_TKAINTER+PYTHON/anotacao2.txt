@@ -1,0 +1,239 @@
+# from tkinter import *
+
+# # Inicializa a janela principal
+# janela = Tk()
+
+# # Configurações da janela
+# janela.title("Cadastro de Pacientes")
+# janela.configure(background='#1e3743')  # Define a cor de fundo
+# janela.geometry("800x600")  # Define o tamanho inicial da janela
+# janela.resizable(True, True)  # Permite redimensionamento
+# janela.maxsize(width=900, height=700)  # Define tamanho máximo
+# janela.minsize(width=400, height=300)  # Define tamanho mínimo
+
+# # Inicia o loop principal da aplicação
+# janela.mainloop()
+
+# ***********************************
+from tkinter import *
+from tkinter import ttk
+from tkinter.ttk import *
+from tkinter import Button
+import sqlite3
+
+root = Tk()
+
+class Funcs():
+    def limpar_tela(self):
+        self.codigo_entry.delete(0, END)
+        self.nome_entry.delete(0, END)
+        self.simulado1_entry.delete(0, END)
+        self.simulado2_entry.delete(0, END)
+        self.AV_entry.delete(0, END)
+        self.AVF_entry.delete(0, END)
+        
+## FUNÇÃO PARA CRIAR E CONECTAR COM O BANCO DE DADOS
+    def conecta_bd(self):
+        self.conexao = sqlite3.connect("notas.bd")
+        self.cursor = self.conexao.cursor()
+
+## FUNÇÃO PARA DESCONECTAR AO BANCO DE DADOS
+    def desconecta_bd(self):
+        if self.conexao:
+            self.conexao.close()
+            print("Desconectado ao banco de dados!")
+            self.conexao = None
+            self.cursor = None
+            
+## FUNÇÃO PARA CONECTAR AO BANCO DE DADOS E CRIAR TABELAS
+    def montaTabelas(self):
+        self.conecta_bd()
+        print("Conectado ao banco de dados!")
+
+        ### Criar tabela alunos
+        self.cursor.execute("""
+                            CREATE TABLE IF NOT EXISTS alunos (
+                                matricula INTEGER PRIMARY KEY,
+                                nome CHAR(40) NOT NULL
+                            )
+                        """)
+        self.conexao.commit()
+        print("Tabela alunos criada!")
+
+        ### Criar tabela notas com chave estrangeira referenciando alunos
+        self.cursor.execute("""
+                            CREATE TABLE IF NOT EXISTS notas (
+                                id_nota INTEGER PRIMARY KEY AUTOINCREMENT,
+                                matricula INTEGER NOT NULL,
+                                simulado_1 REAL,
+                                simulado_2 REAL,
+                                AV REAL,
+                                AVF REAL,
+                                FOREIGN KEY (matricula) REFERENCES alunos(matricula)
+                            )
+                        """)
+        self.conexao.commit()
+        print("Tabela notas criada!")
+
+        self.desconecta_bd()
+    ## ADICIONAR ALUNOS
+    def add_alunos(self):
+        self.codigo = self.codigo_entry.get()
+        self.nome = self.nome_entry.get()
+        self.simulado1 = self.simulado1_entry.get()
+        self.simulado2 = self.simulado2_entry.get()
+        self.AV = self.AV_entry.get()
+        self.AVF = self.AVF_entry.get()
+
+        self.conecta_bd()
+        try:
+            # 1. Inserir o aluno na tabela 'alunos'
+            self.cursor.execute("""INSERT INTO alunos (matricula, nome) VALUES (?, ?)""", (self.codigo, self.nome))
+            self.conexao.commit()
+
+            # 2. Inserir as notas na tabela 'notas' referenciando a 'matricula' do aluno
+            self.cursor.execute("""INSERT INTO notas (matricula, simulado_1, simulado_2, AV, AVF) VALUES (?, ?, ?, ?, ?)""",
+                                (self.codigo, self.simulado1, self.simulado2, self.AV, self.AVF))
+            self.conexao.commit()
+            print(f"Aluno com matrícula {self.codigo} e suas notas adicionados com sucesso!")
+
+        except sqlite3.IntegrityError as e:
+            self.conexao.rollback()
+            print(f"Erro ao adicionar aluno: {e}")
+        except Exception as e:
+            self.conexao.rollback()
+            print(f"Erro inesperado ao adicionar aluno: {e}")
+        finally:
+            self.desconecta_bd()
+            self.select_lista()
+            self.limpar_tela()
+            
+    ## FUNÇÃO SELECT ALUNOS
+    def select_lista(self):
+        self.lista_notas.delete(*self.lista_notas.get_children())
+        self.conecta_bd()
+        lista = self.cursor.execute("""
+            SELECT a.matricula, a.nome, n.simulado_1, n.simulado_2, n.AV, n.AVF
+            FROM alunos a
+            INNER JOIN notas n ON a.matricula = n.matricula
+            ORDER BY a.matricula ASC, a.nome ASC
+        """)
+        for i in lista:
+            self.lista_notas.insert("", END, values=i)
+        self.desconecta_bd()
+
+class Application(Funcs):
+    def __init__(self):
+        self.root = root
+        self.tela()
+        self.frame_da_tela()
+        self.widgets_frame1()
+        self.lista_frame2()
+        self.montaTabelas()
+        self.select_lista()
+        root.mainloop()
+
+    def tela(self):
+        self.root.title("Cadastro de Notas")
+        self.root.configure(background='#1e3743')
+        self.root.geometry("800x600")
+        self.root.resizable(True, True)
+        self.root.maxsize(width=900, height=700)
+        self.root.minsize(width=500, height=300)
+
+    def frame_da_tela(self):
+        self.frame_1 = Frame(self.root)
+        self.frame_1.place(relx=0.02, rely=0.02, relwidth=0.96, relheight=0.46)
+        self.frame_2 = Frame(self.root)
+        self.frame_2.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
+
+    def widgets_frame1(self):
+        # Botões
+        self.bt_limpar = Button(self.frame_1, text="Limpar", bd=2, bg='#107db2', fg='white', font=('verdana', 8, 'bold'), command = self.limpar_tela)
+        self.bt_limpar.place(relx=0.3, rely=0.1, relwidth=0.1, relheight=0.15)
+
+        self.bt_buscar = Button(self.frame_1, text="Buscar", bd=2, bg='#107db2', fg='white', font=('verdana', 8, 'bold'))
+        self.bt_buscar.place(relx=0.4, rely=0.1, relwidth=0.1, relheight=0.15)
+
+        self.bt_novo = Button(self.frame_1, text="Novo", bd=2, bg='#107db2', fg='white', font=('verdana', 8, 'bold'), command = self.add_alunos)
+        self.bt_novo.place(relx=0.6, rely=0.1, relwidth=0.1, relheight=0.15)
+
+        self.bt_alterar = Button(self.frame_1, text="Alterar", bd=2, bg='#107db2', fg='white', font=('verdana', 8, 'bold'))
+        self.bt_alterar.place(relx=0.7, rely=0.1, relwidth=0.1, relheight=0.15)
+
+        self.bt_apagar = Button(self.frame_1, text="Apagar", bd=2, bg='#107db2', fg='white', font=('verdana', 8, 'bold'))
+        self.bt_apagar.place(relx=0.8, rely=0.1, relwidth=0.1, relheight=0.15)
+
+        # Campos e Labels
+        # Código
+        self.lb_codigo = Label(self.frame_1, text="Matrícula")
+        self.lb_codigo.place(relx=0.05, rely=0.05)
+
+        self.codigo_entry = Entry(self.frame_1)
+        self.codigo_entry.place(relx=0.05, rely=0.15, relwidth=0.15)
+
+        # Nome
+        self.lb_nome = Label(self.frame_1, text="Nome")
+        self.lb_nome.place(relx=0.05, rely=0.35)
+
+        self.nome_entry = Entry(self.frame_1)
+        self.nome_entry.place(relx=0.05, rely=0.45, relwidth=0.8)
+
+        # Simulado 1
+        self.lb_simulado1 = Label(self.frame_1, text="Simulado 1")
+        self.lb_simulado1.place(relx=0.05, rely=0.6)
+
+        self.simulado1_entry = Entry(self.frame_1)
+        self.simulado1_entry.place(relx=0.05, rely=0.7, relwidth=0.1)
+
+        # Simulado 2
+        self.lb_simulado2= Label(self.frame_1, text="Simulado 2")
+        self.lb_simulado2.place(relx=0.2, rely=0.6)
+
+        self.simulado2_entry = Entry(self.frame_1)
+        self.simulado2_entry.place(relx=0.2, rely=0.7, relwidth=0.1)
+
+        # Avaliação Semestral
+        self.lb_AV = Label(self.frame_1, text="AV")
+        self.lb_AV.place(relx=0.4, rely=0.6)
+
+        self.AV_entry = Entry(self.frame_1)
+        self.AV_entry.place(relx=0.4, rely=0.7, relwidth=0.1)
+
+        # Avaliação Semestral Final
+        self.lb_AVF = Label(self.frame_1, text="AVF")
+        self.lb_AVF.place(relx=0.6, rely=0.6)
+
+        self.AVF_entry = Entry(self.frame_1)
+        self.AVF_entry.place(relx=0.6, rely=0.7, relwidth=0.1)
+
+    def lista_frame2(self):
+        style = ttk.Style()
+        style.configure("Treeview.Heading", font=('verdana', 8, 'bold'), background='#107db2', foreground='black')
+        self.lista_notas = ttk.Treeview(self.frame_2, height=3, columns=("Col1", "Col2", "Col3", "Col4", "Col5", "Col6"))
+        self.lista_notas.heading("#0", text="")
+        self.lista_notas.heading("#1", text="Matricula")
+        self.lista_notas.heading("#2", text="Nome")
+        self.lista_notas.heading("#3", text="Simulado 1")
+        self.lista_notas.heading("#4", text="Simulado 2")
+        self.lista_notas.heading("#5", text="AV")
+        self.lista_notas.heading("#6", text="AVF")
+
+        # Tamanho das colunas
+        self.lista_notas.column("#0", width=1)
+        self.lista_notas.column("#1", width=80)
+        self.lista_notas.column("#2", width=200)
+        self.lista_notas.column("#3", width=80)
+        self.lista_notas.column("#4", width=80)
+        self.lista_notas.column("#5", width=80)
+        self.lista_notas.column("#6", width=80)
+
+        # Posição das Colunas
+        self.lista_notas.place(relx=0.01, rely=0.1, relwidth=0.95, relheight=0.85)
+
+        # barra de rolagem
+        self.scroolLista = Scrollbar(self.frame_2, orient="vertical")
+        self.lista_notas.configure(yscroll=self.scroolLista.set)
+        self.scroolLista.place(relx=0.96, rely=0.1, relwidth=0.04, relheight=0.85)
+
+Application()

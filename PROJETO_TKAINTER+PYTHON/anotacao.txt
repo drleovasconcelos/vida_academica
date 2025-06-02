@@ -1,0 +1,29 @@
+Vídeo "CRUD com Python + Flask  Conhecendo o Flask (Aula 1)", Disponível em
+ https://www.youtube.com/watch?v=rqv8u31NZo8 
+Vídeo "CRUD com Python + Flask  Conhecendo o Flask (Aula 2)", Disponível em
+ https://www.youtube.com/watch?v=YZqZ3LaLm0g 
+Vídeo "CRUD com Python + Flask  Conhecendo o Flask (Aula 3)", Disponível em
+ https://www.youtube.com/watch?v=OduDaM4t1Dg
+ Vídeo "CRUD com Python + Flask  Conhecendo o Flask (Aula 4)" Disponível em
+ https://www.youtube.com/watch?v=sX0I1bFgL2Y
+
+video que está ajudando no trabalho:
+https://www.youtube.com/watch?v=mZWYMicEEUQ&list=PLqx8fDb-FZDFznZcXb_u_NyiQ7Nai674-&index=5
+Estou nesse vídeo: https://www.youtube.com/watch?v=q-erf5w78Yc&list=PLqx8fDb-FZDFznZcXb_u_NyiQ7Nai674-&index=10
+
+
+CONFIGURAÇÃO INICIAL
+
+from tkinter import *
+from tkinter.ttk import *
+
+janela = Tk()
+
+mainloop()
+
+**************************************
+
+self.scroolLista = Scrollbar(self.frame_2, orient="vertical", command=self.lista_notas.yview)
+        self.lista_notas.configure(yscrollcommand=self.scroolLista.set)
+
+        self.scroolLista.place(relx=0.96, rely=0.1, relwidth=0.04, relheight=0.85)
